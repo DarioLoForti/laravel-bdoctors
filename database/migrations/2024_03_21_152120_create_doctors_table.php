@@ -18,10 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('city', 150);
-            $table->bigInteger('phone');
+            $table->bigInteger('phone')->nullable();
             $table->text('image')->nullable();
-            $table->string('cv', 150);
-            $table->text('services');
+            $table->string('cv', 150)->nullable();
+            $table->text('services')->nullable();
             $table->string('slug', 150);
             $table->timestamps();
         });
