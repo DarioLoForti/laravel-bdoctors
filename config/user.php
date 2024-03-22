@@ -9,13 +9,6 @@ return [
         'address' => 'Via Roma 12'
     ],
     [
-        'name' => 'Francesco',
-        'surname' => 'Sassi',
-        'email' => 'francosassi@gmail.com',
-        'password' => 'BDoctors',
-        'address' => 'Corso Italia 45'
-    ],
-    [
         'name' => 'Maria',
         'surname' => 'Bianchi',
         'email' => 'mariabianchi@gmail.com',
@@ -23,11 +16,11 @@ return [
         'address' => 'Via Dante 56'
     ],
     [
-        'name' => 'Luca',
-        'surname' => 'Romano',
-        'email' => 'lucaromano@gmail.com',
+        'name' => 'Francesco',
+        'surname' => 'Sassi',
+        'email' => 'francosassi@gmail.com',
         'password' => 'BDoctors',
-        'address' => 'Vicolo delle Rose 7'
+        'address' => 'Corso Italia 45'
     ],
     [
         'name' => 'Anna',
@@ -37,11 +30,11 @@ return [
         'address' => 'Via Vittorio Emanuele 31'
     ],
     [
-        'name' => 'Marco',
-        'surname' => 'Rossi',
-        'email' => 'marcorossi@gmail.com',
+        'name' => 'Luca',
+        'surname' => 'Romano',
+        'email' => 'lucaromano@gmail.com',
         'password' => 'BDoctors',
-        'address' => 'Via Leopardi 8'
+        'address' => 'Vicolo delle Rose 7'
     ],
     [
         'name' => 'Giulia',
@@ -51,11 +44,11 @@ return [
         'address' => 'Vicolo dei Fiori 15'
     ],
     [
-        'name' => 'Simone',
-        'surname' => 'Ferrari',
-        'email' => 'simoneferrari@gmail.com',
+        'name' => 'Marco',
+        'surname' => 'Rossi',
+        'email' => 'marcorossi@gmail.com',
         'password' => 'BDoctors',
-        'address' => 'Via Verdi 24'
+        'address' => 'Via Leopardi 8'
     ],
     [
         'name' => 'Chiara',
@@ -65,11 +58,11 @@ return [
         'address' => 'Corso Matteotti 37'
     ],
     [
-        'name' => 'Andrea',
-        'surname' => 'Conti',
-        'email' => 'andreaconti@gmail.com',
+        'name' => 'Simone',
+        'surname' => 'Ferrari',
+        'email' => 'simoneferrari@gmail.com',
         'password' => 'BDoctors',
-        'address' => 'Via dei Mille 50'
+        'address' => 'Via Verdi 24'
     ],
     [
         'name' => 'Martina',
@@ -79,11 +72,11 @@ return [
         'address' => 'Viale Kennedy 3'
     ],
     [
-        'name' => 'Alessandro',
-        'surname' => 'Vitali',
-        'email' => 'alessandrovitali@gmail.com',
+        'name' => 'Andrea',
+        'surname' => 'Conti',
+        'email' => 'andreaconti@gmail.com',
         'password' => 'BDoctors',
-        'address' => 'Via Carducci 18'
+        'address' => 'Via dei Mille 50'
     ],
     [
         'name' => 'Elisa',
@@ -93,11 +86,11 @@ return [
         'address' => 'Vicolo della Pace 22'
     ],
     [
-        'name' => 'Davide',
-        'surname' => 'Marchetti',
-        'email' => 'davidemarchetti@gmail.com',
+        'name' => 'Alessandro',
+        'surname' => 'Vitali',
+        'email' => 'alessandrovitali@gmail.com',
         'password' => 'BDoctors',
-        'address' => 'Via Rossini 29'
+        'address' => 'Via Carducci 18'
     ],
     [
         'name' => 'Silvia',
@@ -107,11 +100,11 @@ return [
         'address' => 'Corso Cavour 33'
     ],
     [
-        'name' => 'Mattia',
-        'surname' => 'Gentile',
-        'email' => 'mattiagentile@gmail.com',
+        'name' => 'Davide',
+        'surname' => 'Marchetti',
+        'email' => 'davidemarchetti@gmail.com',
         'password' => 'BDoctors',
-        'address' => 'Via Manzoni 40'
+        'address' => 'Via Rossini 29'
     ],
     [
         'name' => 'Sara',
@@ -121,11 +114,11 @@ return [
         'address' => 'Piazza Kennedy 11'
     ],
     [
-        'name' => 'Marco',
-        'surname' => 'Mancini',
-        'email' => 'marcomancini@gmail.com',
+        'name' => 'Mattia',
+        'surname' => 'Gentile',
+        'email' => 'mattiagentile@gmail.com',
         'password' => 'BDoctors',
-        'address' => 'Via Montegrappa 6'
+        'address' => 'Via Manzoni 40'
     ],
     [
         'name' => 'Elena',
@@ -135,9 +128,16 @@ return [
         'address' => 'Vicolo dei Sogni 19'
     ],
     [
-        'name' => 'Fabio',
+        'name' => 'Marco',
+        'surname' => 'Mancini',
+        'email' => 'marcomancini@gmail.com',
+        'password' => 'BDoctors',
+        'address' => 'Via Montegrappa 6'
+    ],
+    [
+        'name' => 'Francesca',
         'surname' => 'Marini',
-        'email' => 'fabiomarini@gmail.com',
+        'email' => 'francescamarini@gmail.com',
         'password' => 'BDoctors',
         'address' => 'Via della Repubblica 26'
     ]
