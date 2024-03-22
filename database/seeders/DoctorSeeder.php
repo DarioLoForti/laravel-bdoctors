@@ -19,13 +19,13 @@ class DoctorSeeder extends Seeder
     public function run()
     {
         $doctors = config('doctors');
-        $result = DB::table('doctors')->max('user_id');
-        //$result = mysql_query("SELECT MAX(user_id) FROM `doctors`"); 
+        $result = DB::table('users')->min('id');
+        //$result = query("SELECT MAX(user_id) FROM `doctors`"); 
 
         foreach($doctors as $doctor){
             $newDoctor = new Doctor();
-            $newDoctor->user_id = $result + 1;
-            $user = User::where('id', $result + 1)->first();
+            $newDoctor->user_id = $result;
+            $user = User::where('id', $result)->first();
             $result++;
 
             $newDoctor->city = $doctor['city'];
