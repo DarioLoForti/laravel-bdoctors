@@ -38,12 +38,14 @@
                                                         <i class="fa-solid fa-user-doctor" style="color: #ffffff;"></i>
                                                         <span class="ms-1 d-none d-sm-inline text-white">Profilo</span></a>
                                                 </li>
-                                                <li class="w-100">
-                                                    <a href="{{ route('admin.doctors.create') }}" class="nav-link px-0">
-                                                        <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
-                                                        <span class="ms-1 d-none d-sm-inline text-white">Crea Il Tuo
-                                                            Profilo</span></a>
-                                                </li>
+                                                @if (!Auth::user()->doctor)
+                                                    <li class="w-100">
+                                                        <a href="{{ route('admin.doctors.create') }}" class="nav-link px-0">
+                                                            <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
+                                                            <span class="ms-1 d-none d-sm-inline text-white">Crea Il Tuo
+                                                                Profilo</span></a>
+                                                    </li>
+                                                @endif
                                             </ul>
                                         </li>
                                     </ul>
@@ -64,11 +66,13 @@
                                     {{ Auth::user()->name }} {{ Auth::user()->surname }}</h1>
                             </div>
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="jumbo">
-                                        <img class="jumbo-img" src="{{ Auth::user()->doctor->image }}">
+                                @if (Auth::user()->doctor)
+                                    <div class="col-12">
+                                        <div class="jumbo">
+                                            <img class="jumbo-img" src="{{ Auth::user()->doctor->image }}">
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
 
                         </div>

@@ -6,7 +6,7 @@ use App\Models\Doctor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
-
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class DoctorController extends Controller
@@ -43,7 +43,7 @@ class DoctorController extends Controller
     public function store(StoreDoctorRequest $request)
     {
         $form_data = $request->all();
-
+        $form_data['user_id'] = auth()->user()->id;
         $doctor = new Doctor();
 
         if ($request->hasFile('image')) {
@@ -57,7 +57,12 @@ class DoctorController extends Controller
         }
 
         $doctor->fill($form_data);
+        $randomCode = '';
+        do {
+            $randomCode .= chr(rand(65, 90));
+        } while (strlen($randomCode) < 8);
 
+        $doctor->slug = Str::slug(auth()->user()->name . auth()->user()->surname . '-' . $randomCode);
         $doctor->save();
 
 
