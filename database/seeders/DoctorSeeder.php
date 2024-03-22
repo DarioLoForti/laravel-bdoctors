@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Doctor;
 
@@ -18,12 +19,14 @@ class DoctorSeeder extends Seeder
     public function run()
     {
         $doctors = config('doctors');
-        //$result = query("SELECT MAX(user_id) FROM `doctors`"); 
+        $result = DB::table('doctors')->max('user_id');
+        //$result = mysql_query("SELECT MAX(user_id) FROM `doctors`"); 
 
-        foreach($doctors as $key => $doctor){
+        foreach($doctors as $doctor){
             $newDoctor = new Doctor();
-            $newDoctor->user_id = $key + 1;
-            $user = User::where('id', $key + 1)->first();
+            $newDoctor->user_id = $result + 1;
+            $user = User::where('id', $result + 1)->first();
+            $result++;
 
             $newDoctor->city = $doctor['city'];
             $newDoctor->phone = $doctor['phone'];
@@ -32,7 +35,6 @@ class DoctorSeeder extends Seeder
             $newDoctor->services = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda maxime blanditiis nemo, incidunt reiciendis error recusandae animi consequuntur debitis fugiat suscipit ab esse pariatur, sunt, quisquam perspiciatis reprehenderit itaque sit?";
 
             $randomCode = '';
-            $j = 0;
             do{
                 $randomCode .= chr(rand(65,90));
             }while(strlen($randomCode)<8);
