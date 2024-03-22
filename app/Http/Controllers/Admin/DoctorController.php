@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 
+use Illuminate\Support\Facades\Storage;
+
 class DoctorController extends Controller
 {
     /**
@@ -26,7 +28,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.doctors.create');
     }
 
     /**
@@ -37,7 +39,26 @@ class DoctorController extends Controller
      */
     public function store(StoreDoctorRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $doctor = new Doctor();
+
+        if ($request->hasFile('image')) {
+            $immagine_path = Storage::disk('public')->put('doctors_images', $form_data['image']);
+            $form_data['image'] = $image_path;
+        }
+
+        if ($request->hasFile('cv')) {
+            $immagine_path = Storage::disk('public')->put('doctors_cvs', $form_data['cv']);
+            $form_data['cv'] = $cv_path;
+        }
+
+        $doctor->fill($form_data);
+
+        $doctor->save();
+
+
+        return redirect()->route('admin.doctors.index');
     }
 
     /**
@@ -59,7 +80,7 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        //
+        return view('admin.doctors.edit');
     }
 
     /**
@@ -71,7 +92,27 @@ class DoctorController extends Controller
      */
     public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
-        //
+        $form_data = $request->all();
+
+        if ($request->hasFile('image')) {
+            if ($doctor->image != null) {
+                Storage::disk('public')->delete($doctor->image);
+            }
+            $image_path = Storage::disk('public')->put('doctors_images', $form_data['image']);
+            $form_data['image'] = $image_path;
+        }
+
+        if ($request->hasFile('cv')) {
+            if ($doctor->cv != null) {
+                Storage::disk('public')->delete($doctor->cv);
+            }
+            $cv_path = Storage::disk('public')->put('doctors_cvs', $form_data['cv']);
+            $form_data['cv'] = $cv_path;
+        }
+        $doctor->update($form_data);
+
+
+        return redirect()->route('admin.doctors.index');
     }
 
     /**
