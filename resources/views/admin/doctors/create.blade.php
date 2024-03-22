@@ -10,20 +10,19 @@
             <div class="col-12">
                 <form action="{{ route('admin.doctors.store') }}" enctype="multipart/form-data" method="POST">
                     @csrf
-
                     <div class="form-group mb-3">
-                        <label class="" for="address">Indirizzo:</label>
-                        <input type="text" class="form-control" name="address" id="address"
-                            placeholder="inserisci il tuo indirizzo" value="{{ old('address') }}">
-                        @error('address')
+                        <label class="" for="city">Città:</label>
+                        <input type="text" class="form-control" name="city" id="city"
+                            placeholder="inserisci la tua città" value="{{ old('city') }}">
+                        @error('city')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group mb-4">
-                        <label class="" for="telephone">Telefono:</label>
-                        <input type="text" class="form-control" name="telephone" id="telephone"
-                            placeholder="inserisci il tuo numero di telefono" value="{{ old('telephone') }}">
-                        @error('telephone')
+                        <label class="" for="phone">Telefono:</label>
+                        <input type="text" class="form-control" name="phone" id="phone"
+                            placeholder="inserisci il tuo numero di telefono" value="{{ old('phone') }}">
+                        @error('phone')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
