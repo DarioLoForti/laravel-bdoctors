@@ -1,5 +1,36 @@
 @import '~bootstrap/scss/bootstrap';
-
+.image{
+    width: 400px;
+}
+.jumbo{
+    width: 1200px;
+}
 .dettaglio-immagine {
-    width: 250px;
+    width: 100%
+}
+.jumbo-img {
+    width: 100%
+}
+
+body{
+    background-color: lightgray;
+}
+
+.bg-lightcyano{
+    background-color: #285a8c;
+
+}
+.bg-doctorblu{
+    background-color: #003366;
+
+}
+.text-mygreen{
+    color: #339966;
+}
+.text-myblu{
+    color: #285a8c;
+    font-weight: bold;
+}
+.services{
+    width: 400px;
 }

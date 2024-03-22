@@ -100,7 +100,9 @@ class DoctorController extends Controller
 
         if ($request->hasFile('image')) {
             if ($doctor->image != null) {
-                Storage::disk('public')->delete($doctor->image);
+                if (!str_contains($doctor->image, 'https://')) {
+                    Storage::disk('public')->delete($doctor->image);
+                }
             }
             $image_path = Storage::disk('public')->put('doctors_images', $form_data['image']);
             $form_data['image'] = $image_path;

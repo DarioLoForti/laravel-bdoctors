@@ -1,79 +1,80 @@
-@extends('layouts.app')
+@extends('layouts.style')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-12">
-
-                <h2 class="text-center  my-4">Crea il tuo profilo</h2>
+                <a href="{{ url('admin') }}"><button class="btn btn-square btn-primary mt-2"><i
+                            class="fa-solid fa-hand-point-left" style="color: #ffffff;"></i></button></a>
+                <h2 class="text-center text-myblu mt-2">Modifica il tuo profilo</h2>
             </div>
             <div class="col-12">
-                <form action="{{ route('admin.doctors.store') }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('admin.doctors.update', $doctor->id) }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group mb-3">
                         <label class="" for="address">Città:</label>
-                        <input type="text" class="form-control" name="city" id="city" placeholder="city"
-                            value="{{ $doctor->user->city }}">
+                        <input type="text" class="form-control" name="city" id="city"
+                            placeholder="inserisci la tua Città" value="{{ $doctor->user->city }}">
                         @error('city')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label class="" for="address">Indirizzo:</label>
+                        {{-- <label class="" for="address">Indirizzo:</label>
                         <input type="text" class="form-control" name="address" id="address" placeholder="address"
                             value="{{ $doctor->user->address }}">
                         @error('address')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
-                    </div>
-                    <div class="form-group mb-4">
-                        <label class="" for="telephone">Telefono:</label>
-                        <input type="text" class="form-control" name="telephone" id="telephone" placeholder="telephone"
-                            value="{{ $doctor->telephone }}">
-                        @error('telephone')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    {{-- CURRICULUM --}}
-
-                    @if ($doctor->image != null)
-                        <div>
-                            <img src="{{ asset('storage/' . $doctor->cv) }}">
+                    </div> --}}
+                        <div class="form-group mb-4">
+                            <label class="" for="telephone">Telefono:</label>
+                            <input type="text" class="form-control" name="telephone" id="telephone"
+                                placeholder="telephone" value="{{ $doctor->telephone }}">
+                            @error('telephone')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                    @endif
 
-                    <div class="form-group mb-3">
+                        {{-- CURRICULUM --}}
 
-                        <label for="cv">Curriculum Vitae:</label>
-                        <input type="file" name="cv" id="cv" class="form-control">
+                        @if ($doctor->cv != null)
+                            <div>
+                                <img src="{{ asset('storage/' . $doctor->cv) }}">
+                            </div>
+                        @endif
 
-                        @error('cv')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+                        <div class="form-group mb-3">
 
-                    {{-- IMMAGINE --}}
+                            <label for="cv">Curriculum Vitae:</label>
+                            <input type="file" name="cv" id="cv" class="form-control">
 
-                    @if ($doctor->image != null)
-                        <div>
-                            <img src="{{ asset('storage/' . $doctor->image) }}">
+                            @error('cv')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                    @endif
 
-                    <div class="form-group mb-3">
+                        {{-- IMMAGINE --}}
 
-                        <label for="image">Foto:</label>
-                        <input type="file" name="image" id="image" class="form-control">
+                        @if ($doctor->image != null)
+                            <div>
+                                <img src="{{ asset('storage/' . $doctor->image) }}">
+                            </div>
+                        @endif
 
-                        @error('image')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+                        <div class="form-group mb-3">
 
-                    {{-- SPECIALIZZAZIONI --}}
+                            <label for="image">Foto:</label>
+                            <input type="file" name="image" id="image" class="form-control">
 
-                    {{-- <div class="form-group mb-3">
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        {{-- SPECIALIZZAZIONI --}}
+
+                        {{-- <div class="form-group mb-3">
                         <label for="" class="control-label text-white ">Specializzazioni</label>
                         <div>
                             @foreach ($speciliazations as $speciliazation)
@@ -87,17 +88,18 @@
                             @endforeach
                         </div>
                     </div> --}}
-                    <div class="form-group mb-3">
-                        <label class="" for="service">Prestazioni:</label>
-                        <textarea class="form-control" name="service" id="service" cols="30" rows="10"></textarea>
-                        @error('service')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+                        <div class="form-group mb-3">
+                            <label class="" for="services">Prestazioni:</label>
+                            <textarea class="form-control" name="services" id="services" cols="30" rows="10"
+                                placeholder="inserisci le tue prestazioni"></textarea>
+                            @error('services')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                    {{-- PRESTAZIONI --}}
+                        {{-- PRESTAZIONI --}}
 
-                    {{-- <div class="form-group mb-3">
+                        {{-- <div class="form-group mb-3">
                         <label for="" class="control-label text-white ">Specializzazioni</label>
                         <div>
                             @foreach ($services as $service)
@@ -109,16 +111,16 @@
                                 </div>
                             @endforeach
                         </div> --}}
-            </div>
+                    </div>
 
-            {{-- BTN SAVE --}}
-
-            <div class="form-group my-3">
-                <button class="btn btn-success" type="submit">Salva</button>
+                    {{-- BTN SAVE --}}
+                    <div class="button d-flex justify-content-center">
+                        <div class="form-group my-3">
+                            <button class="btn btn-success" type="submit">Salva</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            </form>
-            <a href="{{ route('admin.doctors.index') }}" class="btn btn-sm btn-primary float-end">Torna al dashboard</a>
         </div>
-    </div>
     </div>
 @endsection
