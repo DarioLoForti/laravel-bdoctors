@@ -53,20 +53,19 @@
 
                     {{-- SPECIALIZZAZIONI --}}
 
-                    {{-- <div class="form-group mb-3">
+                    <div class="form-group mb-3">
                         <label for="" class="control-label  ">Specializzazioni</label>
                         <div>
-                            @foreach ($speciliazations as $speciliazation)
+                            @foreach ($specializations as $specialization)
                                 <div class="form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="speciliazations[]"
-                                        id="speciliazation-{{ $speciliazation->id }}" value="{{ $speciliazation->id }}"
-                                        @checked(is_array(old('speciliazations')) && in_array($speciliazation->id, old('speciliazations')))>
-                                    <label for=""
-                                        class="form-check-label ">{{ $speciliazation->nome }}</label>
+                                    <input class="form-check-input" type="checkbox" name="specializations[]"
+                                        id="specialization-{{ $specialization->id }}" value="{{ $specialization->id }}"
+                                        @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))>
+                                    <label for="" class="form-check-label ">{{ $specialization->nome }}</label>
                                 </div>
                             @endforeach
                         </div>
-                    </div> --}}
+                    </div>
 
                     {{-- PRESTAZIONI --}}
 

@@ -74,32 +74,33 @@
 
                         {{-- SPECIALIZZAZIONI --}}
 
-                        {{-- <div class="form-group mb-3">
-                        <label for="" class="control-label text-white ">Specializzazioni</label>
-                        <div>
-                            @foreach ($speciliazations as $speciliazation)
-                                <div class="form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="speciliazations[]"
-                                        id="speciliazation-{{ $speciliazation->id }}" value="{{ $speciliazation->id }}"
-                                        @checked(is_array(old('speciliazations')) && in_array($speciliazation->id, old('speciliazations')))>
-                                    <label for=""
-                                        class="form-check-label text-white">{{ $speciliazation->nome }}</label>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div> --}}
                         <div class="form-group mb-3">
-                            <label class="" for="services">Prestazioni:</label>
-                            <textarea class="form-control" name="services" id="services" cols="30" rows="10"
-                                placeholder="inserisci le tue prestazioni"></textarea>
-                            @error('services')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
+                            <label for="" class="control-label  ">Specializzazioni</label>
+                            <div>
+                                @foreach ($specializations as $specialization)
+                                    <div class="form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="specializations[]"
+                                            id="specialization-{{ $specialization->id }}"
+                                            value="{{ $specialization->id }}" @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))>
+                                        <label for="specialization"
+                                            class="form-check-label ">{{ $specialization->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="" for="services">Prestazioni:</label>
+                        <textarea class="form-control" name="services" id="services" cols="30" rows="10"
+                            placeholder="inserisci le tue prestazioni"></textarea>
+                        @error('services')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                        {{-- PRESTAZIONI --}}
+                    {{-- PRESTAZIONI --}}
 
-                        {{-- <div class="form-group mb-3">
+                    {{-- <div class="form-group mb-3">
                         <label for="" class="control-label text-white ">Specializzazioni</label>
                         <div>
                             @foreach ($services as $service)
@@ -111,16 +112,16 @@
                                 </div>
                             @endforeach
                         </div> --}}
-                    </div>
-
-                    {{-- BTN SAVE --}}
-                    <div class="button d-flex justify-content-center">
-                        <div class="form-group my-3">
-                            <button class="btn btn-success" type="submit">Salva</button>
-                        </div>
-                    </div>
-                </form>
             </div>
+
+            {{-- BTN SAVE --}}
+            <div class="button d-flex justify-content-center">
+                <div class="form-group my-3">
+                    <button class="btn btn-success" type="submit">Salva</button>
+                </div>
+            </div>
+            </form>
         </div>
+    </div>
     </div>
 @endsection

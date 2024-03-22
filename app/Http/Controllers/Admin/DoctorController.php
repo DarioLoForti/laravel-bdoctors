@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Doctor;
+use App\Models\Specialization;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
@@ -31,7 +32,8 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('admin.doctors.create');
+        $specializations = Specialization::all();
+        return view('admin.doctors.create', compact('specializations'));
     }
 
     /**
@@ -65,6 +67,9 @@ class DoctorController extends Controller
         $doctor->slug = Str::slug(auth()->user()->name . auth()->user()->surname . '-' . $randomCode);
         $doctor->save();
 
+        if ($request->has('specializations')) {
+            $doctor->specializations()->attach($form_data['specializations']);
+        }
 
         return redirect()->route('admin.doctors.index');
     }
@@ -88,8 +93,8 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-
-        return view('admin.doctors.edit', compact('doctor'));
+        $specializations = Specialization::all();
+        return view('admin.doctors.edit', compact('doctor', 'specializations'));
     }
 
     /**
@@ -122,6 +127,9 @@ class DoctorController extends Controller
         }
         $doctor->update($form_data);
 
+        if ($request->has('specializations')) {
+            $doctor->specializations()->attach($form_data['specializations']);
+        }
 
         return redirect()->route('admin.doctors.index');
     }

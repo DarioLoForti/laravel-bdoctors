@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Doctor;
+use App\Models\Specialization;
 
 class DoctorSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class DoctorSeeder extends Seeder
         $result = DB::table('users')->min('id');
         //$result = query("SELECT MAX(user_id) FROM `doctors`"); 
 
-        foreach($doctors as $doctor){
+        foreach ($doctors as $doctor) {
             $newDoctor = new Doctor();
             $newDoctor->user_id = $result;
             $user = User::where('id', $result)->first();
@@ -33,13 +34,12 @@ class DoctorSeeder extends Seeder
             $newDoctor->image = $doctor['image'];
             $newDoctor->cv = $doctor['cv'];
             $newDoctor->services = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda maxime blanditiis nemo, incidunt reiciendis error recusandae animi consequuntur debitis fugiat suscipit ab esse pariatur, sunt, quisquam perspiciatis reprehenderit itaque sit?";
-
             $randomCode = '';
-            do{
-                $randomCode .= chr(rand(65,90));
-            }while(strlen($randomCode)<8);
-            
-            $newDoctor->slug = Str::slug($user['name'].$user['surname'].'-'.$randomCode);
+            do {
+                $randomCode .= chr(rand(65, 90));
+            } while (strlen($randomCode) < 8);
+
+            $newDoctor->slug = Str::slug($user['name'] . $user['surname'] . '-' . $randomCode);
             $newDoctor->save();
         }
     }
