@@ -13,7 +13,7 @@ class StoreDoctorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,25 @@ class StoreDoctorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'city' => 'required|max:150',
+            'phone' => 'nullable|numeric|max:15',
+            'image' => 'nullable|image|size:5120',
+            'cv' => 'nullable|mimes:jpg,png,txt,pdf,docx|size:2048',
+            'services' => 'nullable|max:300',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'city.required' => 'La città è obbligatoria',
+            'city.max' => 'La lunghezza del campo non deve superare i 150 caratteri',
+            'phone.numeric' => 'Questo campo accetta solo valori numerici',
+            'phone.max' => 'Il numero non può superare i 15 caratteri',
+            'image.image' => 'Puoi inserire solo un file di tipo immagine',
+            'image.size' => 'L\' immagine deve essere grande al massimo 5 mb',
+            'cv.mimes' => 'Puoi inserire solo file di tipo: .jpg , .png , .txt , .pdf , .docx',
+            'cv.size' => 'Il CV deve essere grande al massimo 2mb',
+            'services.max' => 'La lunghezza del campo non deve superare i 300 caratteri'
         ];
     }
 }
