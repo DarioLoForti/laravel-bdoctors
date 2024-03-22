@@ -18,8 +18,10 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = doctor::all();
-        return view('admin.doctors.index', compact('doctors'));
+        $user = auth()->user();
+
+        $doctor = $user->doctor;
+        return view('admin.doctors.index', compact('doctor'));
     }
 
     /**
@@ -81,7 +83,8 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        return view('admin.doctors.edit');
+
+        return view('admin.doctors.edit', compact('doctor'));
     }
 
     /**
@@ -125,7 +128,9 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         if ($doctor->image != null) {
-            Storage::disk('public')->delete($doctor->image);
+            if (!str_contains($doctor->image, 'https://')) {
+                Storage::disk('public')->delete($doctor->image);
+            }
         }
 
         if ($doctor->cv != null) {
