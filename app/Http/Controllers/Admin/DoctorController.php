@@ -16,7 +16,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $doctors = doctor::all();
+        return view('admin.doctors.index', compact('doctors'));
     }
 
     /**
@@ -48,7 +49,7 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        //
+        return view('admin.doctors.show', compact('doctor'));
     }
 
     /**
@@ -82,6 +83,7 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        //
+        $doctor->delete();
+        return redirect()->route('admin.doctors.index');
     }
 }
