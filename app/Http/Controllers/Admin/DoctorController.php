@@ -18,7 +18,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $doctors = doctor::all();
+        return view('admin.doctors.index', compact('doctors'));
     }
 
     /**
@@ -44,12 +45,12 @@ class DoctorController extends Controller
         $doctor = new Doctor();
 
         if ($request->hasFile('image')) {
-            $immagine_path = Storage::disk('public')->put('doctors_images', $form_data['image']);
+            $image_path = Storage::disk('public')->put('doctors_images', $form_data['image']);
             $form_data['image'] = $image_path;
         }
 
         if ($request->hasFile('cv')) {
-            $immagine_path = Storage::disk('public')->put('doctors_cvs', $form_data['cv']);
+            $cv_path = Storage::disk('public')->put('doctors_cvs', $form_data['cv']);
             $form_data['cv'] = $cv_path;
         }
 
@@ -123,6 +124,15 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        //
+        if ($doctor->image != null) {
+            Storage::disk('public')->delete($doctor->image);
+        }
+
+        if ($doctor->cv != null) {
+            Storage::disk('public')->delete($doctor->cv);
+        }
+
+        $doctor->delete();
+        return redirect()->route('admin.doctors.index');
     }
 }
