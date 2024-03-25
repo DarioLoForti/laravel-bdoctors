@@ -20,9 +20,11 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
+                            {{-- NAME --}}
+
                             <div class="mb-4 row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -37,9 +39,11 @@
                                 </div>
                             </div>
 
+                            {{-- SURNAME --}}
+
                             <div class="mb-4 row">
                                 <label for="surname"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
@@ -54,9 +58,11 @@
                                 </div>
                             </div>
 
+                            {{-- ADDRESS --}}
+
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -71,9 +77,11 @@
                                 </div>
                             </div>
 
+                            {{-- EMAIL --}}
+
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Email') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -87,6 +95,8 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            {{-- PASSWORD --}}
 
                             <div class="mb-4 row">
                                 <label for="password"
@@ -105,14 +115,115 @@
                                 </div>
                             </div>
 
+                            {{-- PASSWORD CONFIRM --}}
+
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
+                            </div>
+
+                            {{-- CITY --}}
+
+                            <div class="mb-4 row">
+                                <label for="city"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Città') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="city" class="form-control @error('city') is-invalid @enderror" name="city" required value="{{ old('city') }}">
+
+                                    @error('city')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- PHONE MUMBER --}}
+                            
+                            <div class="mb-4 row">
+                                <label for="phone"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Numero di Telefono') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" required value="{{ old('phone') }}">
+
+                                    @error('phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- CURRICULUM --}}
+        
+                            <div class="form-group mb-3">
+        
+                                <label for="cv">Curriculum Vitae:</label>
+                                <input type="file" name="cv" id="cv" class="form-control">
+        
+                                @error('cv')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+        
+                            {{-- IMMAGINE --}}
+        
+                            <div class="form-group mb-3">
+        
+                                <label for="image">Foto:</label>
+                                <input type="file" name="image" id="image" class="form-control">
+        
+                                @error('image')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+        
+                            {{-- SPECIALIZZAZIONI --}}
+        
+                            <div class="form-group mb-3">
+                                <label for="" class="control-label  ">Specializzazioni</label>
+                                <div>
+                                    @foreach ($specializations as $specialization)
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="specializations[]"
+                                                id="specialization-{{ $specialization->id }}" value="{{ $specialization->id }}"
+                                                @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))>
+                                            <label for="" class="form-check-label ">{{ $specialization->name }}</label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+        
+                            {{-- PRESTAZIONI --}}
+        
+                            {{-- <div class="form-group mb-3">
+                                <label for="" class="control-label  ">Specializzazioni</label>
+                                <div>
+                                    @foreach ($services as $service)
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="services[]"
+                                                id="service-{{ $service->id }}" value="{{ $service->id }}"
+                                                @checked(is_array(old('services')) && in_array($service->id, old('services')))>
+                                            <label for="" class="form-check-label ">{{ $service->nome }}</label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div> --}}
+                            
+                            <div class="form-group mb-3">
+                                <label class="" for="services">Prestazioni:</label>
+                                <textarea class="form-control" name="services" id="services" cols="30" rows="10"
+                                    placeholder="inserisci le tue prestazioni">{{ old('services') }}</textarea>
+                                @error('services')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-4 row mb-0">

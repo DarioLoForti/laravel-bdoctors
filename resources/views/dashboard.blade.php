@@ -38,14 +38,6 @@
                                                         <i class="fa-solid fa-user-doctor" style="color: #ffffff;"></i>
                                                         <span class="ms-1 d-none d-sm-inline text-white">Profilo</span></a>
                                                 </li>
-                                                @if (!Auth::user()->doctor)
-                                                    <li class="w-100">
-                                                        <a href="{{ route('admin.doctors.create') }}" class="nav-link px-0">
-                                                            <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
-                                                            <span class="ms-1 d-none d-sm-inline text-white">Crea Il Tuo
-                                                                Profilo</span></a>
-                                                    </li>
-                                                @endif
                                             </ul>
                                         </li>
                                     </ul>

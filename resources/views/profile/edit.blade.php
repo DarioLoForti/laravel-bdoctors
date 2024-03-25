@@ -5,24 +5,29 @@
     <h2 class="fs-4 text-secondary my-4">
         {{ __('Profile') }}
     </h2>
+    {{-- EDIT PERSONAL USER INFORMATION --}}
     <div class="card p-4 mb-4 bg-white shadow rounded-lg">
-
-        @include('profile.partials.update-profile-information-form')
-
+        @include('profile.partials.update-personal-information-form')
     </div>
 
+    @php
+        use App\Models\Specialization;   
+        $specializations = Specialization::all(); 
+    @endphp
+
+    {{-- EDIT USER PROFESSIONAL INFORMATION --}}
     <div class="card p-4 mb-4 bg-white shadow rounded-lg">
+        @include('profile.partials.update-professional-information-form', ['specializations' => $specializations])
+    </div>
 
-
+    {{-- UPDATE USER PASSWORD --}}
+    <div class="card p-4 mb-4 bg-white shadow rounded-lg">
         @include('profile.partials.update-password-form')
-
     </div>
 
+    {{-- DELETE USER ACCOUNT --}}
     <div class="card p-4 mb-4 bg-white shadow rounded-lg">
-
-
         @include('profile.partials.delete-user-form')
-
     </div>
 </div>
 

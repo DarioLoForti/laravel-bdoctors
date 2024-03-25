@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-secondary">
-            {{ __('Profile Information') }}
+            {{ __('Personal Information') }}
         </h2>
 
         <p class="mt-1 text-muted">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Update, change or correct your personal information.") }}
         </p>
     </header>
 
@@ -17,6 +17,8 @@
         @csrf
         @method('patch')
 
+        {{-- NAME UPDATE --}}
+
         <div class="mb-2">
             <label for="name">{{__('Name')}}</label>
             <input class="form-control" type="text" name="name" id="name" autocomplete="name" value="{{old('name', $user->name)}}" required autofocus>
@@ -26,6 +28,32 @@
             </span>
             @enderror
         </div>
+
+        {{-- SURNAME UPDATE --}}
+
+        <div class="mb-2">
+            <label for="surname">{{__('Surname')}}</label>
+            <input class="form-control" type="text" name="surname" id="surname" autocomplete="surname" value="{{old('surname', $user->surname)}}" required autofocus>
+            @error('surname')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->get('surname')}}</strong>
+            </span>
+            @enderror
+        </div>
+
+        {{-- ADRESS UPDATE --}}
+
+        <div class="mb-2">
+            <label for="address">{{__('Address')}}</label>
+            <input class="form-control" type="text" name="address" id="address" autocomplete="address" value="{{old('address', $user->address)}}" required autofocus>
+            @error('address')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->get('address')}}</strong>
+            </span>
+            @enderror
+        </div>
+
+        {{-- EMAIL UPDATE/VERIFICATION --}}
 
         <div class="mb-2">
             <label for="email">
