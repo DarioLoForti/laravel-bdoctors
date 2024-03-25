@@ -13,7 +13,7 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-myblu text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-myblu text-md-right">{{ __('E-mail') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -52,7 +52,7 @@
                                             {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label text-myblu" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('Ricordami') }}
                                         </label>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('Password Dimenticata?') }}
                                         </a>
                                     @endif
                                 </div>

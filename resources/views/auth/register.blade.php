@@ -9,7 +9,7 @@
                         <span>Registrati</span>
                         <span>I campi contrassegnati con l'asterisco sono obbligatori.</span>
                     </div>
-                    
+
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
@@ -184,15 +184,22 @@
                             {{-- SPECIALIZZAZIONI --}}
 
                             <div class="form-group mb-3">
-                                <label for="" class="control-label  ">Specializzazioni</label>
-                                <div>
+                                <div class="dropdown mb-2">
+                                    <a class="btn btn-primary dropdown-toggle" href="#Spec" role="button"
+                                        data-bs-toggle="collapse" aria-controls="Spec" aria-expanded="true">
+                                        Specializzazioni
+                                    </a>
+
+                                </div>
+                                <div id="Spec" class="collapse multi-collapse m-1">
                                     @foreach ($specializations as $specialization)
                                         <div class="form-check-inline">
                                             <input class="form-check-input" type="checkbox" name="specializations[]"
-                                                id="specialization-{{ $specialization->id }}"
-                                                value="{{ $specialization->id }}" @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))>
-                                            <label for=""
-                                                class="form-check-label ">{{ $specialization->name }}</label>
+                                                id="specialization-{{ $specialization->id }} "
+                                                @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations'))) value="{{ $specialization->id }}">
+                                            <label for="specialization"
+                                                class="form-check-label ">{{ $specialization->name }}
+                                            </label>
                                         </div>
                                     @endforeach
                                 </div>
