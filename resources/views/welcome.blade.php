@@ -3,6 +3,12 @@
     <div class="container">
         <div class="row">
 
+            {{-- APP LOGO #1 --}}
+
+            <div class="col-12 d-flex justify-content-center">
+                <img src="{{ Vite::asset('resources/img/4.jpeg') }}" alt="">
+            </div>
+            
             {{-- GO TO DASHBOARD BUTTON --}}
 
             <div class="col-12 d-flex justify-content-center my-3">
@@ -13,11 +19,6 @@
                 </div>
             </div>
             
-            {{-- APP LOGO #1 --}}
-
-            <div class="col-12 d-flex justify-content-center">
-                <img src="{{ Vite::asset('resources/img/4.jpeg') }}" alt="">
-            </div>
         </div>
     </div>
 @endsection

@@ -2,8 +2,17 @@
 @section('content')
 
 <div class="container">
-    <h2 class="fs-4 text-secondary my-4">
-        {{ __('Profilo') }}
+    <h2 class="fs-4 text-secondary my-4 d-flex justify-content-between align-items-center">
+        <span>
+            {{ __('Profilo') }}
+        </span>
+        <div>
+            <div class="btn btn-big btn-success">
+                <a class="dropdown-item" href="{{ url('admin') }}">
+                    Vai alla tua Dashboard
+                </a>
+            </div>
+        </div>
     </h2>
     {{-- EDIT PERSONAL USER INFORMATION --}}
     <div class="card p-4 mb-4 bg-white shadow rounded-lg">

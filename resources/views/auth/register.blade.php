@@ -5,18 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Registrati') }}</div>
-
+                    <div class="card-header d-flex justify-content-between">
+                        <span>Registrati</span>
+                        <span>I campi contrassegnati con l'asterisco sono obbligatori.</span>
+                    </div>
+                    
                     <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="list-unstyled">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
@@ -24,7 +18,7 @@
 
                             <div class="mb-4 row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -43,7 +37,7 @@
 
                             <div class="mb-4 row">
                                 <label for="surname"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Cognome*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
@@ -62,7 +56,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -81,7 +75,7 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Email') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Email*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -100,7 +94,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -119,7 +113,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -131,7 +125,7 @@
 
                             <div class="mb-4 row">
                                 <label for="city"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Città') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Città*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="city" class="form-control @error('city') is-invalid @enderror"
@@ -153,7 +147,7 @@
 
                                 <div class="col-md-6">
                                     <input id="phone" class="form-control @error('phone') is-invalid @enderror"
-                                        name="phone" required value="{{ old('phone') }}">
+                                        name="phone" value="{{ old('phone') }}">
 
                                     @error('phone')
                                         <span class="invalid-feedback" role="alert">
