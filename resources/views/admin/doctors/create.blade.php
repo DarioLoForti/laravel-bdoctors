@@ -54,22 +54,26 @@
                     {{-- SPECIALIZZAZIONI --}}
 
                     <div class="form-group mb-3">
-                        <label for="" class="control-label  ">Specializzazioni</label>
-                        <div>
-                            @foreach ($specializations as $specialization)
-                                <div class="form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="specializations[]"
-                                        id="specialization-{{ $specialization->id }}" value="{{ $specialization->id }}"
-                                        @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))>
-                                    <label for="" class="form-check-label ">{{ $specialization->nome }}</label>
+                        <div class="dropdown mb-2">
+                            <a class="btn btn-primary dropdown-toggle" href="#Spec" role="button"
+                                data-bs-toggle="collapse" aria-controls="Spec" aria-expanded="true">
+                                Specializzazioni
+                            </a>
+                            <div>
+                                <div id="Spec" class="collapse multi-collapse m-1">
+                                    @foreach ($specializations as $specialization)
+                                        <input class="form-check-input p-1" type="checkbox" name="specializations[]"
+                                            id="specialization-{{ $specialization->id }}" value="{{ $specialization->id }}"
+                                            @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))>
+                                        <label for="" class="form-check-label">{{ $specialization->name }}</label>
+                                    @endforeach
                                 </div>
-                            @endforeach
+                            </div>
                         </div>
-                    </div>
 
-                    {{-- PRESTAZIONI --}}
+                        {{-- PRESTAZIONI --}}
 
-                    {{-- <div class="form-group mb-3">
+                        {{-- <div class="form-group mb-3">
                         <label for="" class="control-label  ">Specializzazioni</label>
                         <div>
                             @foreach ($services as $service)
@@ -82,22 +86,22 @@
                             @endforeach
                         </div>
                     </div> --}}
-                    <div class="form-group mb-3">
-                        <label class="" for="services">Prestazioni:</label>
-                        <textarea class="form-control" name="services" id="services" cols="30" rows="10"
-                            placeholder="inserisci le tue prestazioni">{{ old('services') }}</textarea>
-                        @error('services')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    {{-- BTN SAVE --}}
-
-                    <div class="button d-flex justify-content-center">
-                        <div class="form-group my-3">
-                            <button class="btn btn-success" type="submit">Salva</button>
+                        <div class="form-group mb-3">
+                            <label class="" for="services">Prestazioni:</label>
+                            <textarea class="form-control" name="services" id="services" cols="30" rows="10"
+                                placeholder="inserisci le tue prestazioni">{{ old('services') }}</textarea>
+                            @error('services')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                    </div>
+
+                        {{-- BTN SAVE --}}
+
+                        <div class="button d-flex justify-content-center">
+                            <div class="form-group my-3">
+                                <button class="btn btn-success" type="submit">Salva</button>
+                            </div>
+                        </div>
                 </form>
 
             </div>

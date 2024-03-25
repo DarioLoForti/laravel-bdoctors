@@ -68,8 +68,11 @@
                             <div class="row">
                                 @if (Auth::user()->doctor)
                                     <div class="col-12">
-                                        <div class="jumbo">
-                                            <img class="jumbo-img" src="{{ Auth::user()->doctor->image }}">
+                                        <div class="jumbotron jumbotron-fluid">
+                                            <div class="container">
+                                                <img class="img-fluid" src="{{ Auth::user()->doctor->image }}">
+
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
