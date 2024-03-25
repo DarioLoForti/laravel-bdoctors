@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-muted">
-            {{ __('Modifica le tue informazioni professionali') }}
+            {{ __('Modifica le tue informazioni professionali.') }}
         </p>
     </header>
 
@@ -119,18 +119,6 @@
 
         <div class="d-flex align-items-center gap-4">
             <button class="btn btn-primary" type="submit">{{ __('Salva') }}</button>
-
-            @if (session('status') === 'profile-updated')
-                <script>
-                    const show = true;
-                    setTimeout(() => show = false, 2000)
-                    const el = document.getElementById('profile-status')
-                    if (show) {
-                        el.style.display = 'block';
-                    }
-                </script>
-                <p id='profile-status' class="fs-5 text-muted">{{ __('Saved.') }}</p>
-            @endif
         </div>
     </form>
 </section>

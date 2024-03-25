@@ -3,7 +3,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col 12 d-flex">
+            <div class="d-flex">
+
+                {{-- DASHBOARD SIDEBAR --}}
+
                 <div class="col-2">
                     <div class="container-fluid">
                         <div class="row flex-nowrap">
@@ -16,6 +19,9 @@
                                     </a>
                                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                                         id="menu">
+
+                                        {{-- DASHBOARD MAIN MENU --}}
+
                                         <li class="nav-item">
                                             <a class="nav-link align-middle px-0 text-white" href="{{ url('/') }}"><i
                                                     class="fa-solid fa-house me-2"
@@ -23,19 +29,23 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('admin.doctors.index') }}" class="nav-link px-0">
+                                            <a href="{{ route('admin.doctors.index') }}" class="nav-link align-middle px-0 text-white">
                                                 <i class="fa-solid fa-user-doctor" style="color: #ffffff;"></i>
                                                 <span class="ms-1 d-none d-sm-inline text-white">Profilo</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <i class="fa-solid fa-message" style="color: #ffffff;"></i>
-                                            <span class="ms-1 d-none d-sm-inline text-white">Messaggi</span>
+                                            <a href="" class="nav-link align-middle px-0 text-white">
+                                                <i class="fa-solid fa-message" style="color: #ffffff;"></i>
+                                                <span class="ms-1 d-none d-sm-inline text-white">Messaggi</span>
                                             </a>
                                         </li>
+
+                                        {{-- DASHBOARD SUBMENU --}}
+
                                         <li>
                                             <a href="#submenu1" data-bs-toggle="collapse"
-                                                class="nav-link px-0 align-middle">
+                                                class="nav-link align-middle px-0 text-white">
                                                 <i class="fs-4 bi-speedometer2"></i>
                                                 <i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>
                                                 <span class="ms-1 d-none d-sm-inline text-white">Dashboard</span>
@@ -60,16 +70,26 @@
                         </div>
                     </div>
                 </div>
+
+                {{-- DASHBOARD MAIN CONTENT --}}
+
                 <div class="col-10">
                     <div class="container">
                         <h2 class="fs-4 text-myblu my-4">
                             {{ __('Dashboard') }}
                         </h2>
                         <div class="row justify-content-center">
+
+                            {{-- WELCOME HEADER --}}
+
                             <div class="col-8">
                                 <h1 class="text-mygreen mb-5">Benvenuto in BDoctors, Dr.
-                                    {{ Auth::user()->name }} {{ Auth::user()->surname }}. </h1>
+                                    {{ Auth::user()->name }} {{ Auth::user()->surname }}. 
+                                </h1>
                             </div>
+
+                            {{-- NOTIFICATION: YOU HAVE SELECTED 0 SPECIALTIES --}}
+
                             <div class="row my-3">
                                 @if (count(Auth::user()->doctor->specializations) == 0)
                                     <div
@@ -81,34 +101,42 @@
                                         <div class="btn btn-small btn-primary">
                                             <a href="{{ route('profile.edit', Auth::user()->doctor->id) }}"
                                                 class="text-white">
-                                                Aggiungi Specializzazioni
+                                                Aggiungi le Specializzazioni
                                             </a>
                                         </div>
                                     </div>
                                 @endif
                             </div>
+
+                            {{-- NOTIFICATION: YOU HAVE BOUGHT NO SPONSORSHIP --}}
+
                             <div class="row my-3">
                                 @if (Auth::user()->doctor->sponsorship == null)
                                     <div
                                         class="col-12 bg-success p-3 rounded d-flex justify-content-between align-items-center">
                                         <div class="text-white">
-                                            Aggiungi sponsorizzazione per avere maggiore visibilità
+                                            Aggiungi una sponsorizzazione per avere maggiore visibilità.
                                         </div>
                                         <div class="btn btn-small btn-primary">
-                                            Vedi le nostre offerte
+                                            Vedi le nostre Offerte
                                         </div>
                                     </div>
                                 @endif
                             </div>
-                            <div class="row">
-                                {{--                                 @if (Auth::user()->doctor)
-                                    <div class="col-12">
-                                        <div class="jumbo">
-                                            <img class="jumbo-img" src="{{ Auth::user()->doctor->image }}">
+
+                            {{-- DOCTOR PROFILE PICTURE --}}
+
+                            {{--                             
+                                <div class="row">
+                                    @if (Auth::user()->doctor)
+                                        <div class="col-12">
+                                            <div class="jumbo">
+                                                <img class="jumbo-img" src="{{ Auth::user()->doctor->image }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                @endif --}}
-                            </div>
+                                    @endif
+                                </div> 
+                            --}}
                         </div>
                     </div>
                 </div>

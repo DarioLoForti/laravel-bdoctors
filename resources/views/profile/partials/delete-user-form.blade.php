@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Se il tuo Account viene cancellato, tutti i dati e le risorse collegate verrano perse. Assicurati di scaricare tutti i dati che ti servono prima di eliminare l\'account') }}
+            {{ __('Se il tuo Account viene cancellato, tutti i dati e le risorse collegate verrano perse. Assicurati di scaricare tutti i dati che ti servono prima di eliminare l\'account!') }}
         </p>
     </header>
 
@@ -24,6 +24,8 @@
                     <h5 class="modal-title" id="delete-account">Elimina Account</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                
+                {{-- MODAL MESSAGE --}}
                 <div class="modal-body">
                     <h2 class="text-lg font-medium text-gray-900">
                         {{ __('Sei sicuro di volere eliminare il tuo account?') }}
@@ -32,8 +34,14 @@
                         {{ __('Per favore inserisci la tua password per confermare l\'eliminazione del tuo account') }}
                     </p>
                 </div>
+
                 <div class="modal-footer">
+
+                    {{-- CANCEL BUTTON --}}
+
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+
+                    {{-- DELETE BUTTON --}}
 
                     <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
                         @csrf
@@ -56,7 +64,6 @@
                             <button type="submit" class="btn btn-danger">
                                 {{ __('Elimina Account') }}
                             </button>
-                            <!--  -->
                         </div>
                     </form>
 

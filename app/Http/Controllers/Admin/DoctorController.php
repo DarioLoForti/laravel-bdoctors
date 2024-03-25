@@ -7,6 +7,7 @@ use App\Models\Specialization;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -102,8 +103,8 @@ class DoctorController extends Controller
         if ($request->has('specializations')) {
             $doctor->specializations()->attach($form_data['specializations']);
         }
-
-        return redirect()->route('admin.doctors.index');
+            
+        return Redirect::route('profile.edit');
     }
 
     /**
