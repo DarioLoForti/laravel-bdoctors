@@ -41,6 +41,10 @@
                                 @endforeach
                             </div>
                         </div>
+                        @else
+                        <div class="my-2">
+                            <div><em>Nessuna specializzazione inserita. <br> Vai nella <a href="{{ route('profile.edit') }}" class="text-black">schermata modifica profilo</a> per aggiungerne una.</em></div>
+                        </div>
                         @endif
                         <a href="{{ url('admin') }}" class="mx-2"><button class="btn btn-square btn-primary mt-4"><i
                             class="fa-solid fa-envelope" style="color: #ffffff;"></i></button></a>
@@ -75,6 +79,7 @@
                                     <div>{{ $doctor->user->address }}</div>
                                 </div>
                                 <hr>
+                                @if($doctor->services != '' || $doctor->services != null)
                                 <div class="services my-2">
                                     <div>
                                         <strong>Prestazioni:</strong>
@@ -83,10 +88,20 @@
                                         </div>
                                     </div>
                                 </div>
+                                @else
+                                <div class="my-2">
+                                    <div><em>Nessuna descrizione delle prestazioni inserita. <br> Vai nella <a href="{{ route('profile.edit') }}" class="text-black">schermata modifica profilo</a> per scriverne una.</em></div>
+                                </div>
+                                @endif
                                 @if($doctor->cv != 'Filepdf')
                                 <hr>
                                 <div><strong>Curriculum:</strong><br>
                                     <img class="dettaglio-immagine" src="{{ $doctor->cv }}">
+                                </div>
+                                @else
+                                <hr>
+                                <div class="my-2">
+                                    <div><em>Nessun Curriculum Vitae inserito. <br> Vai nella <a href="{{ route('profile.edit') }}" class="text-black">schermata modifica profilo</a> per aggiungerne uno.</em></div>
                                 </div>
                                 @endif
                             </div>
