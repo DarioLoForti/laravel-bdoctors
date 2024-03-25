@@ -103,7 +103,7 @@ class DoctorController extends Controller
         if ($request->has('specializations')) {
             $doctor->specializations()->attach($form_data['specializations']);
         }
-            
+
         return Redirect::route('profile.edit');
     }
 

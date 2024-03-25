@@ -69,7 +69,7 @@
 
         @if ($user->doctor->image != null)
             <div>
-                <img src="{{ asset('storage/' . $user->doctor->image) }}">
+                <img width="200px" src="{{ asset('storage/' . $user->doctor->image) }}">
             </div>
         @endif
 
@@ -117,7 +117,7 @@
 
         <div class="form-group mb-3">
             <label class="" for="services">Prestazioni</label>
-            <textarea class="form-control" name="services" id="services" cols="10" rows="10">{{ old('services', $user->doctor->services) }}</textarea>
+            <textarea wrap="soft" class="form-control" name="services" id="services" cols="10" rows="10">{{ old('services', $user->doctor->services) }}</textarea>
             @error('services')
                 <div class="text-danger">{{ $message }}</div>
             @enderror

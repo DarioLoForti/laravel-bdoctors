@@ -26,8 +26,8 @@ class StoreDoctorRequest extends FormRequest
         return [
             'city' => 'required|max:150',
             'phone' => 'nullable|numeric',
-            'image' => 'nullable|image|size:5120',
-            'cv' => 'nullable|mimes:jpg,png,txt,pdf,docx|size:2048',
+            'image' => 'nullable|image',
+            'cv' => 'nullable|mimes:pdf,docx',
             'services' => 'nullable|max:300',
         ];
     }
@@ -38,9 +38,7 @@ class StoreDoctorRequest extends FormRequest
             'city.max' => 'La lunghezza del campo non deve superare i 150 caratteri.',
             'phone.numeric' => 'Questo campo accetta solo valori numerici.',
             'image.image' => 'Puoi inserire solo un file di tipo immagine.',
-            'image.size' => 'L\' immagine deve essere grande al massimo 5 mb.',
-            'cv.mimes' => 'Puoi inserire solo file di tipo: .jpg , .png , .txt , .pdf , .docx.',
-            'cv.size' => 'Il CV deve essere grande al massimo 2mb.',
+            'cv.mimes' => 'Puoi inserire solo file di tipo:.pdf , .docx.',
             'services.max' => 'La lunghezza del campo non deve superare i 300 caratteri.'
         ];
     }

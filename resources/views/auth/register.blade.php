@@ -223,7 +223,7 @@
 
                             <div class="form-group mb-3">
                                 <label class="" for="services">Prestazioni:</label>
-                                <textarea class="form-control" name="services" id="services" cols="30" rows="10"
+                                <textarea wrap="soft" class="form-control" name="services" id="services" cols="30" rows="10"
                                     placeholder="inserisci le tue prestazioni">{{ old('services') }}</textarea>
                                 @error('services')
                                     <div class="text-danger">{{ $message }}</div>
