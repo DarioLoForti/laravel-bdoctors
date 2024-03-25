@@ -53,24 +53,28 @@
                                     </span>
                                     <div>{{ $doctor->user->email }}</div>
                                 </div>
+                                <hr>
                                 <div class="d-flex justify-content-between my-2">
                                     <span>
                                         <strong>Numero di Telefono:</strong>
                                     </span>
                                     <div>{{ $doctor->phone }}</div>
                                 </div>
+                                <hr>
                                 <div class="d-flex justify-content-between my-2">
                                     <span>
                                         <strong>Città:</strong>
                                     </span>
                                     <div>{{ $doctor->city }}</div>
                                 </div>
+                                <hr>
                                 <div class="d-flex justify-content-between my-2">
                                     <span>
                                         <strong>Indirizzo:</strong>
                                     </span>
                                     <div>{{ $doctor->user->address }}</div>
                                 </div>
+                                <hr>
                                 <div class="services my-2">
                                     <div>
                                         <strong>Prestazioni:</strong>
@@ -80,6 +84,7 @@
                                     </div>
                                 </div>
                                 @if($doctor->cv != 'Filepdf')
+                                <hr>
                                 <div><strong>Curriculum:</strong><br>
                                     <img class="dettaglio-immagine" src="{{ $doctor->cv }}">
                                 </div>
