@@ -11,8 +11,7 @@
     </div>
 
     @php
-        use App\Models\Specialization;   
-        $specializations = Specialization::all(); 
+        $specializations = DB::table('specializations')->get();
     @endphp
 
     {{-- EDIT USER PROFESSIONAL INFORMATION --}}

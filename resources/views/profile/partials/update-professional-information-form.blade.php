@@ -9,9 +9,9 @@
         </p>
     </header>
 
-{{--     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
-    </form> --}}
+    </form>
 
     {{-- @php
         dd($user->doctor);   
@@ -19,7 +19,7 @@
 
     <form action="{{ route('admin.doctors.update', $user->doctor->id) }}" enctype="multipart/form-data" method="POST" class="mt-6 space-y-6">
         @csrf
-        @method('PUT')
+        @method('patch')
 
         {{-- CITY UPDATE --}}
 
