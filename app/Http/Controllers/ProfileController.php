@@ -48,9 +48,19 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
-        Auth::logout();
+        if ($user->doctor->image != null) {
+            if (!str_contains($user->doctor->image, 'https://')) {
+                Storage::disk('public')->delete($user->doctor->image);
+            }
+        }
+        
+        if ($user->doctor->cv != null) {
+            Storage::disk('public')->delete($user->doctor->cv);
+        }
+        
         $user->doctor->delete();
         $user->delete();
+        Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

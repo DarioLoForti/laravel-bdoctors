@@ -20,7 +20,6 @@ class DoctorController extends Controller
     public function index()
     {
         $user = auth()->user();
-
         $doctor = $user->doctor;
         return view('admin.doctors.index', compact('doctor'));
     }
@@ -32,8 +31,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        $specializations = Specialization::all();
-        return view('admin.doctors.create', compact('specializations'));
+        //
     }
 
     /**
@@ -42,36 +40,9 @@ class DoctorController extends Controller
      * @param  \App\Http\Requests\StoreDoctorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDoctorRequest $request)
+    public function store(Request $request)
     {
-        $form_data = $request->all();
-        $form_data['user_id'] = auth()->user()->id;
-        $doctor = new Doctor();
-
-        if ($request->hasFile('image')) {
-            $image_path = Storage::disk('public')->put('doctors_images', $form_data['image']);
-            $form_data['image'] = $image_path;
-        }
-
-        if ($request->hasFile('cv')) {
-            $cv_path = Storage::disk('public')->put('doctors_cvs', $form_data['cv']);
-            $form_data['cv'] = $cv_path;
-        }
-
-        $doctor->fill($form_data);
-        $randomCode = '';
-        do {
-            $randomCode .= chr(rand(65, 90));
-        } while (strlen($randomCode) < 8);
-
-        $doctor->slug = Str::slug(auth()->user()->name . auth()->user()->surname . '-' . $randomCode);
-        $doctor->save();
-
-        if ($request->has('specializations')) {
-            $doctor->specializations()->attach($form_data['specializations']);
-        }
-
-        return redirect()->route('admin.doctors.index');
+        //
     }
 
     /**
@@ -93,8 +64,7 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        $specializations = Specialization::all();
-        return view('admin.doctors.edit', compact('doctor', 'specializations'));
+        //
     }
 
     /**
@@ -125,8 +95,10 @@ class DoctorController extends Controller
             $cv_path = Storage::disk('public')->put('doctors_cvs', $form_data['cv']);
             $form_data['cv'] = $cv_path;
         }
-        $doctor->update($form_data);
 
+        $doctor->update($form_data);
+        
+        $doctor->specializations()->detach();
         if ($request->has('specializations')) {
             $doctor->specializations()->attach($form_data['specializations']);
         }

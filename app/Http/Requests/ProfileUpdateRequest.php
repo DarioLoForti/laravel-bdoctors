@@ -30,15 +30,14 @@ class ProfileUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.string' => 'Il nome deve essere una stringa',
-            'name.max' => 'Il nome deve contenere al massimo 50 caratteri',
-            'surname.string' => 'Il cognome deve essere una stringa',
-            'surname.max' => 'Il nome deve contenere al massimo 50 caratteri',
-            'address.string' => 'Deve essere una stringa',
-            'address.max' => 'L\' indirizzo deve contenere al massimo 150 caratteri',
-            'email.email' => 'L\' email deve essere un indirizzo valido',
-            'email.max' => 'L\' email deve contenere al massimo 255 caratteri'
-
+            'name.string' => 'Il nome deve essere una stringa.',
+            'name.max' => 'Il nome deve contenere al massimo 50 caratteri.',
+            'surname.string' => 'Il cognome deve essere una stringa.',
+            'surname.max' => 'Il nome deve contenere al massimo 50 caratteri.',
+            'address.string' => 'Deve essere una stringa.',
+            'address.max' => 'L\' indirizzo deve contenere al massimo 150 caratteri.',
+            'email.email' => 'L\' email deve essere un indirizzo valido.',
+            'email.max' => 'L\' email deve contenere al massimo 255 caratteri.'
         ];
     }
 }
