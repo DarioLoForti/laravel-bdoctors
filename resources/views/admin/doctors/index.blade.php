@@ -6,7 +6,7 @@
                 <div class="d-flex justify-content-start mt-2">
                     <a href="{{ url('admin') }}" class=""><button class="btn btn-square btn-primary mt-4"><i
                                 class="fa-solid fa-hand-point-left" style="color: #ffffff;"></i></button></a>
-                    <a href="{{ route('profile.edit', ['doctor' => $doctor->id]) }}" class="mx-2"><button
+                    <a href="{{ route('profile.edit') }}" class="mx-2"><button
                             class="btn btn-square btn-warning mt-4"><i class="fa-regular fa-pen-to-square"
                                 style="color: #ffffff;"></i></button></a>
                     <button class="btn btn-square btn-danger mt-4" data-bs-toggle="modal"
