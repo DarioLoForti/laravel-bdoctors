@@ -85,8 +85,14 @@
         {{-- SPECIALIZATIONS UPDATE --}}
 
         <div class="form-group mb-3">
-            <label for="" class="control-label  ">Specializzazioni</label>
-            <div>
+            <div class="dropdown mb-2">
+                <a class="btn btn-primary dropdown-toggle" href="#Spec" role="button" data-bs-toggle="collapse"
+                    aria-controls="Spec" aria-expanded="true">
+                    Specializzazioni
+                </a>
+
+            </div>
+            <div id="Spec" class="collapse multi-collapse m-1">
                 @php
                     $doctor_specializations = [];
 
