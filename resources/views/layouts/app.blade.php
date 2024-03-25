@@ -23,9 +23,7 @@
 
 <body>
     <div id="app">
-        
         @include('layouts.partials.header')
-
         <main class="">
             @yield('content')
         </main>
