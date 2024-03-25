@@ -2,12 +2,15 @@
 .image{
     width: 400px;
 }
+
 .jumbo{
     width: 1200px;
 }
+
 .dettaglio-immagine {
-    width: 100%
+    width: 80%;
 }
+
 .jumbo-img {
     width: 50%
 }
@@ -18,22 +21,26 @@ body{
 
 .bg-lightcyano{
     background-color: #285a8c;
-
 }
+
 .bg-doctorblu{
     background-color: #003366;
 
 }
+
 .text-mygreen{
     color: #339966;
 }
+
 .text-myblu{
     color: #285a8c;
     font-weight: bold;
 }
+
 .services{
     width: 400px;
 }
+
 a{
     text-decoration: none;
 }
