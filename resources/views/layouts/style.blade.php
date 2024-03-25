@@ -44,7 +44,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link text-white ombra" href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li>
                     </ul>
 

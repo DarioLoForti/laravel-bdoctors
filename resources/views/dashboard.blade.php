@@ -9,46 +9,46 @@
                         <div class="row flex-nowrap">
                             <div class="col-12 px-sm-2 px-0 bg-doctorblu">
                                 <div
-                                    class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white vh-100">
+                                    class="d-flex flex-column align-items-center align-items-sm-start mx-2 mt-2 text-white vh-100">
                                     <a href="/"
                                         class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                                         <span class="fs-5 d-none d-sm-inline">Menu</span>
                                     </a>
                                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                                         id="menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link align-middle px-0 text-white" href="{{ url('/') }}"><i
+                                        <li class="nav-item mb-2 px-2">
+                                            <a class="nav-link align-middle  text-white ombra" href="{{ url('/') }}"><i
                                                     class="fa-solid fa-house me-2"
                                                     style="color: #ffffff;"></i>{{ __('Home') }}
                                             </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a href="{{ route('admin.doctors.index') }}" class="nav-link px-0">
+                                        <li class="nav-item mb-2 px-2">
+                                            <a href="{{ route('admin.doctors.index') }}" class="nav-link  ombra">
                                                 <i class="fa-solid fa-user-doctor" style="color: #ffffff;"></i>
-                                                <span class="ms-1 d-none d-sm-inline text-white">Profilo</span>
+                                                <span class="ms-1 d-none d-sm-inline text-white ">Profilo</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <i class="fa-solid fa-message" style="color: #ffffff;"></i>
-                                            <span class="ms-1 d-none d-sm-inline text-white">Messaggi</span>
+                                        <li class="nav-item mb-2 px-2">
+                                            <a href="" class="nav-link ombra">
+                                                <i class="fa-solid fa-message" style="color: #ffffff;"></i>
+                                                <span class="ms-1 d-none d-sm-inline text-white">Messaggi</span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <li class="nav-item mb-2 px-2">
                                             <a href="#submenu1" data-bs-toggle="collapse"
-                                                class="nav-link px-0 align-middle">
-                                                <i class="fs-4 bi-speedometer2"></i>
+                                                class="nav-link  align-middle ombra">
                                                 <i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>
                                                 <span class="ms-1 d-none d-sm-inline text-white">Dashboard</span>
                                             </a>
                                             <ul class="collapse show nav flex-column ms-1" id="submenu1"
                                                 data-bs-parent="#menu">
-                                                <li class="w-100 mb-2">
-                                                    Recenzioni
+                                                <li class="w-100 mb-2 px-2">
+                                                    Recensioni
                                                 </li>
-                                                <li class="w-100 mb-2">
+                                                <li class="w-100 mb-2 px-2">
                                                     Voti
                                                 </li>
-                                                <li class="w-100 mb-2">
+                                                <li class="w-100 mb-2 px-2">
                                                     Statistiche
                                                 </li>
                                             </ul>
