@@ -36,7 +36,7 @@
                                         </li>
                                         <li class="nav-item mb-2 px-2">
                                             <a href="#submenu1" data-bs-toggle="collapse"
-                                                class="nav-link  align-middle ombra">
+                                                class="nav-link  align-middle ombra mb-2">
                                                 <i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>
                                                 <span class="ms-1 d-none d-sm-inline text-white">Dashboard</span>
                                             </a>
