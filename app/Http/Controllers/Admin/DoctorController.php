@@ -40,7 +40,7 @@ class DoctorController extends Controller
      * @param  \App\Http\Requests\StoreDoctorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDoctorRequest $request)
     {
         //
     }
@@ -97,7 +97,7 @@ class DoctorController extends Controller
         }
 
         $doctor->update($form_data);
-        
+
         $doctor->specializations()->detach();
         if ($request->has('specializations')) {
             $doctor->specializations()->attach($form_data['specializations']);
@@ -114,17 +114,6 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        if ($doctor->image != null) {
-            if (!str_contains($doctor->image, 'https://')) {
-                Storage::disk('public')->delete($doctor->image);
-            }
-        }
-
-        if ($doctor->cv != null) {
-            Storage::disk('public')->delete($doctor->cv);
-        }
-
-        $doctor->delete();
-        return redirect()->route('admin.doctors.index');
+        //
     }
 }

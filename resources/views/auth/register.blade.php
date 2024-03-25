@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header">{{ __('Registrati') }}</div>
 
                     <div class="card-body">
                         @if ($errors->any())
@@ -134,7 +134,8 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Città') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="city" class="form-control @error('city') is-invalid @enderror" name="city" required value="{{ old('city') }}">
+                                    <input id="city" class="form-control @error('city') is-invalid @enderror"
+                                        name="city" required value="{{ old('city') }}">
 
                                     @error('city')
                                         <span class="invalid-feedback" role="alert">
@@ -145,13 +146,14 @@
                             </div>
 
                             {{-- PHONE MUMBER --}}
-                            
+
                             <div class="mb-4 row">
                                 <label for="phone"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Numero di Telefono') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" required value="{{ old('phone') }}">
+                                    <input id="phone" class="form-control @error('phone') is-invalid @enderror"
+                                        name="phone" required value="{{ old('phone') }}">
 
                                     @error('phone')
                                         <span class="invalid-feedback" role="alert">
@@ -162,47 +164,48 @@
                             </div>
 
                             {{-- CURRICULUM --}}
-        
+
                             <div class="form-group mb-3">
-        
+
                                 <label for="cv">Curriculum Vitae:</label>
                                 <input type="file" name="cv" id="cv" class="form-control">
-        
+
                                 @error('cv')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-        
+
                             {{-- IMMAGINE --}}
-        
+
                             <div class="form-group mb-3">
-        
+
                                 <label for="image">Foto:</label>
                                 <input type="file" name="image" id="image" class="form-control">
-        
+
                                 @error('image')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-        
+
                             {{-- SPECIALIZZAZIONI --}}
-        
+
                             <div class="form-group mb-3">
                                 <label for="" class="control-label  ">Specializzazioni</label>
                                 <div>
                                     @foreach ($specializations as $specialization)
                                         <div class="form-check-inline">
                                             <input class="form-check-input" type="checkbox" name="specializations[]"
-                                                id="specialization-{{ $specialization->id }}" value="{{ $specialization->id }}"
-                                                @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))>
-                                            <label for="" class="form-check-label ">{{ $specialization->name }}</label>
+                                                id="specialization-{{ $specialization->id }}"
+                                                value="{{ $specialization->id }}" @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))>
+                                            <label for=""
+                                                class="form-check-label ">{{ $specialization->name }}</label>
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
-        
+
                             {{-- PRESTAZIONI --}}
-        
+
                             {{-- <div class="form-group mb-3">
                                 <label for="" class="control-label  ">Specializzazioni</label>
                                 <div>
@@ -216,7 +219,7 @@
                                     @endforeach
                                 </div>
                             </div> --}}
-                            
+
                             <div class="form-group mb-3">
                                 <label class="" for="services">Prestazioni:</label>
                                 <textarea class="form-control" name="services" id="services" cols="30" rows="10"
@@ -229,7 +232,7 @@
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        {{ __('Registrati') }}
                                     </button>
                                 </div>
                             </div>

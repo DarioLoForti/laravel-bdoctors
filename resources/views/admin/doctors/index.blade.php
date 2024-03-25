@@ -44,8 +44,7 @@
                             class="btn btn-square btn-warning mt-4"><i class="fa-regular fa-pen-to-square"
                                 style="color: #ffffff;"></i></button></a>
                     <button class="btn btn-square btn-danger mt-4" data-bs-toggle="modal"
-                        data-bs-target="#modal_delete_{{ $doctor->id }}"><i class="fa-solid fa-trash"
-                            style="color:#ffffff;"></i></button>
+                        data-bs-target="#delete-account"><i class="fa-solid fa-trash" style="color:#ffffff;"></i></button>
                     @include('admin.doctors.modal')
                 </div>
             </div>
