@@ -16,10 +16,8 @@ use App\Http\Controllers\Api\SpecializationController as SpecializationControlle
 |
 */
 
-Route::get('/doctors/{user_id}', [DoctorController::class, 'index']);
-
+Route::get('/doctors', [DoctorController::class, 'index']);
 Route::get('/doctor/{slug}', [DoctorController::class, 'show']);
-
 Route::get('/specializations', [SpecializationController::class, 'index']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
