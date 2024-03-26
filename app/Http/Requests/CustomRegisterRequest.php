@@ -33,6 +33,7 @@ class CustomRegisterRequest extends FormRequest
             'phone' => 'nullable|numeric',
             'image' => 'nullable|image',
             'cv' => 'nullable|mimes:pdf,docx',
+            'specializations' => 'required',
             'services' => 'nullable',
         ];
     }
@@ -58,6 +59,7 @@ class CustomRegisterRequest extends FormRequest
             'phone.numeric' => 'Questo campo accetta solo valori numerici.',
             'image.image' => 'Puoi inserire solo un file di tipo immagine.',
             'cv.mimes' => 'Puoi inserire solo file di tipo:.pdf , .docx.',
+            'specializations' => 'Devi inserire almeno una specializzazione!',
         ];
     }
 }
