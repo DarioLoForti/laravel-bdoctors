@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-use App\Http\Requests\StoreDoctorRequest;
+use App\Http\Requests\CustomRegisterRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(StoreDoctorRequest $request): RedirectResponse
+    public function store(CustomRegisterRequest $request): RedirectResponse
     {
         /* NEW USER INSERT: LEGACY CODE, ONLY FOR USER TABLE IN DB */
 
