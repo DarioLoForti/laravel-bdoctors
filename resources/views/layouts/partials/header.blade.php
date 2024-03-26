@@ -3,33 +3,33 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                 <div class="logo_laravel">
-                    <img width="80px" src="{{ Vite::asset('resources/img/1.jpeg') }}" alt="">
+                    <img width="80px" src="{{ Vite::asset('resources/img/4.jpeg') }}" alt="">
                 </div>
                 {{-- config('app.name', 'Laravel') --}}
             </a>
-    
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
+
                 <!-- Left Side Of Navbar -->
-    
+
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ url('/') }}">{{ __('Home') }}</a>
                     </li>
                 </ul>
-    
+
                 <!-- Right Side Of Navbar -->
-    
+
                 <ul class="navbar-nav ml-auto">
-    
+
                     <!-- Authentication Links -->
-    
+
                     @guest
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -39,14 +39,13 @@
                                 <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                             </li>
                         @endif
-                        @else
+                    @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
-                                role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-    
+
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('admin') }}">{{ __('Dashboard') }}</a>
                                 {{-- <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a> --}}
@@ -55,7 +54,7 @@
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-    
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

@@ -20,12 +20,12 @@
                                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                                         id="menu">
 
-                                        <li class="nav-item mb-2 px-2">
+                                        {{-- <li class="nav-item mb-2 px-2">
                                             <a class="nav-link align-middle  text-white ombra" href="{{ url('/') }}"><i
                                                     class="fa-solid fa-house me-2"
                                                     style="color: #ffffff;"></i>{{ __('Home') }}
                                             </a>
-                                        </li>
+                                        </li> --}}
 
                                         <li class="nav-item mb-2 px-2">
                                             <a href="{{ route('admin.doctors.index') }}" class="nav-link  ombra">
@@ -41,27 +41,18 @@
                                             </a>
                                         </li>
 
-                                        {{-- DASHBOARD SUBMENU --}}
-
+                                        <li class="nav-item mb-2 px-2">
+                                            <a href="" class="nav-link ombra">
+                                                <i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>
+                                                <span class="ms-1 d-none d-sm-inline text-white">Statistiche</span>
+                                            </a>
+                                        </li>
 
                                         <li class="nav-item mb-2 px-2">
-                                            <a href="#submenu1" data-bs-toggle="collapse"
-                                                class="nav-link  align-middle ombra mb-2">
-                                                <i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>
-                                                <span class="ms-1 d-none d-sm-inline text-white">Dashboard</span>
+                                            <a href="" class="nav-link ombra">
+                                                <i class="fa-solid fa-book-open" style="color: #ffffff;"></i>
+                                                <span class="ms-1 d-none d-sm-inline text-white">Recensioni</span>
                                             </a>
-                                            <ul class="collapse show nav flex-column ms-1" id="submenu1"
-                                                data-bs-parent="#menu">
-                                                <li class="w-100 mb-2 px-2">
-                                                    Recensioni
-                                                </li>
-                                                <li class="w-100 mb-2 px-2">
-                                                    Voti
-                                                </li>
-                                                <li class="w-100 mb-2 px-2">
-                                                    Statistiche
-                                                </li>
-                                            </ul>
                                         </li>
                                     </ul>
                                     <hr>
@@ -88,36 +79,17 @@
                                 </h1>
                             </div>
 
-                            {{-- NOTIFICATION: YOU HAVE SELECTED 0 SPECIALTIES --}}
-
-                            <div class="row my-3">
-                                @if (count(Auth::user()->doctor->specializations) == 0)
-                                    <div
-                                        class="col-12 bg-success p-3 rounded d-flex justify-content-between align-items-center">
-                                        <div class="text-white">
-                                            Il tuo profilo non ha nessuna specializzazione. Aggiungine alcune per apparire
-                                            nei motori di ricerca.
-                                        </div>
-                                        <div class="btn btn-small btn-primary">
-                                            <a href="{{ route('profile.edit', Auth::user()->doctor->id) }}"
-                                                class="text-white">
-                                                Aggiungi le Specializzazioni
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
 
                             {{-- NOTIFICATION: YOU HAVE BOUGHT NO SPONSORSHIP --}}
 
                             <div class="row my-3">
                                 @if (Auth::user()->doctor->sponsorship == null)
                                     <div
-                                        class="col-12 bg-success p-3 rounded d-flex justify-content-between align-items-center">
+                                        class="col-12 bg-primary p-3 rounded d-flex justify-content-between align-items-center">
                                         <div class="text-white">
                                             Aggiungi una sponsorizzazione per avere maggiore visibilità.
                                         </div>
-                                        <div class="btn btn-small btn-primary">
+                                        <div class="btn btn-small btn-secondary">
                                             Vedi le nostre Offerte
                                         </div>
                                     </div>

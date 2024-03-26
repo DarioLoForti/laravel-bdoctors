@@ -11,14 +11,14 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             {{-- NAME --}}
 
                             <div class="mb-4 row">
-                                <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome*') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}
+                                    <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -36,8 +36,8 @@
                             {{-- SURNAME --}}
 
                             <div class="mb-4 row">
-                                <label for="surname"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Cognome*') }}</label>
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}
+                                    <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
@@ -56,8 +56,8 @@
                             {{-- ADDRESS --}}
 
                             <div class="mb-4 row">
-                                <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo*') }}</label>
+                                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}
+                                    <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -77,7 +77,8 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Email*') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Email') }} <span
+                                        class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -95,8 +96,8 @@
                             {{-- PASSWORD --}}
 
                             <div class="mb-4 row">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}
+                                    <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -115,7 +116,8 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password*') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }} <span
+                                        class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -126,8 +128,8 @@
                             {{-- CITY --}}
 
                             <div class="mb-4 row">
-                                <label for="city"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Città*') }}</label>
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Città') }}
+                                    <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="city" class="form-control @error('city') is-invalid @enderror"
@@ -191,7 +193,7 @@
                                         data-bs-toggle="collapse" aria-controls="Spec" aria-expanded="true">
                                         Specializzazioni
                                     </a>
-
+                                    <span class="text-danger">*</span>
                                 </div>
                                 <div id="Spec" class="collapse multi-collapse m-1">
                                     @foreach ($specializations as $specialization)
@@ -245,4 +247,12 @@
             </div>
         </div>
     </div>
+    <!-- Javascript Requirements -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+
+    {!! JsValidator::formRequest('App\Http\Requests\CustomRegisterRequest') !!}
 @endsection
