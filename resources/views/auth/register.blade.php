@@ -9,10 +9,7 @@
                         <span>Registrati</span>
                         <span>I campi contrassegnati con l'asterisco sono obbligatori.</span>
                     </div>
-                    @if ($errors != [])
-                        <div id="error-container" class="alert alert-danger" style="display: none"></div>
-                    @endif
-
+                    <div id="error-container" class="alert alert-danger" style="display: none"></div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
@@ -63,13 +60,9 @@
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
-                                        class="form-control @error('address') is-invalid @enderror" name="address" <<<<<<<
-                                        HEAD value="{{ old('address') }}" required maxlength="150" autocomplete="address"
+                                        class="form-control @error('address') is-invalid @enderror" name="address"
+                                        value="{{ old('address') }}" required maxlength="150" autocomplete="address"
                                         autofocus>
-                                    =======
-                                    value="{{ old('address') }}" autocomplete="address" autofocus>
-                                    >>>>>>> origin/register-validation
-
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -340,25 +333,26 @@
                 }
 
                 console.log(errors);
-                // Nel form submit listener di register.js
+
                 if (errors.length > 0) {
-                    event.preventDefault(); // Previeni l'invio della form
+                    event.preventDefault();
 
                     let errorContainer = document.getElementById('error-container');
-                    errorContainer.innerHTML = ''; // Pulisci eventuali errori precedenti
+                    errorContainer.innerHTML = '';
 
                     errors.forEach(function(error) {
                         const errorElement = document.createElement('div');
                         errorElement.textContent = error;
                         errorContainer.appendChild(errorElement);
                     });
+                    errorContainer.style.display = 'block';
 
-                    // Scrolling verso l'alto della pagina per mostrare gli errori
                     window.scrollTo(0, 0);
+                } else {
+
+                    errorContainer.style.display = 'none';
                 }
-                if (errors.length > 0) {
-                    errorContainer.setAttribute("style", "display=block");
-                }
+
             });
 
 
