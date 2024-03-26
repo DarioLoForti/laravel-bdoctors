@@ -9,11 +9,13 @@
                         <span>Registrati</span>
                         <span>I campi contrassegnati con l'asterisco sono obbligatori.</span>
                     </div>
+                    @if ($errors != [])
+                        <div id="error-container" class="alert alert-danger" style="display: none"></div>
+                    @endif
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
-
                             {{-- NAME --}}
 
                             <div class="mb-4 row">
@@ -61,9 +63,12 @@
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
-                                        class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" required maxlength="150" autocomplete="address"
+                                        class="form-control @error('address') is-invalid @enderror" name="address" <<<<<<<
+                                        HEAD value="{{ old('address') }}" required maxlength="150" autocomplete="address"
                                         autofocus>
+                                    =======
+                                    value="{{ old('address') }}" autocomplete="address" autofocus>
+                                    >>>>>>> origin/register-validation
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -245,14 +250,132 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- Javascript Requirements -->
-    {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-    <!-- Laravel Javascript Validation -->
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
 
-    {!! JsValidator::formRequest('App\Http\Requests\CustomRegisterRequest') !!} --}}
+            form.addEventListener('submit', function(event) {
+                const name = document.getElementById('name').value.trim();
+                const surname = document.getElementById('surname').value.trim();
+                const address = document.getElementById('address').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const confirmPassword = document.getElementById('password-confirm').value.trim();
+                const city = document.getElementById('city').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const cv = document.getElementById('cv').value.trim();
+                const image = document.getElementById('image').value.trim();
+                const specializations = document.querySelectorAll(
+                    'input[name="specializations[]"]:checked');
+
+                let errors = [];
+
+                if (name === '') {
+                    errors.push('Il campo Nome è obbligatorio.');
+                } else if (name.length > 50) {
+                    errors.push('Il campo Nome non può superare i 50 caratteri.');
+                }
+
+
+                if (surname === '') {
+                    errors.push('Il campo Cognome è obbligatorio.');
+                } else if (surname.length > 50) {
+                    errors.push('Il campo Cognome non può superare i 50 caratteri.');
+                }
+
+
+                if (address === '') {
+                    errors.push('Il campo Indirizzo è obbligatorio.');
+                } else if (address.length > 150) {
+                    errors.push('Il campo Indirizzo non può superare i 150 caratteri.');
+                }
+
+
+                if (email === '') {
+                    errors.push('Il campo Indirizzo Email è obbligatorio.');
+                }
+
+
+                if (password === '') {
+                    errors.push('Il campo Password è obbligatorio.');
+                } else if (password.length < 8) {
+                    errors.push('La password deve contenere almeno 6 caratteri.');
+                }
+
+
+                if (confirmPassword === '') {
+                    errors.push('Il campo Conferma Password è obbligatorio.');
+                } else if (password !== confirmPassword) {
+                    errors.push('Le password non corrispondono.');
+                }
+
+
+                if (city === '') {
+                    errors.push('Il campo Città è obbligatorio.');
+                } else if (city.length > 150) {
+                    errors.push('Il campo Città non può superare i 150 caratteri.');
+                }
+
+
+                if (phone !== '' && isNaN(phone)) {
+                    errors.push('Il campo Numero di Telefono accetta solo valori numerici.');
+                }
+
+
+                if (image !== '' && !isImage(image)) {
+                    errors.push('Puoi inserire solo un file di tipo immagine.');
+                }
+
+
+                if (cv !== '' && !isPdf(cv)) {
+                    errors.push('Puoi inserire solo file di tipo .pdf');
+                }
+
+                if (specializations.length === 0) {
+                    errors.push('Devi selezionare almeno una specializzazione.');
+                }
+
+                console.log(errors);
+                // Nel form submit listener di register.js
+                if (errors.length > 0) {
+                    event.preventDefault(); // Previeni l'invio della form
+
+                    let errorContainer = document.getElementById('error-container');
+                    errorContainer.innerHTML = ''; // Pulisci eventuali errori precedenti
+
+                    errors.forEach(function(error) {
+                        const errorElement = document.createElement('div');
+                        errorElement.textContent = error;
+                        errorContainer.appendChild(errorElement);
+                    });
+
+                    // Scrolling verso l'alto della pagina per mostrare gli errori
+                    window.scrollTo(0, 0);
+                }
+                if (errors.length > 0) {
+                    errorContainer.setAttribute("style", "display=block");
+                }
+            });
+
+
+
+
+
+            function isImage(filename) {
+                const extension = filename.split('.').pop().toLowerCase();
+                return ['jpg', 'jpeg', 'png'].includes(extension);
+            }
+
+
+            function isPdf(filename) {
+                const extension = filename.split('.').pop().toLowerCase();
+                return ['pdf'].includes(extension);
+            }
+
+        });
+    </script>
 @endsection

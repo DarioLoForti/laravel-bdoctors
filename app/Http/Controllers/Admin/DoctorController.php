@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Doctor;
 use App\Models\Specialization;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
@@ -41,7 +40,7 @@ class DoctorController extends Controller
      * @param  \App\Http\Requests\StoreDoctorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDoctorRequest $request)
+    public function store(Doctor $doctor)
     {
         //
     }
