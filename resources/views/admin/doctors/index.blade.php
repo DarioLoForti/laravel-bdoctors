@@ -107,10 +107,8 @@
                                                 profilo</a> per scriverne una.</em></div>
                                 </div>
                             @endif
-                            @if ($doctor->cv != 'Filepdf')
+                            @if (is_file($doctor->cv))
                                 <hr>
-
-
                                 <div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <strong>Curriculum:</strong>

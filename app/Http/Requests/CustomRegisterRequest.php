@@ -27,7 +27,7 @@ class CustomRegisterRequest extends FormRequest
             'name' => 'required|string|max:50',
             'surname' => 'required|string|max:50',
             'address' => 'required|string|max:150',
-            'email' => 'required|string|email|max:255|unique',
+            'email' => 'required|string|email|max:255',
             'password' => 'required|confirmed',/* Rules\Password::defaults(), */
             'city' => 'required|max:150',
             'phone' => 'nullable|numeric',
