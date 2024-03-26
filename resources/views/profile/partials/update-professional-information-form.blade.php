@@ -27,7 +27,7 @@
         <div class="mb-2">
             <label for="city">{{ __('Città') }}</label>
             <input class="form-control" type="text" name="city" id="city"
-                value="{{ old('city', $user->doctor->city) }}" required autofocus>
+                value="{{ old('city', $user->doctor->city) }}" required maxlength="150" autofocus>
             @error('city')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->get('city') }}</strong>
@@ -40,7 +40,7 @@
         <div class="mb-2">
             <label for="phone">{{ __('Telefono') }}</label>
             <input class="form-control" type="text" name="phone" id="phone"
-                value="{{ old('phone', $user->doctor->phone) }}" required autofocus>
+                value="{{ old('phone', $user->doctor->phone) }}" autofocus>
             @error('phone')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->get('phone') }}</strong>

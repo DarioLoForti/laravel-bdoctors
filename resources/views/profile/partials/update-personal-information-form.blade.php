@@ -22,7 +22,7 @@
         <div class="mb-2">
             <label for="name">{{ __('Nome') }}</label>
             <input class="form-control" type="text" name="name" id="name" autocomplete="name"
-                value="{{ old('name', $user->name) }}" required autofocus>
+                value="{{ old('name', $user->name) }}" required maxlength="50" autofocus>
             @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->get('name') }}</strong>
@@ -35,7 +35,7 @@
         <div class="mb-2">
             <label for="surname">{{ __('Cognome') }}</label>
             <input class="form-control" type="text" name="surname" id="surname" autocomplete="surname"
-                value="{{ old('surname', $user->surname) }}" required autofocus>
+                value="{{ old('surname', $user->surname) }}" required maxlength="50" autofocus>
             @error('surname')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->get('surname') }}</strong>
@@ -48,7 +48,7 @@
         <div class="mb-2">
             <label for="address">{{ __('Indirizzo') }}</label>
             <input class="form-control" type="text" name="address" id="address" autocomplete="address"
-                value="{{ old('address', $user->address) }}" required autofocus>
+                value="{{ old('address', $user->address) }}" required maxlength="150" autofocus>
             @error('address')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->get('address') }}</strong>
@@ -64,7 +64,7 @@
             </label>
 
             <input id="email" name="email" type="email" class="form-control"
-                value="{{ old('email', $user->email) }}" required autocomplete="username" />
+                value="{{ old('email', $user->email) }}" required maxlength="255" autocomplete="username" />
 
             @error('email')
                 <span class="alert alert-danger mt-2" role="alert">
