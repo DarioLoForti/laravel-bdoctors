@@ -9,10 +9,10 @@
                         <span>Registrati</span>
                         <span>I campi contrassegnati con l'asterisco sono obbligatori.</span>
                     </div>
-                    @if ($errors != [])
+                    
                         
                         <div id="error-container" class="alert alert-danger" style="display: none"></div>
-                    @endif
+                   
 
                     <div class="card-body">
                         <form enctype="multipart/form-data" method="POST" action="{{ route('register') }}">
@@ -337,25 +337,26 @@
         }
 
        console.log(errors);
-       // Nel form submit listener di register.js
+       
        if (errors.length > 0) {
-           event.preventDefault(); // Previeni l'invio della form
+           event.preventDefault(); 
    
            let errorContainer = document.getElementById('error-container');
-           errorContainer.innerHTML = ''; // Pulisci eventuali errori precedenti
+           errorContainer.innerHTML = ''; 
    
            errors.forEach(function(error) {
                const errorElement = document.createElement('div');
                errorElement.textContent = error;
                errorContainer.appendChild(errorElement);
            });
-   
-           // Scrolling verso l'alto della pagina per mostrare gli errori
+           errorContainer.style.display = 'block';
+           
            window.scrollTo(0, 0); 
-       }
-       if(errors.length > 0){
-         errorContainer.setAttribute("style", "display=block");
-    }
+       } else {
+            
+            errorContainer.style.display = 'none';
+        }
+       
     });
     
     
