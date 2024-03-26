@@ -23,7 +23,7 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        value="{{ old('name') }}" required maxlength="50" autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -42,7 +42,8 @@
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
                                         class="form-control @error('surname') is-invalid @enderror" name="surname"
-                                        value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+                                        value="{{ old('surname') }}" required maxlength="50" autocomplete="surname"
+                                        autofocus>
 
                                     @error('surname')
                                         <span class="invalid-feedback" role="alert">
@@ -61,7 +62,8 @@
                                 <div class="col-md-6">
                                     <input id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                        value="{{ old('address') }}" required maxlength="150" autocomplete="address"
+                                        autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -80,7 +82,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email">
+                                        value="{{ old('email') }}" required maxlength="255" autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -99,7 +101,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
+                                        required minlength="8" autocomplete="new-password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -117,7 +119,7 @@
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
+                                        name="password_confirmation" required minlength="8" autocomplete="new-password">
                                 </div>
                             </div>
 
@@ -129,7 +131,7 @@
 
                                 <div class="col-md-6">
                                     <input id="city" class="form-control @error('city') is-invalid @enderror"
-                                        name="city" required value="{{ old('city') }}">
+                                        name="city" required maxlength="150" value="{{ old('city') }}">
 
                                     @error('city')
                                         <span class="invalid-feedback" role="alert">

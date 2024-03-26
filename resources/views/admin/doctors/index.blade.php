@@ -107,20 +107,15 @@
                                                 profilo</a> per scriverne una.</em></div>
                                 </div>
                             @endif
-                            @if (is_file($doctor->cv))
+                            @if ($doctor->cv != 'Filepdf' || '')
                                 <hr>
                                 <div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <strong>Curriculum:</strong>
+                                        <strong>Curriculum</strong>
                                         <a target="_blank" href="{{ asset('storage/' . $doctor->cv) }}"> <button
                                                 class="btn btn-primary"><i class="fa-solid fa-eye"
                                                     style="color: #ffffff;"></i></button></a>
                                     </div>
-                                    <br>
-                                    {{-- <img class="dettaglio-immagine" src="{{ asset('storage/' . $doctor->cv) }}"> --}}
-                                    <iframe height="450px" name="cv"
-                                        src="{{ asset('storage/' . $doctor->cv) }}"></iframe>
-
                                 </div>
                             @else
                                 <hr>

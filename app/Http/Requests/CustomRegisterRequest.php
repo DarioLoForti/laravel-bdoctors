@@ -33,7 +33,7 @@ class CustomRegisterRequest extends FormRequest
             'phone' => 'nullable|numeric',
             'image' => 'nullable|image',
             'cv' => 'nullable|mimes:pdf,docx',
-            'services' => 'nullable|max:300',
+            'services' => 'nullable',
         ];
     }
     public function messages()
@@ -53,7 +53,6 @@ class CustomRegisterRequest extends FormRequest
             'phone.numeric' => 'Questo campo accetta solo valori numerici.',
             'image.image' => 'Puoi inserire solo un file di tipo immagine.',
             'cv.mimes' => 'Puoi inserire solo file di tipo:.pdf , .docx.',
-            'services.max' => 'La lunghezza del campo non deve superare i 300 caratteri.'
         ];
     }
 }
