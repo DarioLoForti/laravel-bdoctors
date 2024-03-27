@@ -68,7 +68,7 @@ class DoctorController extends Controller
         } else {
             return response()->json([
                 'success' => false,
-                'response' => 'non esiste un dottore con questa specializzazione.'
+                'response' => 'Il dottore da lei cercato non è stato trovato.'
             ]);
         }
     }
