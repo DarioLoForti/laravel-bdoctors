@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Specialization;
 use App\Models\Doctor;
+use App\Models\User;
 
 class DoctorController extends Controller
 {
@@ -19,11 +20,19 @@ class DoctorController extends Controller
         LA QUERY AL DATABASE PRENDERA' SOLO I MEDICI CON IL VALORE CITTA' SIMILE ALLA RICHIESTA.
         ALTRIMENTI, VERRANNO PRESI TUTTI I MEDICI DEL DATABASE.
         */
+        if (isset($_REQUEST['surname']) && $_REQUEST['surname'] != '') {
+            $user = User::with('doctor')->where('surname', 'like', '%' . $_REQUEST['surname'] . '%')->first();
+            $doctor = Doctor::with('specializations')->with('user')->where('user_id', '=', $user->id)->first();
 
-        if(isset($_REQUEST['city']) && $_REQUEST['city'] != ''){
-            $doctors = Doctor::with('user')->with('specializations')->where('city', 'like', '%'.$_REQUEST['city'].'%')->get();
+            return response()->json([
+                'success' => true,
+                'response' => $doctor
+            ]);
         }
-        else{
+
+        if (isset($_REQUEST['city']) && $_REQUEST['city'] != '') {
+            $doctors = Doctor::with('user')->with('specializations')->where('city', 'like', '%' . $_REQUEST['city'] . '%')->get();
+        } else {
             $doctors = Doctor::with('user')->with('specializations')->get();
         }
 
@@ -37,16 +46,15 @@ class DoctorController extends Controller
         IL MEDICO VIENE SALVATO NEL NUOVO ARRAY. 
         */
 
-        if(isset($_REQUEST['specialization']) && $_REQUEST['specialization'] != ''){
-            foreach ($doctors as $doctor){
+        if (isset($_REQUEST['specialization']) && $_REQUEST['specialization'] != '') {
+            foreach ($doctors as $doctor) {
                 foreach ($doctor->specializations as $specialization) {
-                    if(str_contains($specialization->slug, $_REQUEST['specialization'])){
+                    if (str_contains($specialization->slug, $_REQUEST['specialization'])) {
                         array_push($filteredDoctors, $doctor);
                     }
                 }
             }
-        }
-        else{
+        } else {
             $filteredDoctors = $doctors;
         }
 
