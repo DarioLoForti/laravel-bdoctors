@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                 <div class="logo_laravel">
-                    <img width="80px" src="{{ Vite::asset('resources/img/4.jpeg') }}" alt="">
+                    <img width="80px" src="{{ Vite::asset('resources/img/logo.png') }}" alt="">
                 </div>
                 {{-- config('app.name', 'Laravel') --}}
             </a>
@@ -20,10 +20,7 @@
 
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ url('/') }}">{{ __('Home') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="text-white nav-link " href="http://localhost:5174/">WebApp</a>
+                        <a class="nav-link text-white" href="http://localhost:5174/">{{ __('Home') }}</a>
                     </li>
                 </ul>
 

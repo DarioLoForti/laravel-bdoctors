@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\DoctorController as DoctorController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
