@@ -22,6 +22,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ url('/') }}">{{ __('Home') }}</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="text-white nav-link " href="http://localhost:5174/">WebApp</a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
