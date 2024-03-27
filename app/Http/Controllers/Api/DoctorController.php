@@ -15,6 +15,27 @@ class DoctorController extends Controller
         $doctors = [];
 
         /* 
+        CONTROLLO NUMERO UNO: SE VIENE CERCATO UN SINGOLO MEDICO PER NOME
+        */
+        
+        if(isset($_REQUEST['namestring']) && $_REQUEST['namestring'] != ''){
+            $doctor = Doctor::with('user')->with('specializations')->where('slug', 'like', '%'.$_REQUEST['namestring'].'%')->first();
+            
+            if($doctor != null){
+                return response()->json([
+                    'success' => true,
+                    'response' => $doctor
+                ]);
+            }
+            else{
+                return response()->json([
+                    'success' => false,
+                    'response' => 'Il dottore da lei cercato non è stato trovato.'
+                ]);
+            }
+        }
+
+        /* 
         CONTROLLA PRIMA SE NELLA REQUEST E' STATA INVIATA UNA CITTA'.
         SE UNA CITTA' E' STATA RICHIESTA, 
         LA QUERY AL DATABASE PRENDERA' SOLO I MEDICI CON IL VALORE CITTA' SIMILE ALLA RICHIESTA.
