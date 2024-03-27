@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Specialization;
 use App\Models\Doctor;
+use App\Models\User;
 
 class DoctorController extends Controller
 {
@@ -19,6 +20,16 @@ class DoctorController extends Controller
         LA QUERY AL DATABASE PRENDERA' SOLO I MEDICI CON IL VALORE CITTA' SIMILE ALLA RICHIESTA.
         ALTRIMENTI, VERRANNO PRESI TUTTI I MEDICI DEL DATABASE.
         */
+
+        if(isset($_REQUEST['surname']) && $_REQUEST['surname'] != ''){
+            $user = User::with('doctor')->where('surname','like', '%'.$_REQUEST['surname'].'%')->first();
+            $doctor = Doctor::with('user')->with('specializations')->where('user_id', '=', $user->id)->first();
+
+            return response()->json([
+                'success' => true,
+                'response' => $doctor
+            ]);
+        }
 
         if(isset($_REQUEST['city']) && $_REQUEST['city'] != ''){
             $doctors = Doctor::with('user')->with('specializations')->where('city', 'like', '%'.$_REQUEST['city'].'%')->get();
