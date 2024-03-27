@@ -52,7 +52,7 @@ class DoctorController extends Controller
 
         return response()->json([
             'success' => true,
-            'results' => $filteredDoctors
+            'response' => $filteredDoctors
         ]);
     }
 
