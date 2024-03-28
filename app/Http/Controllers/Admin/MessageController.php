@@ -42,12 +42,13 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
+
         $form_data = $request->all();
 
-        $newMessage = new Message();
-        $newMessage->fill($form_data);
+        $message = new Message();
+        $message->fill($form_data);
 
-        $newMessage->save();
+        $message->save();
 
         return redirect("http://localhost:5174/");
     }
@@ -81,7 +82,7 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Message $message)
+    public function update(UpdateMessageRequest $request, Message $message)
     {
         //
     }
