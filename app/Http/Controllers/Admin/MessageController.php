@@ -81,7 +81,7 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMessageRequest $request, Message $message)
+    public function update(Message $message)
     {
         //
     }

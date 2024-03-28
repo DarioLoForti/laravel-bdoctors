@@ -82,7 +82,7 @@ class ReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateReviewRequest $request, Review $review)
+    public function update(Review $review)
     {
         //
     }
