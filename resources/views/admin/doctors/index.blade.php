@@ -58,8 +58,9 @@
                                             profilo</a> per aggiungerne una.</em></div>
                             </div>
                         @endif
-                        <a href="{{ url('admin') }}" class="mx-2"><button class="btn btn-square btn-primary mt-4"><i
-                                    class="fa-solid fa-envelope" style="color: #ffffff;"></i></button></a>
+                        <a href="{{ route('messages.index') }}" class="mx-2"><button
+                                class="btn btn-square btn-primary mt-4"><i class="fa-solid fa-envelope"
+                                    style="color: #ffffff;"></i></button></a>
                     </div>
                     <div class="col-6">
                         <div>
