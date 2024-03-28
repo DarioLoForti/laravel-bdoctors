@@ -6,7 +6,7 @@ use App\Models\Review;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Session; // Aggiunto
 
 class ReviewController extends Controller
 {
@@ -20,6 +20,9 @@ class ReviewController extends Controller
         $user = auth()->user();
         $doctor = $user->doctor;
         $reviews = $doctor->reviews;
+
+       
+
         return view('admin.reviews.index', compact('reviews'));
     }
 

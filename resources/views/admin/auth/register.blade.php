@@ -194,18 +194,28 @@
                                     <span class="text-danger">*</span>
                                 </div>
                                 <div id="Spec" class="collapse multi-collapse m-1">
-                                    @foreach ($specializations as $specialization)
-                                        <div class="form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="specializations[]"
-                                                id="specialization-{{ $specialization->id }} "
-                                                @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations'))) value="{{ $specialization->id }}">
-                                            <label for="specialization"
-                                                class="form-check-label ">{{ $specialization->name }}
-                                            </label>
+                                    <div class="container">
+                                        <div class="row  ">
+                                            @foreach ($specializations as $specialization)
+                                                <div class="col-4 ">
+                                                    <div class="form-check-inline">
+                                                        <input class="form-check-input " type="checkbox" name="specializations[]"
+                                                            id="specialization-{{ $specialization->id }} "
+                                                            @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations'))) value="{{ $specialization->id }}">
+                                                        <label for="specialization"
+                                                            class="form-check-label ">{{ $specialization->name }}
+                                                        </label>
+                                                    </div>
+            
+                                                </div>
+
+                                            @endforeach
                                         </div>
-                                    @endforeach
+                                    </div>
                                 </div>
                             </div>
+                        
+                            
 
                             {{-- PRESTAZIONI --}}
 
