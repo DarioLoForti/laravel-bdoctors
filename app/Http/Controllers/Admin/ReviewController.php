@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Review;
+use App\Models\Doctor;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use App\Http\Controllers\Controller;
@@ -30,7 +31,8 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+        $doctor = Doctor::where('slug', '=', $_REQUEST['slug'])->first();
+        return view('admin.reviews.create', compact('doctor'));
     }
 
     /**
