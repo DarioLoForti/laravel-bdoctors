@@ -37,7 +37,7 @@ class StoreMessageRequest extends FormRequest
             'name.max' => 'Il nome dev\'essere al massimo di 50 caratteri.',
             'email.required' => 'La mail è obbligatoria.',
             'email.string' => 'La mail dev\'essere una stringa.',
-            'email.max' => 'La mail dev\'essere al massimo di 255 caratteri.',
+            'email.max' => 'La mail dev\'essere al massimo di 150 caratteri.',
             'email.email' => 'La mail dev\'essere una mail! (Contenere un @ e un .).',
             'message.required' => 'Il testo è obbligatorio',
             'message.max' => 'Il contenuto non deve superare i 300 caratteri'
