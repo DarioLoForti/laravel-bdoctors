@@ -30,7 +30,8 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        $doctor = Doctor::where('slug', '=', $_REQUEST['slug'])->first();
+        return view('admin.messages.create', compact('doctor'));
     }
 
     /**
