@@ -12,52 +12,19 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        $doctors = [];
-
-        /* 
-        CONTROLLO NUMERO UNO: SE VIENE CERCATO UN SINGOLO MEDICO PER NOME
-        */
+        $namestring = $_REQUEST['namestring'];
+        $city = $_REQUEST['city'];
         
-        if(isset($_REQUEST['namestring']) && $_REQUEST['namestring'] != ''){
-            $doctor = Doctor::with('user')->with('specializations')->where('slug', 'like', '%'.$_REQUEST['namestring'].'%')->first();
-            
-            if($doctor != null){
-                return response()->json([
-                    'success' => true,
-                    'response' => $doctor
-                ]);
-            }
-            else{
-                return response()->json([
-                    'success' => false,
-                    'response' => 'Il dottore da lei cercato non è stato trovato.'
-                ]);
-            }
-        }
-
         /* 
-        CONTROLLA PRIMA SE NELLA REQUEST E' STATA INVIATA UNA CITTA'.
-        SE UNA CITTA' E' STATA RICHIESTA, 
-        LA QUERY AL DATABASE PRENDERA' SOLO I MEDICI CON IL VALORE CITTA' SIMILE ALLA RICHIESTA.
-        ALTRIMENTI, VERRANNO PRESI TUTTI I MEDICI DEL DATABASE.
+        FA LA RICHIESTA DOVE PRENDE TUTTI I DOTTORI CON LA CITTA'
+        E IL NOME RICHIESTO DALL'UTENTE. SE IL CAMPO INSERITO DALL'UTENTE E' 
+        VUOTO O INESISTENTE VIENE IGNORATO.
         */
-        if (isset($_REQUEST['surname']) && $_REQUEST['surname'] != '') {
-            $user = User::with('doctor')->where('surname', 'like', '%' . $_REQUEST['surname'] . '%')->first();
-            $doctor = Doctor::with('specializations')->with('user')->where('user_id', '=', $user->id)->first();
 
-            return response()->json([
-                'success' => true,
-                'response' => $doctor
-            ]);
-        }
-
-        if (isset($_REQUEST['city']) && $_REQUEST['city'] != '') {
-            $doctors = Doctor::with('user')->with('specializations')->where('city', 'like', '%' . $_REQUEST['city'] . '%')->get();
-        } else {
-            $doctors = Doctor::with('user')->with('specializations')->get();
-        }
-
-
+        $doctors = Doctor::with('user')->with('specializations')->
+        where('slug', 'like', '%'.$namestring.'%')->
+        where('city', 'like', '%'.$city.'%')->get();
+        
         $filteredDoctors = [];
 
         /* 
@@ -79,10 +46,18 @@ class DoctorController extends Controller
             $filteredDoctors = $doctors;
         }
 
-        return response()->json([
-            'success' => true,
-            'response' => $filteredDoctors
-        ]);
+        if($doctors != null){
+            return response()->json([
+                'success' => true,
+                'response' => $filteredDoctors
+            ]);
+        }
+        else{
+            return response()->json([
+                'success' => false,
+                'response' => 'Il dottore da lei cercato non è stato trovato.'
+            ]);
+        }
     }
 
     public function show($slug)
