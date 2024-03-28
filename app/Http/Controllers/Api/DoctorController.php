@@ -14,17 +14,15 @@ class DoctorController extends Controller
     {
         $namestring = $_REQUEST['namestring'];
         $city = $_REQUEST['city'];
-        
+
         /* 
         FA LA RICHIESTA DOVE PRENDE TUTTI I DOTTORI CON LA CITTA'
         E IL NOME RICHIESTO DALL'UTENTE. SE IL CAMPO INSERITO DALL'UTENTE E' 
         VUOTO O INESISTENTE VIENE IGNORATO.
         */
 
-        $doctors = Doctor::with('user')->with('specializations')->
-        where('slug', 'like', '%'.$namestring.'%')->
-        where('city', 'like', '%'.$city.'%')->get();
-        
+        $doctors = Doctor::with('user')->with('specializations')->where('slug', 'like', '%' . $namestring . '%')->where('city', 'like', '%' . $city . '%')->get();
+
         $filteredDoctors = [];
 
         /* 
@@ -46,13 +44,12 @@ class DoctorController extends Controller
             $filteredDoctors = $doctors;
         }
 
-        if($doctors != null){
+        if ($doctors != null) {
             return response()->json([
                 'success' => true,
                 'response' => $filteredDoctors
             ]);
-        }
-        else{
+        } else {
             return response()->json([
                 'success' => false,
                 'response' => 'Il dottore da lei cercato non è stato trovato.'
