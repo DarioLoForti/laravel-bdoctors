@@ -4,7 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Inserisci il tuo messaggio</h3>
+                <h3>Inserisci il tuo messaggio da inviare a <strong>{{ $doctor->user->name }}
+                        {{ $doctor->user->surname }}</strong> </h3>
             </div>
             <div class="col-12">
                 <form action="{{ route('message.store') }}" enctype="multipart/form-data" method="POST">
@@ -21,7 +22,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="name">Testo</label>
-                        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+                        <textarea class="form-control" name="text" id="text" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-group my-3">
                         <button class="btn btn-success" type="submit">Salva</button>
