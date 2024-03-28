@@ -39,7 +39,8 @@ class RatingController extends Controller
      */
     public function store(StoreRatingRequest $request)
     {
-        //
+        $doctor = Doctor::where('slug', '=', $_REQUEST['slug'])->first();
+        $doctor->ratings()->attach($_REQUEST['rating']);
     }
 
     /**
