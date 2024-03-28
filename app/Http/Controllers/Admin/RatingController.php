@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Rating;
+use App\Models\Doctor;
 use App\Http\Requests\StoreRatingRequest;
 use App\Http\Requests\UpdateRatingRequest;
 use App\Http\Controllers\Controller;
@@ -26,7 +27,8 @@ class RatingController extends Controller
      */
     public function create()
     {
-        //
+        $doctor = Doctor::where('slug', '=', $_REQUEST['slug'])->first();
+        $doctor->ratings()->attach($_REQUEST['rating']);
     }
 
     /**

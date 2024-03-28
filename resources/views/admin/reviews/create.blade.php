@@ -21,6 +21,10 @@
                         <label for="text">Inserisci recensione</label>
                         <textarea class="form-control" id='text' name="text" cols="30" row="10"></textarea>
                     </div>
+                    <div class="form-group mb-3">
+
+
+                    </div>
                     <button type="submit" class="btn btn-success ">Invia</button>
                 </form>
             </div>
