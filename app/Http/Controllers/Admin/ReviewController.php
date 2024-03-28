@@ -43,7 +43,14 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $review = new Review();
+
+        $review->fill($form_data);
+        $review->save();
+
+        return redirect("http://localhost:5174/");
     }
 
     /**

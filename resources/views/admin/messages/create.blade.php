@@ -8,11 +8,11 @@
                         {{ $doctor->user->surname }}</strong> </h3>
             </div>
             <div class="col-12">
-                <form action="{{ route('message.store') }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('messages.store') }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="name">Nome</label>
-                        <input type="text" name="nome" id="nome"class="form-control"
+                        <input type="text" name="name" id="name"class="form-control"
                             placeholder="Inserisci il tuo nome">
                     </div>
                     <div class="form-group mb-3">
@@ -21,7 +21,7 @@
                             placeholder="Inserisci la tua E-mail">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="name">Testo</label>
+                        <label for="text">Testo</label>
                         <textarea class="form-control" name="text" id="text" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-group my-3">
