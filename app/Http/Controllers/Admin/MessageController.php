@@ -30,7 +30,8 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        $doctor = Doctor::where('slug', '=', $_REQUEST['slug'])->first();
+        return view('admin.messages.create', compact('doctor'));
     }
 
     /**
@@ -41,7 +42,14 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $message = new Message();
+        $message->fill($form_data);
+
+        $message->save();
+
+        return redirect("http://localhost:5174/");
     }
 
     /**
