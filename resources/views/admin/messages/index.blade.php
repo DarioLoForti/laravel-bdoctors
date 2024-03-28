@@ -63,12 +63,13 @@
 
                 {{-- DASHBOARD MAIN CONTENT --}}
 
-                <div class="col-10">
-                    <h1>Messaggi ricevuti:</h1>
+                <div class="col-10 mx-4 mt-3">
+                    <h1 class="text-center">Messaggi</h1>
+                    <hr class="me-4">
                     @foreach ($messages as $message)
-                        <h6>{{ $message->name }} | Email: {{ $message->email }}</h6>
+                        <h6><strong>{{ $message->name }} </strong> | email: {{ $message->email }}</h6>
                         <p> {{ $message->text }}</p>
-                        <hr>
+                        <hr class="me-4">
                     @endforeach
                 </div>
             </div>

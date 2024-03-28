@@ -63,12 +63,13 @@
 
                 {{-- DASHBOARD MAIN CONTENT --}}
 
-                <div class="col-10">
-                    <h1>Recensioni:</h1>
+                <div class="col-10 mx-4 mt-3">
+                    <h1 class="text-center">Recensioni</h1>
+                    <hr class="me-4">
                     @foreach ($reviews as $review)
-                        <h6>{{ $review->name }} | Email: {{ $review->email }}</h6>
+                        <h6><strong>{{ $review->name }}</strong> | email: {{ $review->email }}</h6>
                         <p> {{ $review->text }}</p>
-                        <hr>
+                        <hr class="me-4">
                     @endforeach
                 </div>
             </div>

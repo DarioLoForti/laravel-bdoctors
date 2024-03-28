@@ -26,7 +26,7 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $specializations = Specialization::all();
-        return view('auth.register', compact('specializations'));
+        return view('admin.auth.register', compact('specializations'));
     }
 
     /**
