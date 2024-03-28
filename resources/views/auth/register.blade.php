@@ -5,8 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <span>Registrati</span>
+                    <div class="card-header d-flex justify-content-between text-myblu">
+                        Registrati
                         <span>I campi contrassegnati con l'asterisco sono obbligatori.</span>
                     </div>
                     <div id="error-container" class="alert alert-danger" style="display: none"></div>
@@ -16,7 +16,7 @@
                             {{-- NAME --}}
 
                             <div class="mb-4 row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}
+                                <label for="name" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Nome') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -35,7 +35,7 @@
                             {{-- SURNAME --}}
 
                             <div class="mb-4 row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}
+                                <label for="surname" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Cognome') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -55,7 +55,7 @@
                             {{-- ADDRESS --}}
 
                             <div class="mb-4 row">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}
+                                <label for="address" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Indirizzo') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -75,7 +75,7 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Email') }} <span
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Indirizzo Email') }} <span
                                         class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -94,7 +94,7 @@
                             {{-- PASSWORD --}}
 
                             <div class="mb-4 row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}
+                                <label for="password" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Password') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -114,7 +114,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }} <span
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Conferma Password') }} <span
                                         class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -126,7 +126,7 @@
                             {{-- CITY --}}
 
                             <div class="mb-4 row">
-                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Città') }}
+                                <label for="city" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Città') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -145,7 +145,7 @@
 
                             <div class="mb-4 row">
                                 <label for="phone"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Numero di Telefono') }}</label>
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Numero di Telefono') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="phone" class="form-control @error('phone') is-invalid @enderror"
@@ -163,8 +163,8 @@
 
                             <div class="form-group mb-3">
 
-                                <label for="cv">Curriculum Vitae:</label>
-                                <input type="file" name="cv" id="cv" class="form-control">
+                                <label for="cv" class="text-myblu">Curriculum Vitae:</label>
+                                <input type="file" name="cv" id="cv" class="form-control ">
 
                                 @error('cv')
                                     <div class="text-danger">{{ $message }}</div>
@@ -175,7 +175,7 @@
 
                             <div class="form-group mb-3">
 
-                                <label for="image">Foto:</label>
+                                <label for="image" class="text-myblu">Foto:</label>
                                 <input type="file" name="image" id="image" class="form-control">
 
                                 @error('image')
@@ -187,7 +187,7 @@
 
                             <div class="form-group mb-3">
                                 <div class="dropdown mb-2">
-                                    <a class="btn btn-primary dropdown-toggle" href="#Spec" role="button"
+                                    <a class="btn btn-primary dropdown-toggle " href="#Spec" role="button"
                                         data-bs-toggle="collapse" aria-controls="Spec" aria-expanded="true">
                                         Specializzazioni
                                     </a>
@@ -224,9 +224,9 @@
                             </div> --}}
 
                             <div class="form-group mb-3">
-                                <label class="" for="services">Prestazioni:</label>
+                                <label class="text-myblu" for="services">Prestazioni:</label>
                                 <textarea wrap="soft" class="form-control" name="services" id="services" cols="30" rows="10"
-                                    placeholder="inserisci le tue prestazioni">{{ old('services') }}</textarea>
+                                    placeholder="Inserisci le tue prestazioni">{{ old('services') }}</textarea>
                                 @error('services')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
