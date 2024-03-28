@@ -4,7 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\DoctorController as DoctorController;
-
+use App\Http\Controllers\Admin\MessageController as MessageController;
+use App\Http\Controllers\Admin\ReviewController as ReviewController;
+use App\Http\Controllers\Admin\RatingController as RatingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +26,13 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/doctors', DoctorController::class);
 });
+
+Route::resource('/messages', MessageController::class);
+Route::resource('/reviews', ReviewController::class);
+Route::resource('/ratings', RatingController::class);
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
