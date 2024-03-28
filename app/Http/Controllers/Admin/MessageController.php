@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
@@ -84,8 +85,15 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy(Request $request)
     {
-        //
+        $selectedMessages = $request->input('selectedMessages', []);
+
+        
+        Message::whereIn('id', $selectedMessages)->delete();
+
+        
+        return redirect()->route('messages.index')->with('success', 'Messaggi eliminati con successo.');
     }
+
 }

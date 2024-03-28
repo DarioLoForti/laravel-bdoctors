@@ -68,22 +68,31 @@
                     <hr class="me-4">
                     <div class="card-body">
                         <div class="accordion accordion-flush" id="accordionReviews">
-                            @foreach ($messages as $message)
+                            <form action="{{ route('messages.destroy') }}" method="POST">
+                                @csrf
+                                @method('DELETE')
                             
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#messageCollapse{{ $loop->index }}" aria-expanded="false" aria-controls="messageCollapse{{ $loop->index }}">
-                                            <strong>{{ $message->name }}</strong> &nbsp;| email: {{ $message->email }}
-                                        </button>
-                                    </h2>
-                                    <div id="messageCollapse{{ $loop->index }}" class="accordion-collapse collapse" data-bs-parent="#accordionmessages">
-                                        <div class="accordion-body">
-                                            {{ $message->text }}
+                                <button type="submit" class="btn btn-danger mb-3">Elimina selezionati</button>
+                            
+                                <div class="accordion" id="accordionMessages">
+                                    @foreach ($messages as $message)
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#messageCollapse{{ $loop->index }}" aria-expanded="false" aria-controls="messageCollapse{{ $loop->index }}">
+                                                    <input type="checkbox" name="selectedMessages[]" value="{{ $message->id }}" class="form-check-input me-2">
+                                                    <strong>{{ $message->subject }}</strong> | email: {{ $message->email }}
+                                                </button>
+                                            </h2>
+                                            <div id="messageCollapse{{ $loop->index }}" class="accordion-collapse collapse" data-bs-parent="#accordionMessages">
+                                                <div class="accordion-body">
+                                                    {{ $message->content }}
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                                
-                            @endforeach
+                            </form>
+                            
                         </div>
                 </div>
             </div>
