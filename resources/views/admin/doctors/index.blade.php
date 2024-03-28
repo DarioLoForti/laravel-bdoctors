@@ -3,29 +3,39 @@
     <div class="container">
         <div class="row">
             <div class="container my-3 bg-white rounded">
-                <div class="row border border-black mb-3 rounded">
+                <div class="row mb-5 rounded">
 
                     {{-- UPDATE & DELETE BUTTONS --}}
+                    <div class="col-8 my-5 d-flex align-items-center ">
+                        <h1 class="">Dr. {{ $doctor->user->name }} {{ $doctor->user->surname }}</h1>
+                    </div>
 
-                    <div class="col-4 my-5">
-                        <div class="d-flex justify-content-start pt-2">
-                            <a href="{{ url('admin') }}" class=""><button class="btn btn-square btn-primary "><i
-                                        class="fa-solid fa-hand-point-left" style="color: #ffffff;"></i></button></a>
-                            <a href="{{ route('profile.edit') }}" class="mx-2"><button
-                                    class="btn btn-square btn-warning "><i class="fa-regular fa-pen-to-square"
-                                        style="color: #ffffff;"></i></button></a>
-                            <button class="btn btn-square btn-danger " data-bs-toggle="modal"
-                                data-bs-target="#delete-account"><i class="fa-solid fa-trash"
-                                    style="color:#ffffff;"></i></button>
+                    <div class="col-4 justify-content-end d-flex align-items-center ">
+                        <div class="d-flex justify-content-start  pt-2">
+                            <a href="{{ url('admin') }}" class="">
+                                <button class="btn btn-square btn-primary ">
+                                    <i class="fa-solid fa-hand-point-left" style="color: #ffffff;"></i>
+                                </button>
+                            </a>
+                            <a href="{{ route('profile.edit') }}" class="mx-2">
+                                <button class="btn btn-square btn-warning ">
+                                    <i class="fa-regular fa-pen-to-square"
+                                        style="color: #ffffff;"></i>
+                                    </button>
+                                </a>
+                            <a data-bs-toggle="modal" data-bs-target="#delete-account">
+                                <button class="btn btn-square btn-danger ">
+                                    <i class="fa-solid fa-trash" style="color:#ffffff;"></i>
+                                </button>
+                            </a> 
                             @include('admin.doctors.modal')
                         </div>
                     </div>
+                    <hr>
 
                     {{-- PAGE TITLE --}}
 
-                    <div class="col-8 my-5">
-                        <h1 class="">Dr. {{ $doctor->user->name }} {{ $doctor->user->surname }}</h1>
-                    </div>
+                    
                 </div>
 
                 <div class="row mb-3">
@@ -58,9 +68,23 @@
                                             profilo</a> per aggiungerne una.</em></div>
                             </div>
                         @endif
-                        <a href="{{ route('messages.index') }}" class="mx-2"><button
-                                class="btn btn-square btn-primary mt-4"><i class="fa-solid fa-envelope"
-                                    style="color: #ffffff;"></i></button></a>
+                        @if ($doctor->services != '' || $doctor->services != null)
+                                <div class="services my-3">
+                                    <div>
+                                        <strong>Prestazioni:</strong>
+                                        <div style="white-space: pre-line;">
+                                            {{ $doctor->services }}
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                            <div class="my-2">
+                                <div><em>Nessuna descrizione delle prestazioni inserita. <br> Vai nella <a
+                                            href="{{ route('profile.edit') }}" class="text-black">schermata modifica
+                                            profilo</a> per scriverne una.</em></div>
+                            </div>
+                        @endif
+                        
                     </div>
                     <div class="col-6">
                         <div>
@@ -91,23 +115,7 @@
                                 </span>
                                 <div>{{ $doctor->user->address }}</div>
                             </div>
-                            <hr>
-                            @if ($doctor->services != '' || $doctor->services != null)
-                                <div class="services my-2">
-                                    <div>
-                                        <strong>Prestazioni:</strong>
-                                        <div style="white-space: pre-line;">
-                                            {{ $doctor->services }}
-                                        </div>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="my-2">
-                                    <div><em>Nessuna descrizione delle prestazioni inserita. <br> Vai nella <a
-                                                href="{{ route('profile.edit') }}" class="text-black">schermata modifica
-                                                profilo</a> per scriverne una.</em></div>
-                                </div>
-                            @endif
+                            
                             @if ($doctor->cv != 'Filepdf' || '')
                                 <hr>
                                 <div>
@@ -126,6 +134,19 @@
                                                 profilo</a> per aggiungerne uno.</em></div>
                                 </div>
                             @endif
+                            <div class="text-end">
+                                <a href="{{ route('messages.index') }}" class="mx-2">
+                                    <button class="btn btn-square btn-primary mt-4">
+                                        <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+                                    </button>
+                                </a>
+                                <a href="{{ route('reviews.index') }}" class="mx-2">
+                                    <button class="btn btn-square btn-primary mt-4">
+                                        <i class="fa-solid fa-star" style="color: #ffffff;"></i>
+                                    </button>
+                                </a>
+
+                            </div>
                         </div>
                     </div>
                 </div>

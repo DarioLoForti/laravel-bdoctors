@@ -41,17 +41,17 @@
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mb-2 px-2">
-                                            <a href="" class="nav-link ombra">
-                                                <i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>
-                                                <span class="ms-1 d-none d-sm-inline text-white">Statistiche</span>
-                                            </a>
-                                        </li>
-
+                                        
                                         <li class="nav-item mb-2 px-2">
                                             <a href="{{ route('reviews.index') }}" class="nav-link ombra">
                                                 <i class="fa-solid fa-book-open" style="color: #ffffff;"></i>
                                                 <span class="ms-1 d-none d-sm-inline text-white">Recensioni</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item mb-2 px-2">
+                                            <a href="" class="nav-link ombra">
+                                                <i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>
+                                                <span class="ms-1 d-none d-sm-inline text-white">Statistiche</span>
                                             </a>
                                         </li>
                                     </ul>

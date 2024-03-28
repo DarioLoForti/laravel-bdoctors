@@ -39,7 +39,13 @@
                                                 <span class="ms-1 d-none d-sm-inline text-white">Messaggi</span>
                                             </a>
                                         </li>
-
+                                        
+                                        <li class="nav-item mb-2 px-2">
+                                            <a href="{{ route('reviews.index') }}" class="nav-link ombra">
+                                                <i class="fa-solid fa-book-open" style="color: #ffffff;"></i>
+                                                <span class="ms-1 d-none d-sm-inline text-white">Recensioni</span>
+                                            </a>
+                                        </li>
                                         <li class="nav-item mb-2 px-2">
                                             <a href="" class="nav-link ombra">
                                                 <i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>
@@ -47,12 +53,6 @@
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mb-2 px-2">
-                                            <a href="{{ route('reviews.index') }}" class="nav-link ombra">
-                                                <i class="fa-solid fa-book-open" style="color: #ffffff;"></i>
-                                                <span class="ms-1 d-none d-sm-inline text-white">Recensioni</span>
-                                            </a>
-                                        </li>
                                     </ul>
                                     <hr>
                                 </div>
@@ -63,12 +63,13 @@
 
                 {{-- DASHBOARD MAIN CONTENT --}}
 
-                <div class="col-10">
-                    <h1>Recensioni:</h1>
+                <div class="col-10 mx-4 mt-3">
+                    <h1 class="text-center">Recensioni</h1>
+                    <hr class="me-4">
                     @foreach ($reviews as $review)
-                        <h6>{{ $review->name }} | Email: {{ $review->email }}</h6>
+                        <h6><strong>{{ $review->name }}</strong> | email: {{ $review->email }}</h6>
                         <p> {{ $review->text }}</p>
-                        <hr>
+                        <hr class="me-4">
                     @endforeach
                 </div>
             </div>
