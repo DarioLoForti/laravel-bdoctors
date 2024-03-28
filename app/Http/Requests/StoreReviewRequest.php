@@ -27,7 +27,7 @@ class StoreReviewRequest extends FormRequest
         return [
             'name' => 'required|string|max:50',
             'email' => 'required|string|email|max:150',
-            'review' => 'required|max:300'
+            'text' => 'required|max:300'
         ];
     }
     public function messages()
@@ -40,8 +40,8 @@ class StoreReviewRequest extends FormRequest
             'email.string' => 'La mail dev\'essere una stringa.',
             'email.max' => 'La mail dev\'essere al massimo di 255 caratteri.',
             'email.email' => 'La mail dev\'essere una mail! (Contenere un @ e un .).',
-            'review.required' => 'Il testo è obbligatorio',
-            'review.max' => 'Il contenuto non deve superare i 300 caratteri'
+            'text.required' => 'Il testo è obbligatorio',
+            'text.max' => 'Il contenuto non deve superare i 300 caratteri'
         ];
     }
 }

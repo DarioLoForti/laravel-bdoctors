@@ -26,7 +26,7 @@ class StoreMessageRequest extends FormRequest
         return [
             'name' => 'required|string|max:50',
             'email' => 'required|string|email|max:150',
-            'message' => 'required|max:300'
+            'text' => 'required|max:300'
         ];
     }
     public function messages()
@@ -39,8 +39,8 @@ class StoreMessageRequest extends FormRequest
             'email.string' => 'La mail dev\'essere una stringa.',
             'email.max' => 'La mail dev\'essere al massimo di 150 caratteri.',
             'email.email' => 'La mail dev\'essere una mail! (Contenere un @ e un .).',
-            'message.required' => 'Il testo è obbligatorio',
-            'message.max' => 'Il contenuto non deve superare i 300 caratteri'
+            'text.required' => 'Il testo è obbligatorio',
+            'text.max' => 'Il contenuto non deve superare i 300 caratteri'
         ];
     }
 }
