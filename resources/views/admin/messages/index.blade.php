@@ -1,20 +1,20 @@
 @extends('layouts.style')
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="d-flex">
 
                 {{-- DASHBOARD SIDEBAR --}}
 
                 <div class="col-2">
-                    <div class="container-fluid">
+                    
                         <div class="row flex-nowrap">
                             <div class="col-12 px-sm-2 px-0 bg-doctorblu">
                                 <div
                                     class="d-flex flex-column align-items-center align-items-sm-start mx-2 mt-2 text-white vh-100">
                                     <a href="/"
                                         class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                                        <span class="fs-5 d-none d-sm-inline">Menu</span>
+                                        <span class="fs-5 d-none d-sm-inline ms-4">Menu</span>
                                     </a>
                                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                                         id="menu">
@@ -58,19 +58,42 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
 
                 {{-- DASHBOARD MAIN CONTENT --}}
 
-                <div class="col-10 mx-4 mt-3">
+                <div class="col-10 px-4 pt-3 bg-white">
                     <h1 class="text-center">Messaggi</h1>
                     <hr class="me-4">
-                    @foreach ($messages as $message)
-                        <h6><strong>{{ $message->name }} </strong> | email: {{ $message->email }}</h6>
-                        <p> {{ $message->text }}</p>
-                        <hr class="me-4">
-                    @endforeach
+                    <div class="card-body">
+                        <div class="accordion accordion-flush" id="accordionReviews">
+                            <form action="{{ route('messages.destroy') }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                            
+                                <button type="submit" class="btn btn-danger mb-3">Elimina selezionati</button>
+                            
+                                <div class="accordion" id="accordionMessages">
+                                    @foreach ($messages as $message)
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#messageCollapse{{ $loop->index }}" aria-expanded="false" aria-controls="messageCollapse{{ $loop->index }}">
+                                                    <input type="checkbox" name="selectedMessages[]" value="{{ $message->id }}" class="form-check-input me-2">
+                                                    <strong>{{ $message->subject }}</strong> | email: {{ $message->email }}
+                                                </button>
+                                            </h2>
+                                            <div id="messageCollapse{{ $loop->index }}" class="accordion-collapse collapse" data-bs-parent="#accordionMessages">
+                                                <div class="accordion-body">
+                                                    {{ $message->content }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </form>
+                            
+                        </div>
                 </div>
             </div>
         </div>

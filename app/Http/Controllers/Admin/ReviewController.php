@@ -7,7 +7,8 @@ use App\Models\Doctor;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Session; 
+use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
@@ -21,6 +22,9 @@ class ReviewController extends Controller
         $user = auth()->user();
         $doctor = $user->doctor;
         $reviews = $doctor->reviews;
+
+       
+
         return view('admin.reviews.index', compact('reviews'));
     }
 
@@ -93,8 +97,14 @@ class ReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
-    {
-        //
-    }
+    public function destroy(Request $request)
+{
+    // $selectedReviews = $request->input('selectedReviews', []);
+
+    
+    // Review::whereIn('id', $selectedReviews)->delete();
+
+
+    // return redirect()->route('reviews.index');
+}
 }

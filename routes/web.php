@@ -40,4 +40,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Route::delete('/reviews/bulk-delete', [ReviewController::class, 'destroy'])->name('reviews.destroy');
+
+Route::delete('/messages/bulk-delete', [MessageController::class, 'destroy'])->name('messages.destroy');
+
+
+
+
 require __DIR__ . '/auth.php';

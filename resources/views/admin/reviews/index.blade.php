@@ -1,20 +1,20 @@
 @extends('layouts.style')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container  ">
+        <div class="row ">
             <div class="d-flex">
 
                 {{-- DASHBOARD SIDEBAR --}}
 
                 <div class="col-2">
-                    <div class="container-fluid">
-                        <div class="row flex-nowrap">
+                    
+                        <div class="row ">
                             <div class="col-12 px-sm-2 px-0 bg-doctorblu">
                                 <div
                                     class="d-flex flex-column align-items-center align-items-sm-start mx-2 mt-2 text-white vh-100">
                                     <a href="/"
                                         class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                                        <span class="fs-5 d-none d-sm-inline">Menu</span>
+                                        <span class="fs-5 d-none d-sm-inline ms-4">Menu</span>
                                     </a>
                                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                                         id="menu">
@@ -58,19 +58,33 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
 
                 {{-- DASHBOARD MAIN CONTENT --}}
 
-                <div class="col-10 mx-4 mt-3">
+                <div class="col-10 px-4 pt-3 bg-white">
                     <h1 class="text-center">Recensioni</h1>
-                    <hr class="me-4">
-                    @foreach ($reviews as $review)
-                        <h6><strong>{{ $review->name }}</strong> | email: {{ $review->email }}</h6>
-                        <p> {{ $review->text }}</p>
-                        <hr class="me-4">
-                    @endforeach
+                    <hr class="">
+                    <div class="card-body">
+                        <div class="accordion accordion-flush" id="accordionReviews">
+                            @foreach ($reviews as $review)
+                                <div class="accordion-item ">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#reviewCollapse{{ $loop->index }}" aria-expanded="false" aria-controls="reviewCollapse{{ $loop->index }}">
+                                            <strong>{{ $review->name }}</strong> &nbsp;| email: {{ $review->email }}
+                                        </button>
+                                    </h2>
+                                    <div id="reviewCollapse{{ $loop->index }}" class="accordion-collapse collapse" data-bs-parent="#accordionReviews">
+                                        <div class="accordion-body">
+                                            {{ $review->text }}
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
