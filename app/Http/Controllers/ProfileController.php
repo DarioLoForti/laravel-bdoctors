@@ -61,7 +61,7 @@ class ProfileController extends Controller
 
         $user->doctor->delete();
         $user->delete();
-        /* Auth::logout(); */
+        Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
