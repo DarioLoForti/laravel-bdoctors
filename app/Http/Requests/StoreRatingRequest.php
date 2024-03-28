@@ -13,7 +13,7 @@ class StoreRatingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,23 @@ class StoreRatingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:50',
+            'email' => 'required|string|email|max:150',
+            'review' => 'required|max:300'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Il nome è obbligatorio.',
+            'name.string' => 'Il nome dev\'essere una stringa.',
+            'name.max' => 'Il nome dev\'essere al massimo di 50 caratteri.',
+            'email.required' => 'La mail è obbligatoria.',
+            'email.string' => 'La mail dev\'essere una stringa.',
+            'email.max' => 'La mail dev\'essere al massimo di 255 caratteri.',
+            'email.email' => 'La mail dev\'essere una mail! (Contenere un @ e un .).',
+            'review.required' => 'Il testo è obbligatorio',
+            'review.max' => 'Il contenuto non deve superare i 300 caratteri'
         ];
     }
 }
