@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Message;
+use App\Models\Doctor;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,10 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $doctor = $user->doctor;
+        $messages = $doctor->messages;
+        return view('admin.messages.index', compact('messages'));
     }
 
     /**

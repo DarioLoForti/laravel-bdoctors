@@ -17,7 +17,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $doctor = $user->doctor;
+        $reviews = $doctor->reviews;
+        return view('admin.reviews.index', compact('reviews'));
     }
 
     /**
