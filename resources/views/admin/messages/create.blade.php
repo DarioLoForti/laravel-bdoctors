@@ -8,11 +8,12 @@
                         {{ $doctor->user->surname }}</strong> </h3>
             </div>
             <div class="col-12">
-                <form action="{{ route('message.store') }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('messages.store') }}" enctype="multipart/form-data" method="POST">
                     @csrf
+                    <input type="hidden" name="doctor_id" value="{{$doctor->id}}">
                     <div class="form-group mb-3">
                         <label for="name">Nome</label>
-                        <input type="text" name="nome" id="nome"class="form-control"
+                        <input type="text" name="name" id="name"class="form-control"
                             placeholder="Inserisci il tuo nome">
                     </div>
                     <div class="form-group mb-3">

@@ -42,7 +42,14 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $newMessage = new Message();
+        $newMessage->fill($form_data);
+
+        $newMessage->save();
+
+        return redirect("http://localhost:5174/");
     }
 
     /**
