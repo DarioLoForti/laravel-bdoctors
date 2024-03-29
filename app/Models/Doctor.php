@@ -35,4 +35,8 @@ class Doctor extends Model
     {
         return $this->belongsToMany(Rating::class);
     }
+    public function sponsorships()
+    {
+        return $this->hasMany(Sponsorship::class);
+    }
 }
