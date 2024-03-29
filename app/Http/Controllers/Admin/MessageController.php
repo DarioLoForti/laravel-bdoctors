@@ -31,7 +31,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        $doctor = Doctor::where('slug', '=', $_REQUEST['slug'])->first();
+        $doctor = Doctor::where('id', '=', $_REQUEST['doctor_id'])->first();
         return view('admin.messages.create', compact('doctor'));
     }
 
@@ -43,7 +43,6 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-
         $form_data = $request->all();
 
         $message = new Message();
@@ -51,7 +50,7 @@ class MessageController extends Controller
 
         $message->save();
 
-        return redirect("http://localhost:5174/");
+        return redirect("http://localhost:5174/doctor/".Doctor::where("id", "=", $message->doctor_id)->first()->slug);
     }
 
     /**

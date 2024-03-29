@@ -27,10 +27,10 @@ class RatingController extends Controller
      */
     public function create()
     {
-        $doctor = Doctor::where('slug', '=', $_REQUEST['slug'])->first();
+        $doctor = Doctor::where('id', '=', $_REQUEST['doctor_id'])->first();
         $doctor->ratings()->attach($_REQUEST['rating']);
 
-        return redirect("http://localhost:5174/search");
+        return redirect("http://localhost:5174/doctor/".$doctor->slug);
     }
 
     /**

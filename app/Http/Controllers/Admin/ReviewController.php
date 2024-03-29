@@ -35,7 +35,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        $doctor = Doctor::where('slug', '=', $_REQUEST['slug'])->first();
+        $doctor = Doctor::where('id', '=', $_REQUEST['doctor_id'])->first();
         return view('admin.reviews.create', compact('doctor'));
     }
 
@@ -54,7 +54,7 @@ class ReviewController extends Controller
         $review->fill($form_data);
         $review->save();
 
-        return redirect("http://localhost:5174/");
+        return redirect("http://localhost:5174/doctor/".Doctor::where("id", "=", $review->doctor_id)->first()->slug);
     }
 
     /**
