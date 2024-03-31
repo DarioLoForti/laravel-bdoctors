@@ -90,8 +90,10 @@
                                             </h2>
                                             <div id="messageCollapse{{ $loop->index }}" class="accordion-collapse collapse"
                                                 data-bs-parent="#accordionMessages">
-                                                <div class="accordion-body">
-                                                    {{ $message->text }}
+                                                <div class="accordion-body d-flex justify-content-between">
+                                                    <span class="message-text">{{ $message->text }}</span>
+                                                    <input class="form-check-input" type="checkbox"
+                                                        name="selectedMessages[]">
                                                 </div>
                                             </div>
                                         </div>

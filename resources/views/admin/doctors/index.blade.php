@@ -1,9 +1,9 @@
 @extends('layouts.style')
 @section('content')
-    <div class="container">
+    <div class="container rounded raised-effect my-3">
         <div class="row">
             <div class="container my-3 bg-white rounded">
-                <div class="row mb-5 rounded">
+                <div class="row mb-5 ">
 
                     {{-- UPDATE & DELETE BUTTONS --}}
                     <div class="col-8 my-5 d-flex align-items-center ">
@@ -19,15 +19,14 @@
                             </a>
                             <a href="{{ route('profile.edit') }}" class="mx-2">
                                 <button class="btn btn-square btn-warning ">
-                                    <i class="fa-regular fa-pen-to-square"
-                                        style="color: #ffffff;"></i>
-                                    </button>
-                                </a>
+                                    <i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i>
+                                </button>
+                            </a>
                             <a data-bs-toggle="modal" data-bs-target="#delete-account">
                                 <button class="btn btn-square btn-danger ">
                                     <i class="fa-solid fa-trash" style="color:#ffffff;"></i>
                                 </button>
-                            </a> 
+                            </a>
                             @include('admin.doctors.modal')
                         </div>
                     </div>
@@ -35,12 +34,12 @@
 
                     {{-- PAGE TITLE --}}
 
-                    
+
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-6">
-                        <div class="image bg-lightcyano d-flex justify-content-center rounded">
+                        <div class="image bg-lightcyano d-flex justify-content-center rounded raisedd-effect">
                             @if ($doctor->image != null)
                                 @if (str_contains($doctor->image, 'https://'))
                                     <img class="dettaglio-immagine" src="{{ $doctor->image }}">
@@ -69,22 +68,22 @@
                             </div>
                         @endif
                         @if ($doctor->services != '' || $doctor->services != null)
-                                <div class="services my-3">
-                                    <div>
-                                        <strong>Prestazioni:</strong>
-                                        <div style="white-space: pre-line;">
-                                            {{ $doctor->services }}
-                                        </div>
+                            <div class="services my-3">
+                                <div>
+                                    <strong>Prestazioni:</strong>
+                                    <div style="white-space: pre-line;">
+                                        {{ $doctor->services }}
                                     </div>
                                 </div>
-                            @else
+                            </div>
+                        @else
                             <div class="my-2">
                                 <div><em>Nessuna descrizione delle prestazioni inserita. <br> Vai nella <a
                                             href="{{ route('profile.edit') }}" class="text-black">schermata modifica
                                             profilo</a> per scriverne una.</em></div>
                             </div>
                         @endif
-                        
+
                     </div>
                     <div class="col-6">
                         <div>
@@ -115,7 +114,7 @@
                                 </span>
                                 <div>{{ $doctor->user->address }}</div>
                             </div>
-                            
+
                             @if ($doctor->cv != 'Filepdf' || '')
                                 <hr>
                                 <div>
@@ -134,18 +133,21 @@
                                                 profilo</a> per aggiungerne uno.</em></div>
                                 </div>
                             @endif
-                            <div class="text-end">
+                            <div class="d-flex justify-content-between aling-item-center mt-4">
+                                <p>Guarda i tuoi messaggi</p>
                                 <a href="{{ route('messages.index') }}" class="mx-2">
-                                    <button class="btn btn-square btn-primary mt-4">
+                                    <button class="btn btn-square btn-primary ">
                                         <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
                                     </button>
                                 </a>
+                            </div>
+                            <div class="d-flex justify-content-between aling-item-center mt-4">
+                                <p>Guarda le tue recenzioni</p>
                                 <a href="{{ route('reviews.index') }}" class="mx-2">
-                                    <button class="btn btn-square btn-primary mt-4">
+                                    <button class="btn btn-square btn-primary">
                                         <i class="fa-solid fa-star" style="color: #ffffff;"></i>
                                     </button>
                                 </a>
-
                             </div>
                         </div>
                     </div>
