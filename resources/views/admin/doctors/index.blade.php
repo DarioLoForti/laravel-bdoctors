@@ -101,13 +101,13 @@
 
                             @if ($doctor->cv != 'Filepdf' || '')
                                 <hr>
-                                <div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <strong>Curriculum</strong>
-                                        <a target="_blank" href="{{ asset('storage/' . $doctor->cv) }}"> <button
-                                                class="btn btn-primary"><i class="fa-solid fa-eye"
-                                                    style="color: #ffffff;"></i></button></a>
-                                    </div>
+                                <div class="d-flex justify-content-between aling-item-center mt-4">
+                                    <strong>Curriculum</strong>
+                                    <a target="_blank" href="{{ asset('storage/' . $doctor->cv) }}" class="mx-2">
+                                        <button class="btn btn-square btn-primary ">
+                                            <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                                        </button>
+                                    </a>
                                 </div>
                             @else
                                 <hr>
