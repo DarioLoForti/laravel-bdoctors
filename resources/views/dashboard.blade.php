@@ -41,7 +41,7 @@
                                             </a>
                                         </li>
 
-                                        
+
                                         <li class="nav-item mb-2 px-2">
                                             <a href="{{ route('reviews.index') }}" class="nav-link ombra">
                                                 <i class="fa-solid fa-book-open" style="color: #ffffff;"></i>
@@ -90,7 +90,7 @@
                                             Aggiungi una sponsorizzazione per avere maggiore visibilità.
                                         </div>
                                         <div class="btn btn-small btn-secondary">
-                                            <a href="{{ route('token') }}">
+                                            <a href="{{ route('sponsorships.index') }}">
                                                 Vedi le nostre Offerte
                                             </a>
                                         </div>
@@ -98,7 +98,7 @@
                                 @endif
                             </div>
 
-                            
+
 
                             {{-- DOCTOR PROFILE PICTURE --}}
 

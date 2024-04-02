@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DoctorController as DoctorController;
 use App\Http\Controllers\Admin\MessageController as MessageController;
 use App\Http\Controllers\Admin\ReviewController as ReviewController;
 use App\Http\Controllers\Admin\RatingController as RatingController;
+use App\Http\Controllers\Admin\SponsorshipController as SponsorshipController;
 use App\Http\Controllers\BraintreeController as BraintreeController;
 
 /*
@@ -32,8 +33,9 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
 Route::resource('/messages', MessageController::class);
 Route::resource('/reviews', ReviewController::class);
 Route::resource('/ratings', RatingController::class);
+Route::resource('/sponsorships', SponsorshipController::class);
 
-Route::any('/braintree', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
+Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
