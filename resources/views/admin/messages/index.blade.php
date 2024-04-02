@@ -1,6 +1,6 @@
 @extends('layouts.style')
 @section('content')
-    <div class="container">
+    <div class="">
         <div class="row">
             <div class="d-flex">
 
@@ -65,33 +65,52 @@
 
                 <div class="col-10 px-4 pt-3 bg-white">
                     <h1 class="text-center">Messaggi</h1>
-                    <hr class="me-4">
+                    <hr class="">
                     <div class="card-body">
                         <div class="accordion accordion-flush" id="accordionReviews">
                             <form action="{{ route('messages.destroy') }}" method="POST">
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" class="btn btn-danger mb-3">Elimina selezionati</button>
+                                <button type="submit" class="btn btn-danger mb-3 d-none d-md-block">Elimina selezionati</button>
+                                <button type="submit" class="btn btn-danger mb-3 d-md-none "><i class="fa-solid fa-trash" style="color:#ffffff;"></i></button>
 
                                 <div class="accordion" id="accordionMessages">
                                     @foreach ($messages as $message)
                                         <div class="accordion-item">
                                             <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
+                    
+                                                <button class="accordion-button collapsed d-none d-lg-flex" type="button"
                                                     data-bs-toggle="collapse"
                                                     data-bs-target="#messageCollapse{{ $loop->index }}"
                                                     aria-expanded="false"
                                                     aria-controls="messageCollapse{{ $loop->index }}">
-                                                    <div class="container d-flex justify-content-between ">
+                                                    <div class="container  d-flex justify-content-between ">
                                                         <div>
-                                                            <input type="checkbox" name="selectedMessages[]" value="{{ $message->id }}" class="form-check-input me-2">
-                                                            <strong>{{ $message->name }}</strong> | email: {{ $message->email }}    
+                                                            <input type="checkbox" name="selectedMessages[]" value="{{ $message->id }}" class="form-check-input me-3">
+                                                            <span class=""><strong>{{ $message->name }}</strong> | email: {{ $message->email }}    </span>
                                                         </div>
                                                         <div class="">
                                                             <span class="message-text date">{{ $message->created_at->format('d-m-Y H:i') }}</span>
                                                         </div>
                                                     </div>
+                                                
+                                                </button>
+                                                <button class="accordion-button collapsed ps-0 d-lg-none" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#messageCollapse{{ $loop->index }}"
+                                                    aria-expanded="false"
+                                                    aria-controls="messageCollapse{{ $loop->index }}">
+                                                    <div class="container d-flex justify-content-between vertical ">
+                                                        <input type="checkbox" name="selectedMessages[]" value="{{ $message->id }}" class="form-check-input mt-0 me-3">
+                                                        <div>
+                                                            <span><strong>{{ $message->name }}</strong></span> <span class="d-none d-sm-block">{{ $message->email }}</span>   
+                                                        </div>
+                                                        <div class="">
+                                                            <span class="message-text date">{{ $message->created_at->format('d-m-Y H:i') }}</span>
+                                                        </div>
+                                                    </div>
+                                                
                                                 </button>
                                             </h2>
                                             <div id="messageCollapse{{ $loop->index }}" class="accordion-collapse collapse"

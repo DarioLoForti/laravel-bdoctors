@@ -1,6 +1,6 @@
 @extends('layouts.style')
 @section('content')
-    <div class="container  ">
+    <div class="">
         <div class="row ">
             <div class="d-flex">
 

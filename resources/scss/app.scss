@@ -4,8 +4,19 @@
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
+.bg-blue{
+    background-color: #003366;
+}
+.bg-button{
+    background-color: white;
+    color: #003366;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 .image{
     width: 400px;
 }
@@ -39,7 +50,7 @@ body{
 }
 
 .text-mygreen{
-    color: #339966;
+    color: #66cc99;
 }
 
 .text-myblu{
@@ -72,6 +83,7 @@ a{
 
 
 
+
 .accordion-button:focus {
     outline: none;
     box-shadow: none;
@@ -98,4 +110,23 @@ a{
 .date{
     font-size: 10px;
     color: grey;
+}
+
+.submit-button{
+    background-color: #339966;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+}
+
+
+
+.navbar-aestethic{
+    background-color: #285a8c;
+    border: 0px;
+    font-size: 30px;
+}
+
+.vertical{
+    align-items: center;
 }

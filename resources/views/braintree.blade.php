@@ -1,3 +1,4 @@
+
 <head>
     <meta charset="utf-8">
     <script src="https://js.braintreegateway.com/web/dropin/1.14.1/js/dropin.min.js"></script>
@@ -6,8 +7,8 @@
     <div class="py-12">
         @csrf
         <div id="dropin-container" style="display: flex;justify-content: center;align-items: center;"></div>
-        <div style="display: flex;justify-content: center;align-items: center; color: white">
-            <a id="submit-button" class="btn btn-sm btn-success">Submit payment</a>
+        <div style="display: flex;justify-content: center;align-items: center; ">
+            <a id="submit-button" class=" submit-button btn btn-sm btn-success">Submit payment</a>
         </div>
         <script>
             var button = document.querySelector('#submit-button');
