@@ -91,6 +91,8 @@
                                             <div id="messageCollapse{{ $loop->index }}" class="accordion-collapse collapse"
                                                 data-bs-parent="#accordionMessages">
                                                 <div class="accordion-body d-flex justify-content-between">
+                                                    <span
+                                                        class="message-text">{{ $message->created_at->format('d-m-Y H:i') }}</span>
                                                     <span class="message-text">{{ $message->text }}</span>
                                                     <input class="form-check-input" type="checkbox"
                                                         name="selectedMessages[]">
