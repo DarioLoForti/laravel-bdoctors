@@ -16,7 +16,8 @@
                             {{-- NAME --}}
 
                             <div class="mb-4 row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Nome') }}
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Nome') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -35,7 +36,8 @@
                             {{-- SURNAME --}}
 
                             <div class="mb-4 row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Cognome') }}
+                                <label for="surname"
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Cognome') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -55,7 +57,8 @@
                             {{-- ADDRESS --}}
 
                             <div class="mb-4 row">
-                                <label for="address" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Indirizzo') }}
+                                <label for="address"
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Indirizzo') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -75,8 +78,8 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Indirizzo Email') }} <span
-                                        class="text-danger">*</span></label>
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Indirizzo Email') }}
+                                    <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -94,7 +97,8 @@
                             {{-- PASSWORD --}}
 
                             <div class="mb-4 row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Password') }}
+                                <label for="password"
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Password') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -114,8 +118,8 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Conferma Password') }} <span
-                                        class="text-danger">*</span></label>
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Conferma Password') }}
+                                    <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -126,7 +130,8 @@
                             {{-- CITY --}}
 
                             <div class="mb-4 row">
-                                <label for="city" class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Città') }}
+                                <label for="city"
+                                    class="col-md-4 col-form-label text-md-right text-myblu">{{ __('Città') }}
                                     <span class="text-danger">*</span></label>
 
                                 <div class="col-md-6">
@@ -195,27 +200,34 @@
                                 </div>
                                 <div id="Spec" class="collapse multi-collapse m-1">
                                     <div class="container">
-                                        <div class="row  ">
-                                            @foreach ($specializations as $specialization)
-                                                <div class="col-4 ">
-                                                    <div class="form-check-inline">
-                                                        <input class="form-check-input " type="checkbox" name="specializations[]"
-                                                            id="specialization-{{ $specialization->id }} "
-                                                            @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations'))) value="{{ $specialization->id }}">
-                                                        <label for="specialization"
-                                                            class="form-check-label ">{{ $specialization->name }}
-                                                        </label>
-                                                    </div>
-            
+                                        <div class="row">
+                                            <?php
+                                            
+                                            $ordineSpecializations = $specializations->sortBy('name');
+                                            
+                                            $chunks = $ordineSpecializations->chunk(ceil($ordineSpecializations->count() / 3));
+                                            ?>
+                                            @foreach ($chunks as $chunk)
+                                                <div class="col-4">
+                                                    @foreach ($chunk as $specialization)
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="specializations[]"
+                                                                id="specialization-{{ $specialization->id }}"
+                                                                @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))
+                                                                value="{{ $specialization->id }}">
+                                                            <label class="form-check-label"
+                                                                for="specialization-{{ $specialization->id }}">{{ $specialization->name }}</label>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
-
                                             @endforeach
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        
-                            
+
+
 
                             {{-- PRESTAZIONI --}}
 

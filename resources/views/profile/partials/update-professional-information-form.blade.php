@@ -101,15 +101,29 @@
                     }
                 @endphp
 
-                @foreach ($specializations as $specialization)
-                    <div class="form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="specializations[]"
-                            id="specialization-{{ $specialization->id }}" value="{{ $specialization->id }}"
-                            @checked(is_array($doctor_specializations) && in_array($specialization->name, $doctor_specializations))>
-                        <label for="specialization" class="form-check-label ">{{ $specialization->name }}
-                        </label>
+                <div class="container">
+                    <div class="row">
+                        <?php
+                        
+                        $ordineSpecializations = $specializations->sortBy('name');
+                        
+                        $chunks = $ordineSpecializations->chunk(ceil($ordineSpecializations->count() / 3));
+                        ?>
+                        @foreach ($chunks as $chunk)
+                            <div class="col-4">
+                                @foreach ($chunk as $specialization)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="specializations[]"
+                                            id="specialization-{{ $specialization->id }}" @checked(is_array(old('specializations')) && in_array($specialization->id, old('specializations')))
+                                            value="{{ $specialization->id }}">
+                                        <label class="form-check-label"
+                                            for="specialization-{{ $specialization->id }}">{{ $specialization->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
 

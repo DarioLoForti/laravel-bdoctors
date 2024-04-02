@@ -142,7 +142,7 @@
                                 </a>
                             </div>
                             <div class="d-flex justify-content-between aling-item-center mt-4">
-                                <p>Guarda le tue recenzioni</p>
+                                <p>Guarda le tue recensioni</p>
                                 <a href="{{ route('reviews.index') }}" class="mx-2">
                                     <button class="btn btn-square btn-primary">
                                         <i class="fa-solid fa-star" style="color: #ffffff;"></i>
