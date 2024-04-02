@@ -71,17 +71,23 @@
                             @foreach ($reviews as $review)
                                 <div class="accordion-item ">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#reviewCollapse{{ $loop->index }}" aria-expanded="false"
-                                            aria-controls="reviewCollapse{{ $loop->index }}">
-                                            <strong>{{ $review->name }}</strong> &nbsp;| email: {{ $review->email }}
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#reviewCollapse{{ $loop->index }}" aria-expanded="false" aria-controls="reviewCollapse{{ $loop->index }}">
+                                            <div class="container d-flex justify-content-between ">
+                                                <div>
+                                                    <strong>{{ $review->name }}</strong> &nbsp;| email: {{ $review->email }}
+                                                </div>
+                                                <div>
+                                                    <span class="message-text date">{{ $review->created_at->format('d-m-Y H:i') }}</span>
+                                                </div>
+
+                                            </div>
                                         </button>
+                                        
                                     </h2>
                                     <div id="reviewCollapse{{ $loop->index }}" class="accordion-collapse collapse"
                                         data-bs-parent="#accordionReviews">
                                         <div class="accordion-body">
-                                            <span
-                                                class="message-text">{{ $review->created_at->format('d-m-Y H:i') }}</span><br>
+                                            <br>
                                             {{ $review->text }}
                                         </div>
                                     </div>
