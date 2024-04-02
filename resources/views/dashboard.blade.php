@@ -90,11 +90,15 @@
                                             Aggiungi una sponsorizzazione per avere maggiore visibilità.
                                         </div>
                                         <div class="btn btn-small btn-secondary">
-                                            Vedi le nostre Offerte
+                                            <a href="{{ route('token') }}">
+                                                Vedi le nostre Offerte
+                                            </a>
                                         </div>
                                     </div>
                                 @endif
                             </div>
+
+                            
 
                             {{-- DOCTOR PROFILE PICTURE --}}
 

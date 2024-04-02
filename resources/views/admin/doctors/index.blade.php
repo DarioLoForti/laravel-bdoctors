@@ -53,7 +53,7 @@
 
                         </div>
                         @if (count($doctor->specializations) != 0)
-                            <div class="services my-2">
+                            <div class="services m-2">
                                 <div><strong>Specializzazioni:</strong> <br>
                                     @foreach ($doctor->specializations as $specialization)
                                         {{ $specialization->name }} <br>
@@ -65,22 +65,6 @@
                                 <div><em>Nessuna specializzazione inserita. <br> Vai nella <a
                                             href="{{ route('profile.edit') }}" class="text-black">schermata modifica
                                             profilo</a> per aggiungerne una.</em></div>
-                            </div>
-                        @endif
-                        @if ($doctor->services != '' || $doctor->services != null)
-                            <div class="services my-3">
-                                <div>
-                                    <strong>Prestazioni:</strong>
-                                    <div style="white-space: pre-line;">
-                                        {{ $doctor->services }}
-                                    </div>
-                                </div>
-                            </div>
-                        @else
-                            <div class="my-2">
-                                <div><em>Nessuna descrizione delle prestazioni inserita. <br> Vai nella <a
-                                            href="{{ route('profile.edit') }}" class="text-black">schermata modifica
-                                            profilo</a> per scriverne una.</em></div>
                             </div>
                         @endif
 
@@ -117,13 +101,13 @@
 
                             @if ($doctor->cv != 'Filepdf' || '')
                                 <hr>
-                                <div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <strong>Curriculum</strong>
-                                        <a target="_blank" href="{{ asset('storage/' . $doctor->cv) }}"> <button
-                                                class="btn btn-primary"><i class="fa-solid fa-eye"
-                                                    style="color: #ffffff;"></i></button></a>
-                                    </div>
+                                <div class="d-flex justify-content-between aling-item-center mt-4">
+                                    <strong>Curriculum</strong>
+                                    <a target="_blank" href="{{ asset('storage/' . $doctor->cv) }}" class="mx-2">
+                                        <button class="btn btn-square btn-primary ">
+                                            <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                                        </button>
+                                    </a>
                                 </div>
                             @else
                                 <hr>
@@ -142,7 +126,7 @@
                                 </a>
                             </div>
                             <div class="d-flex justify-content-between aling-item-center mt-4">
-                                <p>Guarda le tue recenzioni</p>
+                                <p>Guarda le tue recensioni</p>
                                 <a href="{{ route('reviews.index') }}" class="mx-2">
                                     <button class="btn btn-square btn-primary">
                                         <i class="fa-solid fa-star" style="color: #ffffff;"></i>
@@ -153,7 +137,27 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                @if ($doctor->services != '' || $doctor->services != null)
+                    <div class="col-12 my-3">
+                        <div class="col-12">
+                            <strong>Prestazioni:</strong>
+                            <div class="col-12" style="white-space: pre-line;">
+                                {{ $doctor->services }}
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="my-2">
+                        <div><em>Nessuna descrizione delle prestazioni inserita. <br> Vai nella <a
+                                    href="{{ route('profile.edit') }}" class="text-black">schermata modifica
+                                    profilo</a> per scriverne una.</em></div>
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
     @include('admin.doctors.modal')

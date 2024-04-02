@@ -83,17 +83,24 @@
                                                     data-bs-target="#messageCollapse{{ $loop->index }}"
                                                     aria-expanded="false"
                                                     aria-controls="messageCollapse{{ $loop->index }}">
-                                                    <input type="checkbox" name="selectedMessages[]"
-                                                        value="{{ $message->id }}" class="form-check-input me-2">
-                                                    <strong>{{ $message->name }}</strong> | email: {{ $message->email }}
+                                                    <div class="container d-flex justify-content-between ">
+                                                        <div>
+                                                            <input type="checkbox" name="selectedMessages[]" value="{{ $message->id }}" class="form-check-input me-2">
+                                                            <strong>{{ $message->name }}</strong> | email: {{ $message->email }}    
+                                                        </div>
+                                                        <div class="">
+                                                            <span class="message-text date">{{ $message->created_at->format('d-m-Y H:i') }}</span>
+                                                        </div>
+                                                    </div>
                                                 </button>
                                             </h2>
                                             <div id="messageCollapse{{ $loop->index }}" class="accordion-collapse collapse"
                                                 data-bs-parent="#accordionMessages">
                                                 <div class="accordion-body d-flex justify-content-between">
+                                                    
                                                     <span class="message-text">{{ $message->text }}</span>
-                                                    <input class="form-check-input" type="checkbox"
-                                                        name="selectedMessages[]">
+                                                    
+                                                    
                                                 </div>
                                             </div>
                                         </div>

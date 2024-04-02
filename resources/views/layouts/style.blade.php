@@ -19,6 +19,9 @@
     <!-- Usando Vite -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     @vite(['resources/js/app.js'])
+
+    {{-- Braintree --}}
+    <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
 </head>
 
 <body>
