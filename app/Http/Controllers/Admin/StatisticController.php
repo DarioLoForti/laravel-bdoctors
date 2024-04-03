@@ -17,6 +17,9 @@ class StatisticController extends Controller
     {
         // Ottieni l'utente attualmente loggato
         $logged_user = Auth::user();
+        if ($logged_user) {
+            $logged_in_doctor_id = $logged_user->id;
+        }
         // Recupera il dottore associato all'utente loggato.
         // Restituisce un array di lunghezza 1 (relazione one-to-one)
         $doctors = Doctor::where('user_id', '=', $logged_user->id)->get();
@@ -30,38 +33,54 @@ class StatisticController extends Controller
         $messages_years = Message::selectRaw('YEAR(created_at) as year')->distinct()->orderBy('year', 'desc')->pluck('year')->toArray();
 
         $messages_per_month = [];
-        // itera i dodici mesi dell'anno calcola il numero di messaggi, whereYear() e whereMonth() 
-        // per filtrare i messaggi in base all'anno e al mese correnti
+
         for ($i = 1; $i <= 12; $i++) {
-            $messages_per_month[$i - 1] = Message::whereYear('created_at', $selected_year)->whereMonth('created_at', $i)->count();
+            $messages_per_month[$i - 1] = Message::where('doctor_id', $logged_in_doctor_id) // Filtra per il medico loggato
+                ->whereYear('created_at', $selected_year)
+                ->whereMonth('created_at', $i)
+                ->count();
         }
-        // numero totale di messaggi presenti nell'anno selezionato, whereYear() per filtrare i messaggi solo per l'anno selezionato. count() per contare il numero di risultati.
-        $selected_year_messages_n = Message::whereYear('created_at', $selected_year)->count();
+
+        $selected_year_messages_n = Message::where('doctor_id', $logged_in_doctor_id) // Filtra per il medico loggato
+            ->whereYear('created_at', $selected_year)
+            ->count();
 
         // seleziona l'anno dalla colonna created_at elimina i duplicati distinct(), ordinati orderBy(), recuperati come un array pluck().
-        $reviews_year = Review::selectRaw('YEAR(created_at) as year')->distinct()->orderBy('year', 'desc')->pluck('year')->toArray();
+        $reviews_year = Review::where('doctor_id', $logged_in_doctor_id) // Filtra per il medico loggato
+            ->selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year')
+            ->toArray();
 
         $reviews_per_month = [];
-        // itera i dodici mesi dell'anno calcola il numero recensioni, whereYear() e whereMonth() 
-        // per filtrare i messaggi in base all'anno e al mese correnti
+
         for ($i = 1; $i <= 12; $i++) {
-            $reviews_per_month[$i - 1] = Review::whereYear('created_at', $selected_year)->whereMonth('created_at', $i)->count();
+            $reviews_per_month[$i - 1] = Review::where('doctor_id', $logged_in_doctor_id) // Filtra per il medico loggato
+                ->whereYear('created_at', $selected_year)
+                ->whereMonth('created_at', $i)
+                ->count();
         }
 
         // calcolo la media dei voti avg('vote_id'), che restituisce il valore medio di vote_id delle recensioni in quel mese.
-        $avg_ratings_per_month = Rating::join('doctor_rating', 'ratings.id', '=', 'doctor_rating.rating_id')
-            ->join('doctors', 'doctor_rating.doctor_id', '=', 'doctors.id')
-            ->selectRaw('MONTH(ratings.created_at) as month, YEAR(ratings.created_at) as year, AVG(doctor_rating.rating_id) as average_rating')
-            ->groupBy(DB::raw('YEAR(ratings.created_at)'), DB::raw('MONTH(ratings.created_at)'))
+        $avg_ratings_per_month = [];
 
-            ->orderBy('month')
-            ->get();
+        for ($i = 1; $i <= 12; $i++) {
+            $ratings = Rating::join('doctor_rating', 'ratings.id', '=', 'doctor_rating.rating_id')
+                ->join('doctors', 'doctors.id', '=', 'doctor_rating.doctor_id')
+                ->where('doctors.id', $logged_in_doctor_id) // Filtra per il medico loggato
+                ->whereYear('ratings.created_at', $selected_year)
+                ->whereMonth('ratings.created_at', $i)
+                ->selectRaw('avg(doctor_rating.rating_id) as average_rating')
+                ->first();
 
-        foreach ($avg_ratings_per_month as $avg_rating) {
-            echo "Anno: " . $avg_rating->year . ", Mese: " . $avg_rating->month . ", Media Voti: " . $avg_rating->average_rating . "<br>";
+            $avg_ratings_per_month[$i - 1] = $ratings ? $ratings->average_rating : 0;
         }
+
         // conta il numero totale di recensioni nell'anno selezionato whereYear()
-        $selected_year_reviews_n = Review::whereYear('created_at', $selected_year)->count();
+        $selected_year_reviews_n = Review::where('doctor_id', $logged_in_doctor_id) // Filtra per il medico loggato
+            ->whereYear('created_at', $selected_year)
+            ->count();
 
         return view('admin.statistics.index', compact('avg_ratings_per_month', 'doctor', 'selected_year', 'selected_year_messages_n', 'selected_year_reviews_n', 'reviews_per_month', 'messages_per_month', 'messages_years'));
     }

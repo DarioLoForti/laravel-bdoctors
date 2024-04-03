@@ -92,7 +92,8 @@
         });
         // grafico media 
 
-        const avgReviewData = {!! json_encode($avg_ratings_per_month->pluck('average_rating')) !!};
+        const avgReviewData = {!! json_encode($avg_ratings_per_month) !!};
+        console.log(avgReviewData);
         const ctx3 = document.getElementById('myThirdChart').getContext('2d');
         new Chart(ctx3, {
             type: 'bar',
