@@ -9,7 +9,7 @@ use App\Models\Review;
 use App\Models\Doctor;
 use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class StatisticController extends Controller
 {
@@ -49,13 +49,20 @@ class StatisticController extends Controller
         }
 
         // calcolo la media dei voti avg('vote_id'), che restituisce il valore medio di vote_id delle recensioni in quel mese.
-        $avg_reviews_per_month = [];
-        for ($i = 1; $i <= 12; $i++) {
-            $avg_reviews_per_month[$i - 1] = Rating::whereYear('created_at', $selected_year)->whereMonth('created_at', $i)->avg('id');
+        $avg_ratings_per_month = Rating::join('doctor_rating', 'ratings.id', '=', 'doctor_rating.rating_id')
+            ->join('doctors', 'doctor_rating.doctor_id', '=', 'doctors.id')
+            ->selectRaw('MONTH(ratings.created_at) as month, YEAR(ratings.created_at) as year, AVG(doctor_rating.rating_id) as average_rating')
+            ->groupBy(DB::raw('YEAR(ratings.created_at)'), DB::raw('MONTH(ratings.created_at)'))
+
+            ->orderBy('month')
+            ->get();
+
+        foreach ($avg_ratings_per_month as $avg_rating) {
+            echo "Anno: " . $avg_rating->year . ", Mese: " . $avg_rating->month . ", Media Voti: " . $avg_rating->average_rating . "<br>";
         }
         // conta il numero totale di recensioni nell'anno selezionato whereYear()
         $selected_year_reviews_n = Review::whereYear('created_at', $selected_year)->count();
 
-        return view('admin.statistics.index', compact('avg_reviews_per_month', 'doctor', 'selected_year', 'selected_year_messages_n', 'selected_year_reviews_n', 'reviews_per_month', 'messages_per_month', 'messages_years'));
+        return view('admin.statistics.index', compact('avg_ratings_per_month', 'doctor', 'selected_year', 'selected_year_messages_n', 'selected_year_reviews_n', 'reviews_per_month', 'messages_per_month', 'messages_years'));
     }
 }
