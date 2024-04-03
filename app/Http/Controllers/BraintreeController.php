@@ -10,7 +10,7 @@ class BraintreeController extends Controller
 {
     public function token(Request $request)
     {
-        $sponsorship = Sponsorship::all();
+        $price = $request->price;
         $gateway = new \Braintree\Gateway([
             'environment' => env('BT_ENVIRONMENT'),
             'merchantId' => env("BT_MERCHANT_ID"),
@@ -22,7 +22,7 @@ class BraintreeController extends Controller
             $nonceFromTheClient = $request->nonce;
 
             $gateway->transaction()->sale([
-                'amount' => $sponsorship->price,
+                'amount' => $price,
                 'paymentMethodNonce' => $nonceFromTheClient,
                 'options' => [
                     'submitForSettlement' => True
