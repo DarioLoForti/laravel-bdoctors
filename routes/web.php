@@ -33,6 +33,8 @@ Route::resource('/ratings', RatingController::class);
 
 
 
+Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
+Route::any('/confirm-payment', [BraintreeController::class, 'payment'])->name('payment')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
