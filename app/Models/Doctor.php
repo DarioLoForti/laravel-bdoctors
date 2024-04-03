@@ -37,6 +37,6 @@ class Doctor extends Model
     }
     public function sponsorships()
     {
-        return $this->hasMany(Sponsorship::class);
+        return $this->belongsToMany(Sponsorship::class);
     }
 }
