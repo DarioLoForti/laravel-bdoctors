@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\ReviewController as ReviewController;
 use App\Http\Controllers\Admin\RatingController as RatingController;
 use App\Http\Controllers\Admin\SponsorshipController as SponsorshipController;
 use App\Http\Controllers\BraintreeController as BraintreeController;
-
+use App\Http\Controllers\Admin\StatisticController as StatisticController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +34,8 @@ Route::resource('/messages', MessageController::class);
 Route::resource('/reviews', ReviewController::class);
 Route::resource('/ratings', RatingController::class);
 Route::resource('/sponsorships', SponsorshipController::class);
+Route::get('/statistics', [StatisticController::class, 'index'])->name('statistics.index');
+
 
 Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
 

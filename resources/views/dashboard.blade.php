@@ -47,7 +47,7 @@
                                     </li>
 
                                     <li class="nav-item mb-2 px-2">
-                                        <a href="" class="nav-link ombra">
+                                        <a href="{{ route('statistics.index') }}" class="nav-link ombra">
                                             <i class="fa-solid fa-chart-line font-dashboard" style="color: #ffffff;"></i>
                                             <span class="ms-1 d-none d-lg-inline text-white">Statistiche</span>
                                         </a>
@@ -91,12 +91,12 @@
                                         <div class="text-white d-lg-none">
                                             Aggiungi una sponsorizzazione.
                                         </div>
-                                        <div class=" bg-button d-none d-lg-block">
+                                        <div class="  d-none d-lg-block">
                                             <a class="bg-button " href="{{ route('token') }}"><strong>Vedi le nostre
                                                     Offerte</strong>
                                             </a>
                                         </div>
-                                        <div class=" bg-button  d-lg-none">
+                                        <div class="d-lg-none">
                                             <a class=" bg-button " href="{{ route('token') }}"><strong>Offerte</strong>
                                             </a>
                                         </div>
