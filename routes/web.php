@@ -34,8 +34,8 @@ Route::resource('/messages', MessageController::class);
 Route::resource('/reviews', ReviewController::class);
 Route::resource('/ratings', RatingController::class);
 Route::resource('/sponsorships', SponsorshipController::class);
-Route::get('/statistics', [StatisticController::class, 'index'])->name('statistics.index');
-
+// Route::get('/statistics', [StatisticController::class, 'index'])->name('statistics.index');
+Route::get('/statistics/{year}', [StatisticController::class, 'index'])->name('statistics.index');
 
 Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
 
