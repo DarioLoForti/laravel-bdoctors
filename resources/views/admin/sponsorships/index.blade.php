@@ -69,8 +69,8 @@
                         <div class="col-12 d-flex justify-content-center">
                             @foreach ($sponsorships as $key => $sponsorship)
                                 <div class="card mx-3" style="width: 20rem;">
-                                    <img src="{{ Vite::asset('resources/img/' . $key + 1 . '.png') }}" class="card-img-top"
-                                        alt="...">
+                                    <img src="{{ Vite::asset('resources/img/' . $key + 1 . '.png') }}" style="width: 80%;"
+                                        class="card-img-top ms-4 mt-2" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title mb-3">{{ $sponsorship->name }}</h5>
                                         <p class="card-text"><strong>Durata:</strong> {{ $sponsorship->duration }} ore</p>
