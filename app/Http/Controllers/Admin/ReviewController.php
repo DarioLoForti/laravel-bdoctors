@@ -7,7 +7,7 @@ use App\Models\Doctor;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session; 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -23,7 +23,7 @@ class ReviewController extends Controller
         $doctor = $user->doctor;
         $reviews = $doctor->reviews;
 
-       
+
 
         return view('admin.reviews.index', compact('reviews'));
     }
@@ -53,8 +53,8 @@ class ReviewController extends Controller
 
         $review->fill($form_data);
         $review->save();
-
-        return redirect("http://localhost:5174/doctor/".Doctor::where("id", "=", $review->doctor_id)->first()->slug);
+        Session::flash('success_review', 'Recensione inviata correttamente');
+        return redirect()->back();
     }
 
     /**
@@ -98,13 +98,13 @@ class ReviewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
-{
-    // $selectedReviews = $request->input('selectedReviews', []);
-
-    
-    // Review::whereIn('id', $selectedReviews)->delete();
+    {
+        // $selectedReviews = $request->input('selectedReviews', []);
 
 
-    // return redirect()->route('reviews.index');
-}
+        // Review::whereIn('id', $selectedReviews)->delete();
+
+
+        // return redirect()->route('reviews.index');
+    }
 }

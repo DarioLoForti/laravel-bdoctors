@@ -5,8 +5,14 @@
         @if (Session::has('success_message'))
             <div class="alert alert-success">
                 {{ Session::get('success_message') }}
-                <a href="http://localhost:5174/search" class="btn btn-sm btn-primary">indietro</a>
             </div>
+            <script>
+                // Reindirizzamento automatico dopo 3 secondi
+                setTimeout(function() {
+                    var doctorSlug = "{{ $doctor->slug }}";
+                    window.location.href = 'http://localhost:5174/doctor/' + doctorSlug;
+                }, 3000); // 3000 millisecondi = 3 secondi
+            </script>
         @endif
         <div class="row">
             <div class="col-12">
