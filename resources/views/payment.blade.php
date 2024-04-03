@@ -11,6 +11,8 @@
             </div>
             <script>
                 var button = document.querySelector('#submit-button');
+                var price = <?php echo json_encode("$price", JSON_HEX_TAG); ?>;
+
                 braintree.dropin.create({
                     authorization: '{{ $token }}',
                     container: '#dropin-container'
@@ -29,13 +31,14 @@
                                         type: "POST",
                                         url: "{{ route('token') }}",
                                         data: {
-                                            nonce: payload.nonce
+                                            nonce: payload.nonce,
+                                            price: price
                                         },
                                         success: function(data) {
-                                            console.log('success', payload.nonce)
+                                            console.log('success', payload.nonce, price)
                                         },
                                         error: function(data) {
-                                            console.log('error', payload.nonce)
+                                            console.log('error', payload.nonce, price)
                                         }
                                     });
                                 });

@@ -18,8 +18,8 @@ class BraintreeController extends Controller
             'privateKey' => env("BT_PRIVATE_KEY")
         ]);
 
-        if ($request->input('nonce') != null) {
-            $nonceFromTheClient = $request->input('nonce');
+        if ($request->nonce != null) {
+            $nonceFromTheClient = $request->nonce;
 
             $gateway->transaction()->sale([
                 'amount' => $sponsorship->price,
@@ -31,7 +31,7 @@ class BraintreeController extends Controller
             return view('dashboard');
         } else {
             $clientToken = $gateway->clientToken()->generate();
-            return view('payment', ['token' => $clientToken]);
+            return view('payment', ['token' => $clientToken, 'price' => $price]);
         }
     }
 }
