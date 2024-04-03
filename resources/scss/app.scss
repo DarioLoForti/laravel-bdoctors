@@ -33,9 +33,7 @@
     width: 50%
 }
 
-body{
-    background-color: lightgray;
-}
+
 
 .bg-lightcyano{
     background-color: #285a8c;
@@ -129,4 +127,40 @@ a{
 
 .vertical{
     align-items: center;
+}
+
+@media only screen and (max-width: 991px) {
+    .font-dashboard {
+      font-size: 30px; /* Dimensione del font per schermi piccoli */
+    }
+  }
+
+  .padding-text{
+    padding-top: 16px;
+}
+@media only screen and (max-width: 764px) {
+    .padding-text{
+        padding-top: 5px; /* Dimensione del font per schermi piccoli */
+    
+    }
+    
+}
+.over {
+    overflow: hidden; /* Nasconde il testo in eccesso */
+    text-overflow: ellipsis; /* Aggiunge "..." alla fine del testo troncato */
+    white-space: nowrap; /* Evita che il testo vada a capo */
+}
+
+
+.bg-button{
+    background-color: #285a8c;
+    color: white;
+    &:hover{
+        background-color: white;
+        color: #285a8c;
+        border: 1px solid #285a8c ;
+    }
+}
+.btn-padding{
+    padding: 4px 8px;
 }

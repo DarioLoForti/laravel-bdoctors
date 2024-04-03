@@ -6,15 +6,15 @@
 
                 {{-- DASHBOARD SIDEBAR --}}
 
-                <div class="col-2">
+                <div class="col-sm-2 col-3 d-none d-md-block">
 
                     <div class="row flex-nowrap">
                         <div class="col-12 px-sm-2 px-0 bg-doctorblu">
                             <div
-                                class="d-flex flex-column align-items-center align-items-sm-start mx-2 mt-2 text-white vh-100">
+                                class="d-flex ms-3 flex-column align-items-center  mx-2 mt-2 text-white vh-100">
                                 <a href="/"
-                                    class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                                    <span class="fs-5 d-none d-sm-inline ms-4">Menu</span>
+                                    class="d-flex align-items-center pb-3 mb-md-0 me-md-5 text-white text-decoration-none">
+                                    <span class="fs-5 d-none d-lg-inline ">Menu</span>
                                 </a>
                                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                                     id="menu">
@@ -28,28 +28,28 @@
 
                                     <li class="nav-item mb-2 px-2">
                                         <a href="{{ route('admin.doctors.index') }}" class="nav-link  ombra">
-                                            <i class="fa-solid fa-user-doctor" style="color: #ffffff;"></i>
-                                            <span class="ms-1 d-none d-sm-inline text-white ">Profilo</span>
+                                            <i class="fa-solid fa-user-doctor font-dashboard" style="color: #ffffff;"></i>
+                                            <span class="ms-1 d-none d-lg-inline text-white ">Profilo</span>
                                         </a>
                                     </li>
 
                                     <li class="nav-item mb-2 px-2">
                                         <a href="{{ route('messages.index') }}" class="nav-link ombra">
-                                            <i class="fa-solid fa-message" style="color: #ffffff;"></i>
-                                            <span class="ms-1 d-none d-sm-inline text-white">Messaggi</span>
+                                            <i class="fa-solid fa-message font-dashboard" style="color: #ffffff;"></i>
+                                            <span class="ms-1 d-none d-lg-inline text-white">Messaggi</span>
                                         </a>
                                     </li>
                                     <li class="nav-item mb-2 px-2">
                                         <a href="{{ route('reviews.index') }}" class="nav-link ombra">
-                                            <i class="fa-solid fa-book-open" style="color: #ffffff;"></i>
-                                            <span class="ms-1 d-none d-sm-inline text-white">Recensioni</span>
+                                            <i class="fa-solid fa-book-open font-dashboard" style="color: #ffffff;"></i>
+                                            <span class="ms-1 d-none d-lg-inline text-white">Recensioni</span>
                                         </a>
                                     </li>
 
                                     <li class="nav-item mb-2 px-2">
                                         <a href="" class="nav-link ombra">
-                                            <i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>
-                                            <span class="ms-1 d-none d-sm-inline text-white">Statistiche</span>
+                                            <i class="fa-solid fa-chart-line font-dashboard" style="color: #ffffff;"></i>
+                                            <span class="ms-1 d-none d-lg-inline text-white">Statistiche</span>
                                         </a>
                                     </li>
 
@@ -63,7 +63,7 @@
 
                 {{-- DASHBOARD MAIN CONTENT --}}
 
-                <div class="col-10 px-4 pt-3 bg-white">
+                <div class="col-md-10 col-12 px-4 pt-3 bg-white">
                     <h1 class="text-center">Messaggi</h1>
                     <hr class="">
                     <div class="card-body">
@@ -102,11 +102,14 @@
                                                     aria-expanded="false"
                                                     aria-controls="messageCollapse{{ $loop->index }}">
                                                     <div class="container d-flex justify-content-between vertical ">
-                                                        <input type="checkbox" name="selectedMessages[]" value="{{ $message->id }}" class="form-check-input mt-0 me-3">
-                                                        <div>
-                                                            <span><strong>{{ $message->name }}</strong></span> <span class="d-none d-sm-block">{{ $message->email }}</span>   
+                                                        <div class="d-flex align-items-center">
+                                                            <input type="checkbox" name="selectedMessages[]" value="{{ $message->id }}" class="form-check-input mt-0 me-3">
+                                                            <div class="">
+                                                                <span><strong>{{ $message->name }}</strong></span> <span class="d-none d-sm-block">{{ $message->email }}</span>   
+
+                                                            </div>
                                                         </div>
-                                                        <div class="">
+                                                        <div class="ms-2 ms-sm-0">
                                                             <span class="message-text date">{{ $message->created_at->format('d-m-Y H:i') }}</span>
                                                         </div>
                                                     </div>
@@ -115,7 +118,12 @@
                                             </h2>
                                             <div id="messageCollapse{{ $loop->index }}" class="accordion-collapse collapse"
                                                 data-bs-parent="#accordionMessages">
-                                                <div class="accordion-body d-flex justify-content-between">
+                                                <div class="accordion-body  padding-text ms-2">
+                                                    <div class="over">
+                                                        <span class="d-sm-none">email: <strong>{{ $message->email }}</strong></span>
+                                                    </div>
+                                                    
+                                                    <br class="d-sm-none">
                                                     
                                                     <span class="message-text">{{ $message->text }}</span>
                                                     
