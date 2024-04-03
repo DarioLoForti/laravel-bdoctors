@@ -8,6 +8,7 @@ use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MessageController extends Controller
 {
@@ -50,7 +51,11 @@ class MessageController extends Controller
 
         $message->save();
 
-        return redirect("http://localhost:5174/doctor/".Doctor::where("id", "=", $message->doctor_id)->first()->slug);
+        Session::flash('success_message', 'Messaggio inviato correttamente');
+
+        return redirect()->back();
+
+        // return redirect("http://localhost:5174/doctor/" . Doctor::where("id", "=", $message->doctor_id)->first()->slug)->with('success_message');
     }
 
     /**
@@ -97,11 +102,10 @@ class MessageController extends Controller
     {
         $selectedMessages = $request->input('selectedMessages', []);
 
-        
+
         Message::whereIn('id', $selectedMessages)->delete();
 
-        
+
         return redirect()->route('messages.index')->with('success', 'Messaggi eliminati con successo.');
     }
-
 }

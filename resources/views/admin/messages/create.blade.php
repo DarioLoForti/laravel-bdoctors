@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="container mt-4">
+        @if (Session::has('success_message'))
+            <div class="alert alert-success">
+                {{ Session::get('success_message') }}
+                <a href="http://localhost:5174/search" class="btn btn-sm btn-primary">indietro</a>
+            </div>
+        @endif
         <div class="row">
             <div class="col-12">
                 <h3>Inserisci il tuo messaggio da inviare a <strong>{{ $doctor->user->name }}
