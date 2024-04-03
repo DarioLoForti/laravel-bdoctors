@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Braintree\Gateway;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Braintree;
+use App\Models\User;
+use App\Models\Doctor;
 use App\Models\Sponsorship;
 use Braintree\Result\Successful;
 
@@ -20,23 +24,22 @@ class BraintreeController extends Controller
         ]);
 
         if ($request->nonce != null) {
-            $nonceFromTheClient = $request->nonce;
+            $nonce = $request->nonce;
 
             $gateway->transaction()->sale([
                 'amount' => $price,
-                'paymentMethodNonce' => $nonceFromTheClient,
+                'paymentMethodNonce' => $nonce,
                 'options' => [
                     'submitForSettlement' => True
                 ]
             ]);
-            if ($result->success) {
-                // Salvataggio dell'ID della transazione o altro, se necessario
-                return redirect()->route('dashboard')->with('success', 'Pagamento completato con successo.');
-            } else {
-                // Gestione dell'errore
-                $error = $result->message;
-                return redirect()->back()->with('error', 'Errore durante il pagamento: ' . $error);
-            }
+
+            $user_id = auth()->user()->id;
+            $doctor = Doctor::where('user_id', $user_id)->first();
+            $sponsorship = Sponsorship::where('price', $price)->first();
+
+            $doctor->sponsorships()->attach($sponsorship->id, ['start_timestamp' => Carbon::now(), 'end_timestamp' => Carbon::now()->addHourss($sponsorship->duration)]);
+
         } else {
             $clientToken = $gateway->clientToken()->generate();
             return view('payment', ['token' => $clientToken, 'price' => $price]);
