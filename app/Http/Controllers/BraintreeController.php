@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Braintree;
+use Braintree\Gateway;
 use App\Models\Sponsorship;
+use Braintree\Result\Successful;
 
 class BraintreeController extends Controller
 {
@@ -28,7 +29,14 @@ class BraintreeController extends Controller
                     'submitForSettlement' => True
                 ]
             ]);
-            return view('dashboard');
+            if ($result->success) {
+                // Salvataggio dell'ID della transazione o altro, se necessario
+                return redirect()->route('dashboard')->with('success', 'Pagamento completato con successo.');
+            } else {
+                // Gestione dell'errore
+                $error = $result->message;
+                return redirect()->back()->with('error', 'Errore durante il pagamento: ' . $error);
+            }
         } else {
             $clientToken = $gateway->clientToken()->generate();
             return view('payment', ['token' => $clientToken, 'price' => $price]);

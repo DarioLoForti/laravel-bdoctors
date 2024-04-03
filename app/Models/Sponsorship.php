@@ -9,9 +9,9 @@ class Sponsorship extends Model
 {
     use HasFactory;
 
-    protected $fillable= ['name', 'price', 'duration'];
+    protected $fillable = ['name', 'price', 'duration'];
     public function sponsorships()
     {
-        return $this->hasMany(Doctor::class);
+        return $this->belongsToMany(Doctor::class);
     }
 }
