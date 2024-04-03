@@ -24,7 +24,7 @@
     <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
 </head>
 
-<body>
+<body class=" bg-white">
     <div id="app">
         @include('layouts.partials.header')
         <main class="">
