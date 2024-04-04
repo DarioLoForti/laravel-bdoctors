@@ -38,9 +38,11 @@
                         <textarea class="form-control" name="text" id="text" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-group my-3">
+                        <a href="javascript:history.back()" class="btn btn-secondary">Annulla</a>
                         <button class="btn btn-success" type="submit">Invia</button>
                     </div>
                 </form>
+                <a href=""></a>
             </div>
         </div>
     </div>

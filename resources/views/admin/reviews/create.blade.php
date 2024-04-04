@@ -38,6 +38,7 @@
                     <div class="form-group mb-3">
                         <!-- Aggiungi qui eventuali altri campi del form -->
                     </div>
+                    <a href="javascript:history.back()" class="btn btn-secondary">Annulla</a>
                     <button type="submit" class="btn btn-success ">Invia</button>
                 </form>
             </div>

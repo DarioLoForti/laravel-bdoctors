@@ -22,6 +22,12 @@ class DoctorController extends Controller
                 $q->where('start_timestamp', '<=', Carbon::now());
                 $q->where('end_timestamp', '>=', Carbon::now());
             })
+            ->when($reviewOrder, function ($query) use ($reviewOrder) {
+                return $query->withCount(['reviews'])->orderBy('reviews_count', $reviewOrder);
+            })
+            ->when($ratingOrder, function ($query) use ($ratingOrder) {
+                return $query->withAvg('ratings', 'rating')->orderBy('ratings_avg_rating', $ratingOrder);
+            })
             ->get();
 
         $doctors = Doctor::with('user')->with('specializations')
