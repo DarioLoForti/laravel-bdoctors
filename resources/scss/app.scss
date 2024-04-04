@@ -164,3 +164,29 @@ a{
 .btn-padding{
     padding: 4px 8px;
 }
+
+.border-card{
+    border: 2px solid #285a8c;
+}
+.btn-blue{
+    background-color: #285a8c;
+    color: white;
+    border: 2px solid white;
+}
+.btn-blue:hover{
+    background-color: white;
+    color: #285a8c;
+    border: 2px solid #285a8c;
+}
+
+.text-blue{
+    color: #285a8c;
+}
+
+.select{
+    background-color: #285a8c;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px 8px;
+}

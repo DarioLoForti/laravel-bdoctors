@@ -47,7 +47,7 @@
                                     </li>
 
                                     <li class="nav-item mb-2 px-2">
-                                        <a href="" class="nav-link ombra">
+                                        <a href="{{ route('statistics.index', ['year' => 2024]) }}" class="nav-link ombra">
                                             <i class="fa-solid fa-chart-line font-dashboard" style="color: #ffffff;"></i>
                                             <span class="ms-1 d-none d-lg-inline text-white">Statistiche</span>
                                         </a>
@@ -64,7 +64,7 @@
                 {{-- DASHBOARD MAIN CONTENT --}}
 
                 <div class="col-md-10 col-12 px-4 pt-3 bg-white">
-                    <h1 class="text-center">Messaggi</h1>
+                    <h1 class="text-center text-blue">Messaggi</h1>
                     <hr class="">
                     <div class="card-body">
                         <div class="accordion accordion-flush" id="accordionReviews">

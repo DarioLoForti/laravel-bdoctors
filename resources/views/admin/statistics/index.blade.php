@@ -3,10 +3,10 @@
     <div class="container">
         <div class="row justify-content-center row-gap-4 py-5">
             <div class="col-12 d-flex gap-3 align-items-center justify-content-center">
-                <h1>Le tue statistiche</h1>
-                <select id="year" name="year">
+                <h1 class="text-blue">Le tue statistiche</h1>
+                <select id="year" name="year" class="mb-1 select">
                     @foreach ($messages_years as $year)
-                        <option @if ($year == $selected_year) selected @endif value="{{ $year }}">
+                        <option class="" @if ($year == $selected_year) selected @endif value="{{ $year }}">
                             {{ $year }}</option>
                     @endforeach
                 </select>
@@ -25,6 +25,12 @@
             <div class="col-12 col-lg-6">
                 <canvas id="myThirdChart"></canvas>
             </div>
+
+        </div>
+        <div class="text-center mb-4">
+            <a href="{{ url('admin') }}" class="">
+                <button class="btn btn-blue">Dashboard</button>
+            </a>
         </div>
     </div>
 
