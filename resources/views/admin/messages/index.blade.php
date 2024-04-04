@@ -47,9 +47,12 @@
 
                                     <li class="nav-item mb-2 px-2">
                                         <a href="{{ route('statistics.index', ['year' => 2024]) }}" class="nav-link ombra">
-                                            <i class="fa-solid fa-chart-line font-dashboard" style="color: #ffffff;"></i>
-                                            <span class="ms-1 d-none d-lg-inline text-white">Statistiche</span>
-                                        </a>
+                                            <a href="{{ route('statistics.index', ['year' => 2024]) }}"
+                                                class="nav-link ombra">
+                                                <i class="fa-solid fa-chart-line font-dashboard"
+                                                    style="color: #ffffff;"></i>
+                                                <span class="ms-1 d-none d-lg-inline text-white">Statistiche</span>
+                                            </a>
                                     </li>
 
                                 </ul>
@@ -63,7 +66,7 @@
                 {{-- DASHBOARD MAIN CONTENT --}}
 
                 <div class="col-md-10 col-12 px-4 pt-3 bg-white">
-                    <h1 class="text-center">Messaggi</h1>
+                    <h1 class="text-center text-blue">Messaggi</h1>
                     <a href="{{ url('admin') }}" class="">
                         <button class="btn btn-square btn-primary ">
                             <i class="fa-solid fa-hand-point-left" style="color: #ffffff;"></i>

@@ -64,7 +64,9 @@
                             <li class="d-md-none">
                                 <a class="nav-link text-white" href="http://localhost:5174/">{{ __('Home') }}</a>
                             </li>
-                            
+                            <li class="d-md-none">
+                                <a class="nav-link text-white" href="{{ url('admin') }}">{{ __('Dashboard') }}</a>
+                            </li>
                             <li class="d-md-none">
                                 <a href="{{ route('admin.doctors.index') }}" class="nav-link  text-white">
                                     Profilo
@@ -91,8 +93,13 @@
                                 </a>
                             </li>
                             <li class="d-md-none">
-                                <a href="" class="nav-link text-white">
+                                <a href="{{ route('statistics.index', ['year' => 2024]) }}" class="nav-link text-white">
                                     Statistiche
+                                </a>
+                            </li>
+                            <li class="d-md-none">
+                                <a href="{{ route('sponsorships.index') }}" class="nav-link text-white">
+                                    Sponsorizzazione
                                 </a>
                             </li>
                             

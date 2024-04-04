@@ -30,7 +30,7 @@
                     </div>
                     <hr class="my-3">
                     <div class="col-8 d-flex align-items-center mb-3">
-                        <h1 class="">Dr. {{ $doctor->user->name }} {{ $doctor->user->surname }}</h1>
+                        <h1 class="text-blue">Dr. {{ $doctor->user->name }} {{ $doctor->user->surname }}</h1>
                     </div>
 
                     {{-- PAGE TITLE --}}
@@ -194,7 +194,7 @@
                     </div>
                     <hr>
                     <div class="col-12 my-1 text-center ">
-                        <h1 class="">Dr. {{ $doctor->user->name }} {{ $doctor->user->surname }}</h1>
+                        <h1 class="text-blue">Dr. {{ $doctor->user->name }} {{ $doctor->user->surname }}</h1>
                     </div>
                     
                     
