@@ -91,14 +91,14 @@
                                         <div class="text-white d-lg-none">
                                             Aggiungi una sponsorizzazione.
                                         </div>
-                                        <div class=" bg-button d-none d-lg-block">
-                                            <a class="bg-button " href="{{ route('sponsorships.index') }}"><strong>Vedi le
+                                        <div class="bg-button d-none d-lg-block">
+                                            <a class="bg-button" href="{{ route('sponsorships.index') }}"><strong>Vedi le
                                                     nostre
                                                     Offerte</strong>
                                             </a>
                                         </div>
-                                        <div class=" bg-button  d-lg-none">
-                                            <a class=" bg-button "
+                                        <div class="bg-button d-lg-none">
+                                            <a class="bg-button"
                                                 href="{{ route('sponsorships.index') }}"><strong>Offerte</strong>
                                             </a>
                                         </div>

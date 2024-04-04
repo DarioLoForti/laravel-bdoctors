@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Models\Specialization;
 use App\Models\Doctor;
 use App\Models\User;
@@ -23,15 +24,14 @@ class DoctorController extends Controller
         VUOTO O INESISTENTE VIENE IGNORATO.
         */
 
-        $doctors = Doctor::with('user')->with('specializations')
-            ->where('slug', 'like', '%' . $namestring . '%')
-            ->where('city', 'like', '%' . $city . '%')
-            ->when($reviewOrder, fn ($q) => $q->withCount(['reviews'])
-                ->orderBy("reviews_count", $reviewOrder))
-            ->when($ratingOrder, fn ($q) => $q->withAvg('ratings', 'rating')
-                ->orderby("ratings_avg_rating", $ratingOrder))
-            ->get();
+        $sponsored = Doctor::with('user')->with('specializations')->whereHas('sponsorships', function ($q) {
+            $q->where('start_timestamp', '<=', Carbon::now());
+            $q->where('end_timestamp', '>=', Carbon::now());
+        })->get();
 
+        $doctors = Doctor::with('user')->with('specializations')->where('slug', 'like', '%' . $namestring . '%')->where('city', 'like', '%' . $city . '%')->when($reviewOrder, fn ($q) => $q->withCount(['reviews'])->orderBy("reviews_count", $reviewOrder))->when($ratingOrder, fn ($q) => $q->withAvg('ratings', 'rating')->orderby("ratings_avg_rating", $ratingOrder))->get();
+
+        $filteredSponsored = [];
         $filteredDoctors = [];
 
         /* 
@@ -49,14 +49,34 @@ class DoctorController extends Controller
                     }
                 }
             }
+
+            foreach ($sponsored as $sponsor) {
+                foreach ($sponsor->specializations as $specialization) {
+                    if (str_contains($specialization->slug, $_REQUEST['specialization'])) {
+                        array_push($filteredSponsored, $sponsor);
+                    }
+                }
+            }
         } else {
             $filteredDoctors = $doctors;
+            $filteredSponsored = $sponsored;
         }
 
-        if ($doctors != null) {
+        $diffedDoctors = [];
+
+        foreach ($filteredDoctors as $doctor) {
+            foreach ($filteredSponsored as $sponsor) {
+                if ($doctor->id != $sponsor->id) {
+                    array_push($diffedDoctors, $doctor);
+                }
+            }
+        }
+
+        if ($diffedDoctors != null || $filteredSponsored != null) {
             return response()->json([
                 'success' => true,
-                'response' => $filteredDoctors
+                'sponsored' => $filteredSponsored,
+                'doctors' => $diffedDoctors,
             ]);
         } else {
             return response()->json([
