@@ -23,11 +23,14 @@ class DoctorController extends Controller
         VUOTO O INESISTENTE VIENE IGNORATO.
         */
 
-        $doctors = Doctor::with('user')->with('specializations')->
-        where('slug', 'like', '%' . $namestring . '%')->where('city', 'like', '%' . $city . '%')->
-        when($reviewOrder, fn ($q) => $q->withCount(['reviews'])->orderBy("reviews_count", $reviewOrder))->
-        when($ratingOrder, fn ($q) => $q->withAvg('ratings', 'rating')->orderby("ratings_avg_rating", $ratingOrder))->
-        get();
+        $doctors = Doctor::with('user')->with('specializations')
+            ->where('slug', 'like', '%' . $namestring . '%')
+            ->where('city', 'like', '%' . $city . '%')
+            ->when($reviewOrder, fn ($q) => $q->withCount(['reviews'])
+                ->orderBy("reviews_count", $reviewOrder))
+            ->when($ratingOrder, fn ($q) => $q->withAvg('ratings', 'rating')
+                ->orderby("ratings_avg_rating", $ratingOrder))
+            ->get();
 
         $filteredDoctors = [];
 

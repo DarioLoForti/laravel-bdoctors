@@ -39,7 +39,6 @@ class BraintreeController extends Controller
             $sponsorship = Sponsorship::where('price', $price)->first();
 
             $doctor->sponsorships()->attach($sponsorship->id, ['start_timestamp' => Carbon::now(), 'end_timestamp' => Carbon::now()->addHourss($sponsorship->duration)]);
-
         } else {
             $clientToken = $gateway->clientToken()->generate();
             return view('payment', ['token' => $clientToken, 'price' => $price]);
