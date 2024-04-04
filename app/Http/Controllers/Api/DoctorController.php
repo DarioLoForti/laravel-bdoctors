@@ -5,100 +5,92 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Models\Specialization;
 use App\Models\Doctor;
-use App\Models\User;
 
 class DoctorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $namestring = $_REQUEST['namestring'];
-        $city = $_REQUEST['city'];
-        $reviewOrder = $_REQUEST['reviewOrder'];
-        $ratingOrder = $_REQUEST['ratingOrder'];
+        $namestring = $request->input('namestring', '');
+        $city = $request->input('city', '');
+        $reviewOrder = $request->input('reviewOrder');
+        $ratingOrder = $request->input('ratingOrder');
+        $specialization = $request->input('specialization');
 
-        /* 
-        FA LA RICHIESTA DOVE PRENDE TUTTI I DOTTORI CON LA CITTA'
-        E IL NOME RICHIESTO DALL'UTENTE. SE IL CAMPO INSERITO DALL'UTENTE E' 
-        VUOTO O INESISTENTE VIENE IGNORATO.
-        */
+        $sponsored = Doctor::with('user')->with('specializations')
+            ->whereHas('sponsorships', function ($q) {
+                $q->where('start_timestamp', '<=', Carbon::now());
+                $q->where('end_timestamp', '>=', Carbon::now());
+            })
+            ->get();
 
-        $sponsored = Doctor::with('user')->with('specializations')->whereHas('sponsorships', function ($q) {
-            $q->where('start_timestamp', '<=', Carbon::now());
-            $q->where('end_timestamp', '>=', Carbon::now());
-        })->get();
+        $doctors = Doctor::with('user')->with('specializations')
+            ->where('slug', 'like', '%' . $namestring . '%')
+            ->where('city', 'like', '%' . $city . '%')
+            ->when($reviewOrder, function ($query) use ($reviewOrder) {
+                return $query->withCount(['reviews'])->orderBy('reviews_count', $reviewOrder);
+            })
+            ->when($ratingOrder, function ($query) use ($ratingOrder) {
+                return $query->withAvg('ratings', 'rating')->orderBy('ratings_avg_rating', $ratingOrder);
+            })
+            ->get();
 
-        $doctors = Doctor::with('user')->with('specializations')->where('slug', 'like', '%' . $namestring . '%')->where('city', 'like', '%' . $city . '%')->when($reviewOrder, fn ($q) => $q->withCount(['reviews'])->orderBy("reviews_count", $reviewOrder))->when($ratingOrder, fn ($q) => $q->withAvg('ratings', 'rating')->orderby("ratings_avg_rating", $ratingOrder))->get();
+        $filteredSponsored = $sponsored->filter(function ($doctor) use ($specialization) {
+            return $this->checkSpecialization($doctor, $specialization);
+        });
 
-        $filteredSponsored = [];
-        $filteredDoctors = [];
+        $filteredDoctors = $doctors->filter(function ($doctor) use ($specialization) {
+            return $this->checkSpecialization($doctor, $specialization);
+        });
 
-        /* 
-        CONTROLLA PRIMA SE NELLA REQUEST E' STATA INVIATA UNA SPECIALIZZAZIONE.
-        CONTROLLA OGNI SPECIALIZZAZIONE DI OGNI MEDICO PRESO IN PRECEDENZA.
-        SE UNA DELLE SPECIALIZZAZIONI DEL MEDICO COMBACIA CON QUELLA INVIATA PER REQUEST, 
-        IL MEDICO VIENE SALVATO NEL NUOVO ARRAY. 
-        */
+        $uniqueDoctors = $filteredDoctors->reject(function ($doctor) use ($filteredSponsored) {
+            return $filteredSponsored->contains('id', $doctor->id);
+        });
 
-        if (isset($_REQUEST['specialization']) && $_REQUEST['specialization'] != '') {
-            foreach ($doctors as $doctor) {
-                foreach ($doctor->specializations as $specialization) {
-                    if (str_contains($specialization->slug, $_REQUEST['specialization'])) {
-                        array_push($filteredDoctors, $doctor);
-                    }
-                }
-            }
-
-            foreach ($sponsored as $sponsor) {
-                foreach ($sponsor->specializations as $specialization) {
-                    if (str_contains($specialization->slug, $_REQUEST['specialization'])) {
-                        array_push($filteredSponsored, $sponsor);
-                    }
-                }
-            }
-        } else {
-            $filteredDoctors = $doctors;
-            $filteredSponsored = $sponsored;
-        }
-
-        $diffedDoctors = [];
-
-        foreach ($filteredDoctors as $doctor) {
-            foreach ($filteredSponsored as $sponsor) {
-                if ($doctor->id != $sponsor->id) {
-                    array_push($diffedDoctors, $doctor);
-                }
-            }
-        }
-
-        if ($diffedDoctors != null || $filteredSponsored != null) {
+        if ($uniqueDoctors->isNotEmpty() || $filteredSponsored->isNotEmpty()) {
             return response()->json([
                 'success' => true,
                 'sponsored' => $filteredSponsored,
-                'doctors' => $diffedDoctors,
+                'doctors' => $uniqueDoctors->values(),
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'response' => 'Il dottore da lei cercato non è stato trovato.'
+                'response' => 'Nessun dottore trovato.',
             ]);
         }
     }
 
+    private function checkSpecialization($doctor, $specialization)
+    {
+        if (!$specialization) {
+            return true;
+        }
+
+        foreach ($doctor->specializations as $spec) {
+            if (str_contains($spec->slug, $specialization)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function show($slug)
     {
-        $doctor = Doctor::with('user')->with('specializations')->with('reviews')->where('slug', $slug)->first();
+        $doctor = Doctor::with('user')->with('specializations')->with('reviews')
+            ->where('slug', $slug)
+            ->first();
 
         if ($doctor) {
             return response()->json([
                 'success' => true,
-                'response' => $doctor
+                'response' => $doctor,
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'response' => 'Il dottore da lei cercato non è stato trovato.'
+                'response' => 'Il dottore non è stato trovato.',
             ]);
         }
     }
