@@ -55,7 +55,7 @@ class BraintreeController extends Controller
 
         } else {
             $clientToken = $gateway->clientToken()->generate();
-            return view('payment', ['token' => $clientToken, 'price' => $price]);
+            return view('payment', ['token' => $clientToken, 'price' => $price, 'sponsorship' => $sponsorship]);
         }
     }
 }
