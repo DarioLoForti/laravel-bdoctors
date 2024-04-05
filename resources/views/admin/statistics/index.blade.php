@@ -61,8 +61,8 @@
                     label: 'Messaggi per Mese',
                     data: messageData,
                     borderWidth: 2,
-                    backgroundColor: 'rgba(115, 183, 96)',
-                    borderColor: 'rgb(115, 183, 96)'
+                    backgroundColor: 'rgba(40, 90, 140)',
+                    borderColor: 'rgb(40, 90, 140)'
                 }]
             },
             options: {
@@ -84,8 +84,8 @@
                     label: 'Recensioni per Mese',
                     data: reviewData,
                     borderWidth: 2,
-                    backgroundColor: 'rgba(152, 208, 246)',
-                    borderColor: 'rgb(152, 208, 246)'
+                    backgroundColor: 'rgba(102, 204, 153)',
+                    borderColor: 'rgb(102, 204, 153)'
                 }]
             },
             options: {
@@ -113,19 +113,19 @@
                     backgroundColor: function(context) {
                         const value = context.dataset.data[context.dataIndex];
                         if (value >= 4 && value <= 5) {
-                            return 'rgba(115, 183, 96)';
+                            return 'rgb(97, 200, 68)';
                         } else if (value >= 3 && value < 4) {
-                            return 'rgba(245, 245, 69)';
+                            return 'rgba(245, 245, 69,)';
                         } else if (value >= 2 && value < 3) {
-                            return 'rgba(244, 176, 28)';
+                            return 'rgba(244, 176, 28,)';
                         } else if (value >= 1 && value < 2) {
-                            return 'rgba(244, 33, 33)'
+                            return 'rgba(244, 33, 33,)'
                         }
                     },
                     borderColor: function(context) {
                         const value = context.dataset.data[context.dataIndex];
                         if (value >= 4 && value <= 5) {
-                            return 'rgb(115, 183, 96)';
+                            return 'rgb(97, 200, 68)';
                         } else if (value >= 3 && value < 4) {
                             return 'rgb(245, 245, 69)';
                         } else if (value >= 2 && value < 3) {
