@@ -6,7 +6,7 @@
             <div class="row">
                 {{-- DASHBOARD SIDEBAR --}}
 
-                <div class="col-sm-2 col-3 d-none d-md-block bg-doctorblu">
+                <div class="col-sm-2 col-3 d-none d-md-block bg-doctorblu ">
 
                     <div class="row flex-nowrap">
                         <div class="col-12 px-sm-2 px-0 ">
