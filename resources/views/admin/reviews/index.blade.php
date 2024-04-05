@@ -6,10 +6,10 @@
 
                 {{-- DASHBOARD SIDEBAR --}}
 
-                <div class="col-sm-2 col-3 d-none d-md-block">
+                <div class="col-sm-2 col-3 d-none d-md-block bg-doctorblu">
 
                     <div class="row flex-nowrap">
-                        <div class="col-12 px-sm-2 px-0 bg-doctorblu">
+                        <div class="col-12 px-sm-2 px-0 ">
                             <div class="d-flex ms-3 flex-column align-items-center  mx-2 mt-2 text-white vh-100">
                                 <a href="/"
                                     class="d-flex align-items-center pb-3 mb-md-0 me-md-5 text-white text-decoration-none">
@@ -46,7 +46,6 @@
                                     </li>
 
                                     <li class="nav-item mb-2 px-2">
-                                        <a href="{{ route('statistics.index', ['year' => 2024]) }}" class="nav-link ombra">
                                             <a href="{{ route('statistics.index', ['year' => 2024]) }}"
                                                 class="nav-link ombra">
                                                 <i class="fa-solid fa-chart-line font-dashboard"
