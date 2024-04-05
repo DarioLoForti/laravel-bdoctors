@@ -47,7 +47,7 @@ class BraintreeController extends Controller
             ]);
             
             if($latest_endtimestamp->greaterThan(Carbon::now())){
-                $doctor->sponsorships()->attach($sponsorship->id, ['start_timestamp' => $latest_endtimestamp, 'end_timestamp' => $latest_endtimestamp->addHours($sponsorship->duration)]);
+                $doctor->sponsorships()->attach($sponsorship->id, ['start_timestamp' => $latest_endtimestamp, 'end_timestamp' => $latest_endtimestamp->copy()->addHours($sponsorship->duration)]);
             }
             else{
                 $doctor->sponsorships()->attach($sponsorship->id, ['start_timestamp' => Carbon::now(), 'end_timestamp' => Carbon::now()->addHours($sponsorship->duration)]);
