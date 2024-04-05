@@ -37,6 +37,7 @@ class Doctor extends Model
     }
     public function sponsorships()
     {
-        return $this->belongsToMany(Sponsorship::class);
+        return $this->belongsToMany(Sponsorship::class, 'doctor_sponsorship')
+            ->withPivot('start_timestamp', 'end_timestamp');
     }
 }

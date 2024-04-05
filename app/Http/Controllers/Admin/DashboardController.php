@@ -7,6 +7,8 @@ use App\Models\Message;
 use App\Models\Review;
 use App\Models\Doctor;
 use App\Models\Rating;
+use App\Models\Sponsorship;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -15,8 +17,31 @@ class DashboardController extends Controller
     public function index()
     {
         $logged_user = Auth::user();
+        $logged_user = Auth::user();
+        $sponsorshipName = null;
+        $validityPeriod = null;
+
         if ($logged_user) {
-            $logged_in_doctor_id = $logged_user->id;
+            $logged_in_doctor_id = $logged_user->doctor->id;
+
+            // Recupera la sponsorizzazione attiva per il medico loggato
+            $activeSponsorship = Doctor::find($logged_in_doctor_id)->sponsorships()
+                ->wherePivot('start_timestamp', '<=', now())
+                ->wherePivot('end_timestamp', '>=', now())
+                ->first();
+
+            // Se è presente una sponsorizzazione attiva, recupera il nome della sponsorship e calcola il periodo di validità rimanente
+            if ($activeSponsorship) {
+                $sponsorshipName = $activeSponsorship->name;
+
+                $start = Carbon::parse($activeSponsorship->pivot->start_timestamp);
+                $end = Carbon::parse($activeSponsorship->pivot->end_timestamp);
+                $now = Carbon::now();
+
+                if ($now->lt($end)) {
+                    $validityPeriod = $now->diffInHours($end);
+                }
+            }
         }
         $messages_count = [];
         // Query per recuperare il numero di messaggi ricevuti dal medico loggato
@@ -33,6 +58,9 @@ class DashboardController extends Controller
             ->where('doctors.id', $logged_in_doctor_id)
             ->count();
 
-        return view('dashboard', compact('messages_count', 'reviews_count', 'ratings_count'));
+
+
+
+        return view('dashboard', compact('messages_count', 'reviews_count', 'ratings_count', 'sponsorshipName', 'validityPeriod'));
     }
 }
