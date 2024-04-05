@@ -65,7 +65,8 @@
                         @else
                             <div class="my-2">
                                 <div><em>Nessuna specializzazione inserita. <br> Vai nella <a
-                                            href="{{ route('profile.edit') }}" class="text-black">schermata modifica
+                                            href="{{ route('profile.edit') }}" class="text-black">schermata
+                                            modifica
                                             profilo</a> per aggiungerne una.</em></div>
                             </div>
                         @endif
