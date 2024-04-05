@@ -3,14 +3,15 @@
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <div class="logo_laravel">
-                <img width="80px" src="{{ Vite::asset('resources/img/logo.png') }}" alt="">
+                <img width="120px" src="{{ Vite::asset('resources/img/logo.png') }}" alt="">
             </div>
             {{-- config('app.name', 'Laravel') --}}
         </a>
 
         <!-- Navbar Toggler -->
-        <button class="navbar-aestethic d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-aestethic d-md-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
         </button>
 
@@ -38,11 +39,11 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white d-md-block d-none" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white d-md-block d-none" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
-                        
+
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('admin') }}">{{ __('Dashboard') }}</a>
@@ -57,7 +58,7 @@
                                 @csrf
                             </form>
                         </div>
-                        
+
                     </li>
                     <div class="row ">
                         <div class="col-6 col-md-12 text-center"> <!-- Prima colonna -->
@@ -74,12 +75,12 @@
                             </li>
                             <li class="d-md-none">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                    {{ __('Logout') }}
                                 </a>
                             </li>
-                           
+
                         </div>
                         <div class="col-6 col-md-12 text-center"> <!-- Seconda colonna -->
                             <li class="d-md-none">
@@ -102,10 +103,10 @@
                                     Sponsorizzazione
                                 </a>
                             </li>
-                            
+
                         </div>
                     </div>
-                    
+
                 @endguest
             </ul>
         </div>
