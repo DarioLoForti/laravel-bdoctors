@@ -1,6 +1,6 @@
 @extends('layouts.style')
 @section('content')
-    <div class="">
+    <div class=" overflow-x-hidden ">
         <div class="row ">
             <div class="d-flex">
 

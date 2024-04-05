@@ -1,6 +1,6 @@
 @extends('layouts.style')
 @section('content')
-    <div class="container">
+    <div class="container overflow-x-hidden ">
         <div class="row justify-content-center row-gap-4 py-5">
             <div class="col-12 d-flex gap-3 align-items-center justify-content-center">
                 <h1 class="text-blue">Le tue statistiche</h1>

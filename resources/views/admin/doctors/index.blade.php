@@ -1,6 +1,6 @@
 @extends('layouts.style')
 @section('content')
-    <div class="container  my-3 d-none d-md-block">
+    <div class="container  my-3 d-none d-md-block overflow-x-hidden ">
         <div class="row">
             <div class="container mb-3 bg-white rounded">
                 <div class="row mb-2">
