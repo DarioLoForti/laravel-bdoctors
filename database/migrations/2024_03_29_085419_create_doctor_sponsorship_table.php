@@ -23,8 +23,8 @@ return new class extends Migration
             $table->unsignedBigInteger('sponsorship_id');
             $table->foreign('sponsorship_id')->references('id')->on('sponsorships');
 
-            $table->dateTime('start_timestamp')->nullable();
-            $table->dateTime('end_timestamp')->nullable();
+            $table->timestamp('start_timestamp')->nullable();
+            $table->timestamp('end_timestamp')->nullable();
         });
     }
 
