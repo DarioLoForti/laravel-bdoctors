@@ -62,7 +62,27 @@
                 {{-- DASHBOARD MAIN CONTENT --}}
 
                 <div class="col-md-10 col-12 px-4 pt-3 bg-white">
-                    <h1 class="text-center my-5 text-blue">Le nostre Sponsorizzazioni</h1>
+                    <h1 class="text-center mt-5 text-blue">Le nostre Sponsorizzazioni</h1>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8 mt-4 ">
+                            <p class="text-center">Con i nostri pacchetti promozionali, ottieni: </p>
+                            <p><strong>Massima visibilità:</strong><br>
+                                Il tuo profilo apparirà in cima alla Homepage e nelle ricerche,
+                                aumentando la tua esposizione agli utenti.</p>
+                            <p><strong>Priorità nella ricerca:</strong><br>
+                                Sarai sempre posizionato sopra i profili non sponsorizzati che
+                                soddisfano gli stessi criteri di ricerca.</p>
+                            <p><strong>Flessibilità temporale:</strong><br>
+                                Scegli tra pacchetti di 24, 72 o 144 ore per adattare la tua
+                                visibilità alle tue esigenze.</p>
+                            <p><strong>Pagamento semplice:</strong><br>
+                                Sicuro e veloce tramite carta di credito.
+                                Scegli la sponsorizzazione per raggiungere più pazienti e aumentare la tua visibilità in
+                                modo rapido ed efficace.</p>
+                            </p>
+                        </div>
+                    </div>
                     <div class="row mb-4">
                         @foreach ($sponsorships as $key => $sponsorship)
                             <div class="col-12 col-md-4 mt-2 d-flex justify-content-center  ">
@@ -88,6 +108,7 @@
                             </div>
                         @endforeach
                     </div>
+
                 </div>
             </div>
         </div>
