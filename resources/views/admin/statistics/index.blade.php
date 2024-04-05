@@ -61,7 +61,7 @@
                     label: 'Messaggi per Mese',
                     data: messageData,
                     borderWidth: 2,
-                    backgroundColor: 'rgba(115, 183, 96, 0.3)',
+                    backgroundColor: 'rgba(115, 183, 96)',
                     borderColor: 'rgb(115, 183, 96)'
                 }]
             },
@@ -84,7 +84,7 @@
                     label: 'Recensioni per Mese',
                     data: reviewData,
                     borderWidth: 2,
-                    backgroundColor: 'rgba(152, 208, 246, 0.5)',
+                    backgroundColor: 'rgba(152, 208, 246)',
                     borderColor: 'rgb(152, 208, 246)'
                 }]
             },
@@ -113,13 +113,13 @@
                     backgroundColor: function(context) {
                         const value = context.dataset.data[context.dataIndex];
                         if (value >= 4 && value <= 5) {
-                            return 'rgba(115, 183, 96, 0.5)';
+                            return 'rgba(115, 183, 96)';
                         } else if (value >= 3 && value < 4) {
-                            return 'rgba(245, 245, 69, 0.5)';
+                            return 'rgba(245, 245, 69)';
                         } else if (value >= 2 && value < 3) {
-                            return 'rgba(244, 176, 28, 0.5)';
+                            return 'rgba(244, 176, 28)';
                         } else if (value >= 1 && value < 2) {
-                            return 'rgba(244, 33, 33, 0.5)'
+                            return 'rgba(244, 33, 33)'
                         }
                     },
                     borderColor: function(context) {
