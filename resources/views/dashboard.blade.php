@@ -65,15 +65,12 @@
 
                 <div class="col-md-10 col-12 bg-white">
                     <div class="container">
-                        <h2 class="fs-4 text-myblu my-4 text-center text-lg-start">
-                            {{ __('Dashboard') }}
-                        </h2>
                         <div class="row justify-content-center">
 
                             {{-- WELCOME HEADER --}}
 
                             <div class="col-8">
-                                <h1 class="text-mygreen mb-5 text-center">Benvenuto in BDoctors <br> Dr.
+                                <h1 class="text-mygreen my-3 text-center">Benvenuto in BDoctors <br> Dr.
                                     {{ Auth::user()->name }} {{ Auth::user()->surname }}.
                                 </h1>
                             </div>
@@ -81,8 +78,8 @@
 
                             {{-- NOTIFICATION: YOU HAVE BOUGHT NO SPONSORSHIP --}}
 
-                            <div class="row my-3 ">
-                                @if (Auth::user()->doctor->sponsorship == null)
+                            @if (Auth::user()->doctor->sponsorship == null)
+                                <div class="row my-3 ">
                                     <div
                                         class="col-12 bg-blue p-3 rounded d-flex justify-content-between align-items-center">
                                         <div class="text-white d-none d-lg-block">
@@ -103,17 +100,69 @@
                                             </a>
                                         </div>
                                     </div>
-                                @endif
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
+                                </div>
+                            @endif
 
+                            <div class="row justify-content-center row-gap-4 py-3">
+                                <div class="col-12 d-flex gap-3 align-items-center justify-content-center">
+                                    <h1 class="text-blue">Le tue statistiche Generali</h1>
+                                </div>
+                                <div class="col-12 d-flex justify-content-center">
+                                    <h6>Hai ricevuto {{ $messages_count }} messaggi
+                                        ,
+                                        {{ $reviews_count }} recensioni e {{ $ratings_count }} voti</h6>
+                                </div>
+                                <div class="col-12 col-lg-9 d-flex justify-content-center">
+                                    <canvas id="myPieChart"></canvas>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const message = {!! json_encode($messages_count) !!}
+        const review = {!! json_encode($reviews_count) !!}
+        const rating = {!! json_encode($ratings_count) !!}
+
+        var ctx = document.getElementById('myPieChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Messaggi', 'Recensioni', 'Voti'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [
+                        message,
+                        review,
+                        rating
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132)',
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 206, 86)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132)',
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 206, 86)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
 @endsection
