@@ -11,7 +11,7 @@
 
                     <div class="row flex-nowrap">
                         <div class="col-12 px-sm-2 px-0 bg-doctorblu">
-                            <div class="d-flex ms-3 flex-column align-items-center  mx-2 mt-2 text-white vh-100">
+                            <div class="d-flex ms-3 flex-column align-items-center mx-2 mt-2 text-white vh-100">
                                 <a href="/"
                                     class="d-flex align-items-center pb-3 mb-md-0 me-md-5 text-white text-decoration-none">
                                     <span class="fs-5 d-none d-lg-inline ">Menu</span>
@@ -105,22 +105,11 @@
                                     </div>
                                 @endif
                             </div>
+                            <div class="row">
+                                <div class="col-12">
 
-
-
-                            {{-- DOCTOR PROFILE PICTURE --}}
-
-                            {{--                             
-                                <div class="row">
-                                    @if (Auth::user()->doctor)
-                                        <div class="col-12">
-                                            <div class="jumbo">
-                                                <img class="jumbo-img" src="{{ Auth::user()->doctor->image }}">
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div> 
-                            --}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
