@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function index()
     {
         $logged_user = Auth::user();
-        $logged_user = Auth::user();
+
         $sponsorshipName = null;
         $validityPeriod = null;
 

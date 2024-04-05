@@ -20,12 +20,12 @@ class BraintreeController extends Controller
         $doctor = Doctor::where('user_id', $user_id)->first();
         $sponsorship = Sponsorship::where('price', $price)->first();
 
-        $latest = null;
         $latest_endtimestamp = Carbon::now();
 
-        if(count($doctor->sponsorships) > 0){
-            $latest = $doctor->sponsorships()->latest()->first()->pivot->get(['start_timestamp','end_timestamp'])->first();
-            $latest_endtimestamp = Carbon::createFromFormat('Y-m-d H:i:s', $latest->end_timestamp);
+        // Verifica se il medico ha già una sponsorizzazione attiva
+        if ($doctor->sponsorships->isNotEmpty()) {
+            $latest_sponsorship = $doctor->sponsorships->last();
+            $latest_endtimestamp = Carbon::createFromFormat('Y-m-d H:i:s', $latest_sponsorship->pivot->end_timestamp);
         }
 
         $gateway = new \Braintree\Gateway([
@@ -45,14 +45,9 @@ class BraintreeController extends Controller
                     'submitForSettlement' => True
                 ]
             ]);
-            
-            if($latest_endtimestamp->greaterThan(Carbon::now())){
-                $doctor->sponsorships()->attach($sponsorship->id, ['start_timestamp' => $latest_endtimestamp, 'end_timestamp' => $latest_endtimestamp->copy()->addHours($sponsorship->duration)]);
-            }
-            else{
-                $doctor->sponsorships()->attach($sponsorship->id, ['start_timestamp' => Carbon::now(), 'end_timestamp' => Carbon::now()->addHours($sponsorship->duration)]);
-            }
 
+            // Aggiorna la sponsorizzazione del medico
+            $doctor->sponsorships()->syncWithoutDetaching([$sponsorship->id => ['start_timestamp' => $latest_endtimestamp, 'end_timestamp' => $latest_endtimestamp->copy()->addHours($sponsorship->duration)]]);
         } else {
             $clientToken = $gateway->clientToken()->generate();
             return view('payment', ['token' => $clientToken, 'price' => $price, 'sponsorship' => $sponsorship]);
