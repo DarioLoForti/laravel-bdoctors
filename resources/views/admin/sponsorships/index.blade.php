@@ -110,7 +110,7 @@
                                             </div>
                                             <div>
                                                 <a href="{{ route('token', ['price' => $sponsorship->price]) }}"
-                                                    class="btn btn-blue ">Acquista.</a>
+                                                    class="btn btn-blue ">Acquista</a>
 
                                             </div>
                                         </div>
