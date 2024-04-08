@@ -77,7 +77,7 @@
 
         
     </style>
-        <div class="v-100 bg-linear-gradient pb-5">
+        <div class="altezza-sponsor bg-linear-gradient pb-5">
             <div class="container pt-5 ">
                 <div class="card text-center py-3 bg-transparent ">
                     <div class=" text-white">
