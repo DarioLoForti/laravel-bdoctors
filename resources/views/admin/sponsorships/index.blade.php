@@ -26,7 +26,7 @@
                 </div>
                 <div class="row mb-4">
                     @foreach ($sponsorships as $key => $sponsorship)
-                        <div class="col-12 col-md-4 mt-2 d-flex justify-content-center  ">
+                        <div class="col-12 col-lg-4 mt-2 d-flex justify-content-center  ">
                             <div class="content">
 
                                 <div class="card-sponsor border-card raised-effect">
@@ -44,8 +44,9 @@
 
                                         </div>
                                         <div class="price">
-                                            <span><strong><i class="fa-solid fa-euro-sign"></i></strong> {{ $sponsorship->price }}
-                                                </span>
+                                            <span><strong><i class="fa-solid fa-euro-sign"></i></strong>
+                                                {{ $sponsorship->price }}
+                                            </span>
 
                                         </div>
                                         <div>

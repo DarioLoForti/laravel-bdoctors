@@ -110,7 +110,7 @@
                                 <div class="d-flex justify-content-between aling-item-center mt-4">
                                     <strong>Curriculum</strong>
                                     <a target="_blank" href="{{ asset('storage/' . $doctor->cv) }}" class="mx-2">
-                                        <button class="btn btn-square btn-primary ">
+                                        <button class="btn btn-square bg-button ">
                                             <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
                                         </button>
                                     </a>
