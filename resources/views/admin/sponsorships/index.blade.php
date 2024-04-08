@@ -38,14 +38,14 @@
                                         <h2 style="color: #285a8c; ">{{ $sponsorship->name }}
                                         </h2>
                                         <div class="duration">
-                                            <span><strong>Durata:</strong>
+                                            <span><strong><i class="fa-regular fa-clock"></i></strong>
                                                 {{ $sponsorship->duration }}
                                                 ore</span>{{-- <br><br> --}}
 
                                         </div>
                                         <div class="price">
-                                            <span><strong>Prezzo:</strong> {{ $sponsorship->price }}
-                                                €</span>
+                                            <span><strong><i class="fa-solid fa-euro-sign"></i></strong> {{ $sponsorship->price }}
+                                                </span>
 
                                         </div>
                                         <div>
