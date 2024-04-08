@@ -1,25 +1,56 @@
 @extends('layouts.style')
 
 @section('content')
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #success-message {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .braintree-card {
+            width: 400px
+        }
+
+        .braintree-upper-container:before {
+            background-color: white
+        }
+    </style>
 
     <body>
-        <div class="container">
-            <div>
-                Conferma il pagamento di <strong>{{ $sponsorship->price }}</strong> euro
-                per <strong>{{ $sponsorship->name }}</strong>, della durata di <strong>{{ $sponsorship->duration }}</strong>
-                ore?
+        <div class="container mt-5">
+            <div class="card text-center p-4">
+                <div class="mb-3">
+                    <h4 class="mb-3">Conferma Pagamento</h4>
+                    <p>Si sta procedendo al pagamento di <strong>{{ $sponsorship->price }}</strong> euro per il servizio
+                        <strong>{{ $sponsorship->name }}</strong>, della durata di
+                        <strong>{{ $sponsorship->duration }}</strong> ore.
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="py-12">
-            @csrf
-            <div id="dropin-container" style="display: flex;justify-content: center;align-items: center;"></div>
-            <div style="display: flex;justify-content: center;align-items: center; color: white">
-                <a id="submit-button" class="btn btn-sm btn-success">Paga</a>
-                <a href="javascript:history.back()" class="btn btn-sm btn-secondary ms-2">Indietro</a>
-            </div>
-            <!-- Aggiunta del div per il messaggio di conferma -->
-            <div id="success-message" class="alert alert-success text-center" style="display:none; margin-top: 10px;">
-                Pagamento avvenuto con successo!
+            <div class="py-4 text-center">
+                @csrf
+                <div id="dropin-container"></div>
+                <div>
+                    <button id="submit-button" class="btn btn-success">Paga</button>
+                    <a href="javascript:history.back()" class="btn btn-secondary ms-2">Indietro</a>
+                </div>
+                <div id="success-message" class="alert alert-success mt-3" style="display: none;">
+                    Pagamento avvenuto con successo!
+                </div>
             </div>
         </div>
         <script>
