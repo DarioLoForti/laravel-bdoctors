@@ -26,7 +26,7 @@
         }
 
         .braintree-card {
-            width: 400px
+            max-width: 400px
         }
 
         .braintree-upper-container:before {
@@ -77,11 +77,11 @@
 
         
     </style>
-        <div class="bg-linear-gradient vh-100">
+        <div class="v-100 bg-linear-gradient pb-5">
             <div class="container pt-5 ">
                 <div class="card text-center py-3 bg-transparent ">
                     <div class=" text-white">
-                        <h4 class="mb-3">Conferma di Pagamento</h4>
+                        <h4 class="mb-3">Riepilogo Pagamento</h4>
                         <p>Si sta procedendo al pagamento di <strong class="color-blue">{{ $sponsorship->name }}</strong> della durata di
                             <strong class="color-blue">{{ $sponsorship->duration }} ore</strong>, per 
                             <strong class="color-blue">{{ $sponsorship->price }} €</strong>.
