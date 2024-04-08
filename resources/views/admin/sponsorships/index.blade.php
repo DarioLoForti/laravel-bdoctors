@@ -8,16 +8,16 @@
                     <div class="col-2"></div>
                     <div class="col-8 mt-4 ">
                         <p class="text-center text-white">Con i nostri pacchetti promozionali, ottieni: </p>
-                        <p class="text-white"><strong>Massima visibilità:</strong><br>
+                        <p class="text-white"><strong class="text-blue">Massima visibilità:</strong><br>
                             Il tuo profilo apparirà in cima alla Homepage e nelle ricerche,
                             aumentando la tua esposizione agli utenti.</p>
-                        <p class="text-white"><strong>Priorità nella ricerca:</strong><br>
+                        <p class="text-white"><strong class="text-blue">Priorità nella ricerca:</strong><br>
                             Sarai sempre posizionato sopra i profili non sponsorizzati che
                             soddisfano gli stessi criteri di ricerca.</p>
-                        <p class="text-white"><strong>Flessibilità temporale:</strong><br>
+                        <p class="text-white"><strong class="text-blue">Flessibilità temporale:</strong><br>
                             Scegli tra pacchetti di 24, 72 o 144 ore per adattare la tua
                             visibilità alle tue esigenze.</p>
-                        <p class="text-white"><strong>Pagamento semplice:</strong><br>
+                        <p class="text-white"><strong class="text-blue">Pagamento semplice:</strong><br>
                             Sicuro e veloce tramite carta di credito.
                             Scegli la sponsorizzazione per raggiungere più pazienti e aumentare la tua visibilità in
                             modo rapido ed efficace.</p>

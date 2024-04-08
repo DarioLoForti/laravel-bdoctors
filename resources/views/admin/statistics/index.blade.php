@@ -1,6 +1,8 @@
 @extends('layouts.style')
 @section('content')
-    <div class="container overflow-x-hidden ">
+<div class="bg-linear-gradient">
+
+    <div class="container  ">
         <div class="row justify-content-center row-gap-4 py-5">
             <div class="col-12 d-flex gap-3 align-items-center justify-content-center">
                 <h1 class="text-blue">Le tue statistiche</h1>
@@ -11,7 +13,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-12 d-flex justify-content-center">
+            <div class="col-12 d-flex justify-content-center text-white">
                 <h6>Nel {{ $selected_year }} hai ricevuto {{ $selected_year_messages_n }} messaggi e
                     {{ $selected_year_reviews_n }} recensioni</h6>
             </div>
@@ -27,12 +29,13 @@
             </div>
 
         </div>
-        <div class="text-center mb-4">
+        <div class="text-center pb-4">
             <a href="{{ url('admin') }}" class="">
                 <button class="btn btn-blue">Dashboard</button>
             </a>
         </div>
     </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -68,8 +71,30 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'white' // Colore del testo dell'asse Y
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)' // Colore della griglia dell'asse Y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: 'white' // Colore del testo dell'asse X
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)' // Colore della griglia dell'asse X
+                        }
                     }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white' // Colore del testo delle legende
+                        }
+                    }
+                
                 }
             }
         });
@@ -91,8 +116,30 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'white' // Colore del testo dell'asse Y
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)' // Colore della griglia dell'asse Y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: 'white' // Colore del testo dell'asse X
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)' // Colore della griglia dell'asse X
+                        }
                     }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white' // Colore del testo delle legende
+                        }
+                    }
+                
                 }
             }
         });
@@ -140,8 +187,29 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 5
+                        ticks: {
+                            color: 'white' // Colore del testo dell'asse Y
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)' // Colore della griglia dell'asse Y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: 'white' // Colore del testo dell'asse X
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)' // Colore della griglia dell'asse X
+                        }
                     }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white' // Colore del testo delle legende
+                        }
+                    }
+                
                 }
             }
         });
