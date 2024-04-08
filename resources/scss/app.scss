@@ -216,3 +216,125 @@ a{
     transform: perspective(1000px);
     background-color: white;
 }
+
+.content{
+    position: relative;
+  }
+  
+  .content .card-sponsor{
+    position: relative;
+    width: 320px;
+    height: 490px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  
+
+  
+ 
+  
+  .content .card-sponsor:after{
+    
+    position: absolute;
+    top: 30%;
+    left: -20%;
+    font-size: 12em;
+    font-weight: 800;
+    font-style: italic;
+    color: rgba(255,255,25,0.05)
+  }
+  
+  .content .card-sponsor .imgBx{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10000;
+    width: 100%;
+    height: 280px;
+    transition: 0.5s;
+  }
+  
+  .content .card-sponsor:hover .imgBx{
+    top: 0%;
+    transform: translateY(0%);
+      
+  }
+  .content .card-sponsor .imgBx img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 270px;
+  }
+  
+  .content .card-sponsor .card-body{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+  }
+  
+  .content .card-sponsor:hover .card-body{
+    height: 210px;
+  }
+  
+  .content .card-sponsor .card-body h2{
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .content .card-sponsor .card-body .duration, .content .card-sponsor .card-body .price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    transition: 0.5s;opacity: 0;
+    visibility: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  .content .card-sponsor:hover .card-body .duration{
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.5s;
+  }
+  
+  .content .card-sponsor:hover .card-body .price{
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.6s;
+  }
+  
+  .content .card-sponsor .card-body .duration span, .content .card-sponsor .card-body .price span{
+    margin: 8px 0px;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 10px;
+  }
+  
+  
+  .content .card-sponsor .card-body a{
+    font-weight: 300;  
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.5s;
+    margin-top: 0;
+  }
+  
+  .content .card-sponsor:hover .card-body a{
+    opacity: 1;
+    transform: translateY(0px);
+    transition-delay: 0.75s;
+    
+  }
+   

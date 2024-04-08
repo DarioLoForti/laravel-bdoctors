@@ -86,21 +86,33 @@
                     <div class="row mb-4">
                         @foreach ($sponsorships as $key => $sponsorship)
                             <div class="col-12 col-md-4 mt-2 d-flex justify-content-center  ">
-                                <div class="card border-card raised-effect" style="width: 20rem;">
-                                    <div class="d-flex justify-content-center align-content-center ">
-                                        <img src="{{ Vite::asset('resources/img/' . $key + 1 . '.png') }}"
-                                            style="width: 80%;" class="  mt-2" alt="...">
+                                <div class="content">
 
-                                    </div>
-                                    <div class="card-body ">
-                                        <h2 class="card-title mb-3" style="color: #285a8c; ">{{ $sponsorship->name }}</h2>
-                                        <span class="card-text"><strong>Durata:</strong> {{ $sponsorship->duration }}
-                                            ore</span><br><br>
-                                        <span class="card-text "><strong>Prezzo:</strong> {{ $sponsorship->price }} €</span>
-                                        <div class="text-center mt-4">
-                                            <a href="{{ route('token', ['price' => $sponsorship->price]) }}"
-                                                class="btn btn-blue ">Acquista</a>
+                                    <div class="card-sponsor border-card raised-effect">
+                                        <div class=" imgBx ">
+                                            <img src="{{ Vite::asset('resources/img/' . $key + 1 . '.png') }}"
+                                                alt="...">
 
+                                        </div>
+                                        <div class="card-body">
+                                            <h2 style="color: #285a8c; ">{{ $sponsorship->name }}
+                                            </h2>
+                                            <div class="duration">
+                                                <span><strong>Durata:</strong>
+                                                    {{ $sponsorship->duration }}
+                                                    ore</span>{{-- <br><br> --}}
+
+                                            </div>
+                                            <div class="price">
+                                                <span><strong>Prezzo:</strong> {{ $sponsorship->price }}
+                                                    €</span>
+
+                                            </div>
+                                            <div>
+                                                <a href="{{ route('token', ['price' => $sponsorship->price]) }}"
+                                                    class="btn btn-blue ">Acquista</a>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
