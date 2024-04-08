@@ -46,7 +46,11 @@ class BraintreeController extends Controller
             ]);
 
             // Aggiorna la sponsorizzazione del medico
-            $doctor->sponsorships()->syncWithoutDetaching([$sponsorship->id => ['start_timestamp' => $latest_endtimestamp, 'end_timestamp' => $latest_endtimestamp->copy()->addHours($sponsorship->duration)]]);
+            if ($latest_endtimestamp->greaterThan(Carbon::now())) {
+                $doctor->sponsorships()->attach($sponsorship->id, ['start_timestamp' => $latest_endtimestamp, 'end_timestamp' => $latest_endtimestamp->copy()->addHours($sponsorship->duration)]);
+            } else {
+                $doctor->sponsorships()->attach($sponsorship->id, ['start_timestamp' => Carbon::now(), 'end_timestamp' => Carbon::now()->addHours($sponsorship->duration)]);
+            }
         } else {
             $clientToken = $gateway->clientToken()->generate();
             return view('payment', ['token' => $clientToken, 'price' => $price, 'sponsorship' => $sponsorship]);
