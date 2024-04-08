@@ -5,8 +5,9 @@
     <body>
         <div class="container">
             <div>
-                Conferma il pagamento di <strong>{{$sponsorship->price}}</strong> euro
-                per <strong>{{$sponsorship->name}}</strong>, della durata di <strong>{{$sponsorship->duration}}</strong> ore?
+                Conferma il pagamento di <strong>{{ $sponsorship->price }}</strong> euro
+                per <strong>{{ $sponsorship->name }}</strong>, della durata di <strong>{{ $sponsorship->duration }}</strong>
+                ore?
             </div>
         </div>
         <div class="py-12">
@@ -68,6 +69,5 @@
                 });
             });
         </script>
-        </div>
     </body>
 @endsection

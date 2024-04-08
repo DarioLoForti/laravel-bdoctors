@@ -22,10 +22,9 @@ class BraintreeController extends Controller
 
         $latest_endtimestamp = Carbon::now();
 
-        // Verifica se il medico ha già una sponsorizzazione attiva
-        if ($doctor->sponsorships->isNotEmpty()) {
-            $latest_sponsorship = $doctor->sponsorships->last();
-            $latest_endtimestamp = Carbon::createFromFormat('Y-m-d H:i:s', $latest_sponsorship->pivot->end_timestamp);
+        if (count($doctor->sponsorships) > 0) {
+            $latest = $doctor->sponsorships()->get(['start_timestamp', 'end_timestamp'])->last();
+            $latest_endtimestamp = Carbon::createFromFormat('Y-m-d H:i:s', $latest->end_timestamp);
         }
 
         $gateway = new \Braintree\Gateway([
