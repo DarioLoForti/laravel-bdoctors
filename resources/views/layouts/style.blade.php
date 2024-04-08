@@ -27,7 +27,7 @@
 <body class=" bg-white ">
     <div id="app">
         @include('layouts.partials.header')
-        <main class="">
+        <main class="overflow-x-hidden">
             @yield('content')
         </main>
     </div>

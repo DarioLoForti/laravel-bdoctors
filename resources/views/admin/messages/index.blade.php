@@ -66,7 +66,7 @@
                 <div class="col-md-10 col-12 px-4 pt-3 bg-white">
                     <h1 class="text-center text-blue">Messaggi</h1>
                     <a href="javascript:history.back()" class="">
-                        <button class="btn btn-square btn-primary ">
+                        <button class="btn btn-square btn-back ">
                             <i class="fa-solid fa-hand-point-left" style="color: #ffffff;"></i>
                         </button>
                     </a>

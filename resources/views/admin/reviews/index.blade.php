@@ -67,7 +67,7 @@
                 <div class="col-md-10 col-12 px-4 pt-3 bg-white tutto-schermo">
                     <h1 class="text-center text-blue">Recensioni</h1>
                     <a href="javascript:history.back()" class="">
-                        <button class="btn btn-square btn-primary ">
+                        <button class="btn btn-square btn-back ">
                             <i class="fa-solid fa-hand-point-left" style="color: #ffffff;"></i>
                         </button>
                     </a>

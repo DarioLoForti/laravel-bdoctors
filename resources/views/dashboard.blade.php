@@ -3,7 +3,7 @@
 @section('content')
     <div class="">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row ">
                 {{-- DASHBOARD SIDEBAR --}}
 
                 <div class="col-sm-2 col-3 d-none d-md-block bg-doctorblu ">
@@ -62,14 +62,14 @@
 
                 {{-- DASHBOARD MAIN CONTENT --}}
 
-                <div class="col-md-10 col-12 bg-white">
+                <div class="col-md-10 col-12 bg-white bg-linear-gradient-2">
                     <div class="container">
                         <div class="row justify-content-center">
 
                             {{-- WELCOME HEADER --}}
 
                             <div class="col-8">
-                                <h1 class="text-mygreen my-3 text-center">Benvenuto in BDoctors <br> Dr.
+                                <h1 class="text-mygreen my-3 text-center text-responsive-color">Benvenuto in BDoctors <br> Dr.
                                     {{ Auth::user()->name }} {{ Auth::user()->surname }}.
                                 </h1>
                             </div>
@@ -114,10 +114,10 @@
 
                             <div class="row justify-content-center row-gap-4 py-3">
                                 <div class="col-12 d-flex gap-3 align-items-center justify-content-center">
-                                    <h1 class="text-blue">Le tue statistiche Generali</h1>
+                                    <h1 class="text-blue text-responsive-color">Le tue statistiche Generali</h1>
                                 </div>
                                 <div class="col-12 d-flex justify-content-center">
-                                    <h6>Hai ricevuto {{ $messages_count }} messaggi
+                                    <h6 class="text-responsive-color">Hai ricevuto {{ $messages_count }} messaggi
                                         ,
                                         {{ $reviews_count }} recensioni e {{ $ratings_count }} voti</h6>
                                 </div>
@@ -171,6 +171,13 @@
                             beginAtZero: true
                         }
                     }]
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black'
+                        }
+                    }
                 }
             }
         });
