@@ -9,6 +9,10 @@
     box-sizing: border-box;
     
 }
+
+.card-sponsor{
+    background-color: rgb(220, 220, 220) !important;
+}
 .bg-blue{
     background-color: #003366;
 }
@@ -272,7 +276,7 @@ a{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 270px;
+    width: 500px;
   }
   
   .content .card-sponsor .card-body{
@@ -313,6 +317,15 @@ a{
     visibility: visible;
     transition-delay: 0.5s;
   }
+  .content .card-sponsor .misure-img {
+    transition: width 1s;
+  }
+  
+  .content .card-sponsor:hover .misure-img {
+    width: 270px;
+  }
+  
+  
   
   .content .card-sponsor:hover .card-body .price{
     opacity: 1;
@@ -380,5 +393,7 @@ a{
     min-height: 1000px;
 }
 
-
+// .misure-img{
+//     width: 500px !important;
+// }
 

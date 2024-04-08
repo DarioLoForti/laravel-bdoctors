@@ -32,7 +32,7 @@
 
                                 <div class="card-sponsor border-card raised-effect">
                                     <div class=" imgBx ">
-                                        <img src="{{ Vite::asset('resources/img/' . $key + 1 . '.png') }}" alt="...">
+                                        <img class="misure-img" src="{{ Vite::asset('resources/img/' . $key + 5 . '.png') }}" alt="...">
 
                                     </div>
                                     <div class="card-body">
