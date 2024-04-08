@@ -134,7 +134,7 @@ return [
     [
         "name" => "Olivia Russo",
         "email" => "olivia@mail.it",
-        "text" => "Il dottore è stato molto professionale e disponibile durante la visita. Ha ascoltato attentamente le mie preoccupazioni e mi ha fornito un trattamento efficace. Lo consiglio.",
+        "text" => "  ",
     ],
     [
         "name" => "Pietro De Luca",
@@ -171,7 +171,7 @@ return [
         "email" => "davide@mail.it",
         "text" => "Ho avuto una buona esperienza con il dottore. È stato molto gentile, attento e ha fornito un ottimo trattamento per i miei sintomi. Grazie!",
     ],
-[
+    [
         "name" => "Alessia Riva",
         "email" => "alessia@mail.it",
         "text" => "Il dottore è stato molto professionale e competente durante la visita. Ha risposto a tutte le mie domande in modo chiaro e ha fornito un ottimo trattamento per i miei sintomi. Lo consiglio vivamente.",
@@ -266,7 +266,7 @@ return [
         "email" => "chiara@mail.it",
         "text" => "Il dottore è stato molto professionale e disponibile durante la visita. Ha ascoltato attentamente le mie preoccupazioni e mi ha fornito un trattamento efficace. Lo consiglio.",
     ],
-[
+    [
         "name" => "Marco Esposito",
         "email" => "marco@mail.it",
         "text" => "Il dottore è stato molto professionale e competente durante la visita. Ha risposto a tutte le mie domande in modo chiaro e ha fornito un trattamento efficace per i miei sintomi. Lo consiglio vivamente.",
@@ -361,7 +361,7 @@ return [
         "email" => "chiara@mail.it",
         "text" => "Il dottore è stato molto professionale e disponibile durante la visita. Ha ascoltato attentamente le mie preoccupazioni e mi ha fornito un trattamento efficace. Lo consiglio.",
     ],
-[
+    [
         "name" => "Federico Bianchi",
         "email" => "federico@mail.it",
         "text" => "Il dottore è stato molto professionale e competente. Ha risolto il mio problema con efficacia e precisione. Lo consiglio vivamente.",

@@ -53,12 +53,12 @@
                                     <img class="dettaglio-immagine" src="{{ asset('/img/Doctor-default.jpeg') }}"
                                         alt="{{ $doctor->user->name }}">
                                 @endif
-    
+
                             </div>
 
                         </div>
                         @if (count($doctor->specializations) != 0)
-                            <div class="services m-2">
+                            <div class="services m-2 ms-5">
                                 <div><strong>Specializzazioni:</strong> <br>
                                     @foreach ($doctor->specializations as $specialization)
                                         {{ $specialization->name }} <br>
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="my-2">
+                            <div class="my-2 ms-5">
                                 <div><em>Nessuna specializzazione inserita. <br> Vai nella <a
                                             href="{{ route('profile.edit') }}" class="text-black">schermata
                                             modifica
@@ -141,13 +141,22 @@
                                     </button>
                                 </a>
                             </div>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <span><strong>Guarda le tue statistiche:</strong></span>
+                                <a href="{{ route('statistics.index', ['year' => 2024]) }}" class="mx-2">
+                                    <button class="btn btn-square bg-button">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-2"></div>
+                <div class="col-8">
                     @if ($doctor->services != '' || $doctor->services != null)
                         <div class="col-12 my-3">
                             <div class="col-12">
@@ -224,7 +233,7 @@
                                         <img src="{{ asset('/img/Doctor-default.jpeg') }}"
                                             alt="{{ $doctor->user->name }}">
                                     @endif
-    
+
                                 </div>
                             </div>
 
@@ -241,6 +250,7 @@
                                         <i class="fa-solid fa-star"></i>
                                     </button>
                                 </a>
+
                             </div>
                             <hr class="text-white">
                             @if (count($doctor->specializations) != 0)
@@ -253,8 +263,9 @@
                                 </div>
                             @else
                                 <div class="my-2 ">
-                                    <div class="text-white" ><em>Nessuna specializzazione inserita. <br> Vai nella <a
-                                                href="{{ route('profile.edit') }}" class="text-white text-decoration-underline ">schermata modifica
+                                    <div class="text-white"><em>Nessuna specializzazione inserita. <br> Vai nella <a
+                                                href="{{ route('profile.edit') }}"
+                                                class="text-white text-decoration-underline ">schermata modifica
                                                 profilo</a> per aggiungerne una.</em></div>
                                 </div>
                             @endif
@@ -294,7 +305,8 @@
                                 @if ($doctor->cv != 'Filepdf' || '')
                                     <div class="d-flex justify-content-between aling-item-center mt-4 text-white">
                                         <strong>Curriculum</strong>
-                                        <a target="_blank" href="{{ asset('storage/' . $doctor->cv) }}" class="mx-2 text-white">
+                                        <a target="_blank" href="{{ asset('storage/' . $doctor->cv) }}"
+                                            class="mx-2 text-white">
                                             <button class="btn btn-square btn-primary ">
                                                 <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
                                             </button>
@@ -303,7 +315,8 @@
                                 @else
                                     <div class="my-2 text-white">
                                         <div><em>Nessun Curriculum Vitae inserito. <br> Vai nella <a
-                                                    href="{{ route('profile.edit') }}" class="text-white text-decoration-underline ">schermata
+                                                    href="{{ route('profile.edit') }}"
+                                                    class="text-white text-decoration-underline ">schermata
                                                     modifica
                                                     profilo</a> per aggiungerne uno.</em></div>
                                     </div>
