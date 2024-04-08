@@ -31,19 +31,16 @@
                                 <div class="d-flex justify-content-center align-content-center ">
                                     <img src="{{ Vite::asset('resources/img/' . $key + 1 . '.png') }}" style="width: 80%;"
                                         class="  mt-2" alt="...">
-
                                 </div>
                                 <div>
                                     <a href="{{ route('token', ['price' => $sponsorship->price]) }}"
                                         class="btn btn-blue ">Acquista</a>
-
                                 </div>
                             </div>
                         </div>
+                    @endforeach
                 </div>
-
             </div>
-            @endforeach
         </div>
         <div class="text-center mb-4">
             <a href="{{ url('admin') }}" class="">
