@@ -1,8 +1,9 @@
 @extends('layouts.style')
 @section('content')
+
     <div class="  ">
         <div class="row ">
-            <div class="col-md-12 col-12 px-4 pt-3 bg-doctorblu ">
+            <div class=" col-12 px-4 pt-3 bg-doctorblu ">
                 <h1 class="text-center mt-5 text-blue">Le nostre Sponsorizzazioni</h1>
                 <div class="row">
                     <div class="col-2"></div>
