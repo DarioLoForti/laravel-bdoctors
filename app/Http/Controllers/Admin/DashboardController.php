@@ -18,7 +18,7 @@ class DashboardController extends Controller
     {
         $logged_user = Auth::user();
 
-        $sponsorshipName = null;
+        $sponsorshipCount = null;
         $validityPeriod = null;
 
         if ($logged_user) {
@@ -26,21 +26,21 @@ class DashboardController extends Controller
 
             // Recupera la sponsorizzazione attiva per il medico loggato
             $activeSponsorship = Doctor::find($logged_in_doctor_id)->sponsorships()
-                ->wherePivot('start_timestamp', '<=', now())
                 ->wherePivot('end_timestamp', '>=', now())
-                ->first();
+                ->get();
 
-            // Se è presente una sponsorizzazione attiva, recupera il nome della sponsorship e calcola il periodo di validità rimanente
-            if ($activeSponsorship) {
-                $sponsorshipName = $activeSponsorship->name;
-
-                $start = Carbon::parse($activeSponsorship->pivot->start_timestamp);
-                $end = Carbon::parse($activeSponsorship->pivot->end_timestamp);
-                $now = Carbon::now();
-
-                if ($now->lt($end)) {
-                    $validityPeriod = $now->diffInHours($end);
+            if(count($activeSponsorship)>0){
+                $current = $activeSponsorship[0];
+                $currentDiff = Carbon::now()->diffInHours(Carbon::parse($activeSponsorship[0]->pivot->end_timestamp));
+    
+                $future = 0;
+    
+                for($i = 1; $i<count($activeSponsorship); $i++){
+                    $future += $activeSponsorship[$i]->duration;
                 }
+
+                $sponsorshipCount = count($activeSponsorship);
+                $validityPeriod = $currentDiff + $future;
             }
         }
         $messages_count = [];
@@ -61,6 +61,6 @@ class DashboardController extends Controller
 
 
 
-        return view('dashboard', compact('messages_count', 'reviews_count', 'ratings_count', 'sponsorshipName', 'validityPeriod'));
+        return view('dashboard', compact('messages_count', 'reviews_count', 'ratings_count', 'validityPeriod', 'sponsorshipCount'));
     }
 }

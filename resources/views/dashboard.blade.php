@@ -73,13 +73,12 @@
                                     {{ Auth::user()->name }} {{ Auth::user()->surname }}.
                                 </h1>
                             </div>
-                            @if ($sponsorshipName && $validityPeriod !== null)
+                            @if ($validityPeriod !== null)
                                 <div class="row justify-content-center my-3">
                                     <div
                                         class="col-12 bg-blue p-3 rounded d-flex justify-content-between align-items-center">
                                         <div class="text-white">
-                                            Hai attiva la sponsorizzazione {{ $sponsorshipName }}, ti rimangono
-                                            {{ $validityPeriod }} ore di sponsorizzazione.
+                                            Hai acquistato {{$sponsorshipCount}} sponsorizzazioni. Ti rimangono {{ $validityPeriod }} ore di sponsorizzazione.
                                         </div>
                                     </div>
                                 </div>
