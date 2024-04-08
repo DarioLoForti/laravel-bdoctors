@@ -3,10 +3,10 @@
 @section('content')
     <style>
         .card {
-            border: 1px solid #ccc;
+            border: 2px solid white;
             border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
 
         .btn {
@@ -14,6 +14,10 @@
             border-radius: 5px;
             margin-top: 20px;
             cursor: pointer;
+        }
+        .color-blue{
+            color: #285a8c;
+           
         }
 
         #success-message {
@@ -28,28 +32,75 @@
         .braintree-upper-container:before {
             background-color: white
         }
-    </style>
+        .braintree-upper-container{
+            z-index: unset;
+        }
+        .braintree-card{
+            position: relative;
+            border-radius: 20px;
+            background-color: transparent;
+            min-height: 450px;
+        }
+        .braintree-form__field-group{
+            margin: 30px 0px;
+        }
+        .braintree-sheet{
+            border: 2px solid white;
+        }
+        .braintree-sheet__header{
+            border-bottom: 2px solid white;
+            
+        }
+        .braintree-sheet__text{
+            color: white !important;
+            text-transform: uppercase;
+            font-size: 18px !important;
 
-    <body>
-        <div class="container mt-5">
-            <div class="card text-center p-4">
-                <div class="mb-3">
-                    <h4 class="mb-3">Conferma Pagamento</h4>
-                    <p>Si sta procedendo al pagamento di <strong>{{ $sponsorship->price }}</strong> euro per il servizio
-                        <strong>{{ $sponsorship->name }}</strong>, della durata di
-                        <strong>{{ $sponsorship->duration }}</strong> ore.
-                    </p>
+        }
+        .braintree-form__label{
+            color: white !important;
+            text-transform: uppercase;
+            font-size: 18px !important;
+        }
+        .braintree-form__field{
+            background-color: white;
+            border-radius: 10px;
+        } 
+        .braintree-form__descriptor{
+            color: white !important;
+        }
+        .braintree-sheet__content--form .braintree-form__field-group .braintree-form__field .braintree-form__hosted-field{
+            border: 2px solid white ;
+            border-radius: 10px;
+        }
+        
+
+        
+    </style>
+        <div class="bg-linear-gradient vh-100">
+            <div class="container pt-5 ">
+                <div class="card text-center py-3 bg-transparent ">
+                    <div class=" text-white">
+                        <h4 class="mb-3">Conferma di Pagamento</h4>
+                        <p>Si sta procedendo al pagamento di <strong class="color-blue">{{ $sponsorship->name }}</strong> della durata di
+                            <strong class="color-blue">{{ $sponsorship->duration }} ore</strong>, per 
+                            <strong class="color-blue">{{ $sponsorship->price }} €</strong>.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="py-4 text-center">
-                @csrf
-                <div id="dropin-container"></div>
-                <div>
-                    <button id="submit-button" class="btn btn-success">Paga</button>
-                    <a href="javascript:history.back()" class="btn btn-secondary ms-2">Indietro</a>
-                </div>
-                <div id="success-message" class="alert alert-success mt-3" style="display: none;">
-                    Pagamento avvenuto con successo!
+                {{-- <div class="position-img">
+                    <img src="{{ Vite::asset('resources/img/carta.png') }}" alt="">
+                </div> --}}
+                <div class="py-4 text-center">
+                    @csrf
+                    <div id="dropin-container"></div>
+                    <div>
+                        <button id="submit-button" class="btn btn-success">Paga {{ $sponsorship->price }} € </button>
+                        <a href="javascript:history.back()" class="btn btn-secondary ms-2">Indietro</a>
+                    </div>
+                    <div id="success-message" class="alert alert-success mt-3" style="display: none;">
+                        Pagamento avvenuto con successo!
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,6 +150,6 @@
                     });
                 });
             });
+            
         </script>
-    </body>
 @endsection
