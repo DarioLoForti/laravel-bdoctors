@@ -75,10 +75,18 @@
                             </div>
                             @if ($validityPeriod !== null)
                                 <div class="row justify-content-center my-3">
-                                    <div
-                                        class="col-12 bg-blue p-3 rounded d-flex justify-content-between align-items-center">
+                                    <div class="col-12 bg-blue p-3 rounded d-flex justify-content-between align-items-center">
                                         <div class="text-white">
-                                            Hai acquistato {{$sponsorshipCount}} sponsorizzazioni. Ti rimangono {{ $validityPeriod }} ore di sponsorizzazione.
+                                            Hai acquistato {{$sponsorshipCount}} @if($sponsorshipCount == 1) <span>sponsorizzazione.</span> @else <span>sponsorizzazioni.</span> @endif Ti rimangono {{ $validityPeriod }} ore di sponsorizzazione.
+                                        </div>
+                                        <div class=" d-none d-lg-block">
+                                            <a class="bg-button" href="{{ route('sponsorships.index') }}"><strong>Estendi il Tempo Rimanente</strong>
+                                            </a>
+                                        </div>
+                                        <div class=" d-lg-none">
+                                            <a class="bg-button"
+                                                href="{{ route('sponsorships.index') }}"><strong>Estendi    </strong>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +95,7 @@
 
                             {{-- NOTIFICATION: YOU HAVE BOUGHT NO SPONSORSHIP --}}
 
-                            @if (Auth::user()->doctor->sponsorship == null)
+                            @if ($sponsorshipCount == 0)
                                 <div class="row my-3 ">
                                     <div
                                         class="col-12 bg-blue p-3 rounded d-flex justify-content-between align-items-center">
