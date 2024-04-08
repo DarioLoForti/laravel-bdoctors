@@ -24,7 +24,7 @@ class BraintreeController extends Controller
         $latest_endtimestamp = Carbon::now();
 
         if(count($doctor->sponsorships) > 0){
-            $latest = $doctor->sponsorships()->latest()->first()->pivot->get(['start_timestamp','end_timestamp'])->first();
+            $latest = $doctor->sponsorships()->get(['start_timestamp','end_timestamp'])->last();
             $latest_endtimestamp = Carbon::createFromFormat('Y-m-d H:i:s', $latest->end_timestamp);
         }
 
