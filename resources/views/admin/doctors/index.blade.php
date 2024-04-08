@@ -161,7 +161,7 @@
                         <div class="col-12 my-3">
                             <div class="col-12">
                                 <strong>Prestazioni:</strong>
-                                <div class="col-12">
+                                <div class="col-12" style="white-space: pre-line;">
                                     {{ $doctor->services }}
                                 </div>
                             </div>
