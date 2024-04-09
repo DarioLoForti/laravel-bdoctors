@@ -81,6 +81,8 @@
                                     selezionati</button>
                                 <button type="submit" class="btn btn-danger mb-3 d-md-none "><i class="fa-solid fa-trash"
                                         style="color:#ffffff;"></i></button>
+                                <input type="checkbox" onclick="changeAll()"/>&ThinSpace; Seleziona Tutto<br/>
+
 
                                 <div class="accordion" id="accordionMessages">
                                     @foreach ($messages as $message)
@@ -115,7 +117,7 @@
                                                         <div class="d-flex align-items-center">
                                                             <input type="checkbox" name="selectedMessages[]"
                                                                 value="{{ $message->id }}"
-                                                                class="form-check-input mt-0 me-3">
+                                                                class="form-check-input mt-0 me-3 check">
                                                             <div class="">
                                                                 <span><strong>{{ $message->name }}</strong></span> <span
                                                                     class="d-none d-sm-block">{{ $message->email }}</span>
@@ -155,4 +157,18 @@
                 </div>
             </div>
         </div>
+        
+        <script type="text/javascript">
+            function changeAll(){
+                let checkboxes = document.getElementsByName('selectedMessages[]');
+                for(let i = 0; i<checkboxes.length; i++){
+                    if(checkboxes[i].checked){
+                        checkboxes[i].checked = false;
+                    }
+                    else{
+                        checkboxes[i].checked = true;
+                    }
+                }
+            }
+        </script>
     @endsection
