@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
+<div class="bg-edit py-5">
+
     <div class="container">
-        <h2 class="fs-4 text-secondary my-4 d-flex justify-content-between align-items-center">
-            <span>
+        <h2 class="fs-4 text-secondary py-4 d-flex justify-content-between align-items-center">
+            <span class="text-white">
                 {{ __('Profilo') }}
             </span>
             <div>
@@ -41,4 +43,5 @@
             @include('profile.partials.delete-user-form')
         </div>
     </div>
+</div>
 @endsection
