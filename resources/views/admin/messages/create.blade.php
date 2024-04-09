@@ -25,9 +25,9 @@
                         @csrf
                         <input type="hidden" name="doctor_id" value="{{ $doctor->id }}">
                         <div class="form-group mb-3">
-                            <label class="text-white" for="name">Nome</label>
+                            <label class="text-white" for="name">Nome e Cognome</label>
                             <input type="text" name="name" id="name"class="form-control"
-                                placeholder="Inserisci il tuo nome">
+                                placeholder="Inserisci nome e cognome">
                         </div>
                         <div class="form-group mb-3">
                             <label class="text-white" for="email">E-mail</label>
