@@ -160,7 +160,7 @@ a{
 
 
 .navbar-aestethic{
-    background-color: #285a8c;
+    background-color: transparent;
     border: 0px;
     font-size: 30px;
 }
@@ -391,6 +391,15 @@ a{
 
 .altezza-sponsor{
     min-height: 1000px;
+}
+
+.bg-login{
+    background-image: linear-gradient( #66cc99, #285a8c );
+    height: 100vh;
+}
+.bg-register{
+    background-image: linear-gradient( #66cc99, #285a8c );
+    max-height: 1800px;
 }
 
 // .misure-img{
